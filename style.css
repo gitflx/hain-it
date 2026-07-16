@@ -1,21 +1,22 @@
 :root {
-    --bg: #ffffff;
-    --bg-alt: #f8f9fa;
+    --bg: #fffcf9;
+    --bg-alt: #fdf6f0;
     --surface: #ffffff;
-    --surface-hover: #f1f3f5;
-    --border: #e9ecef;
-    --text: #1a1a2e;
-    --text-secondary: #6c757d;
-    --text-muted: #adb5bd;
-    --accent: #6366f1;
-    --accent-hover: #4f46e5;
-    --accent-light: rgba(99, 102, 241, 0.1);
-    --gradient: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-    --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
-    --radius: 12px;
-    --radius-sm: 8px;
+    --surface-hover: #fef3eb;
+    --border: #f0e6dc;
+    --text: #2d2319;
+    --text-secondary: #6b5b4e;
+    --text-muted: #a89888;
+    --accent: #e85d04;
+    --accent-hover: #d45003;
+    --accent-light: rgba(232, 93, 4, 0.08);
+    --accent-secondary: #0077b6;
+    --gradient: linear-gradient(135deg, #e85d04, #f48c06, #ffba08);
+    --shadow-sm: 0 1px 3px rgba(45,35,25,0.04);
+    --shadow-md: 0 4px 16px rgba(45,35,25,0.07);
+    --shadow-lg: 0 12px 40px rgba(45,35,25,0.10);
+    --radius: 16px;
+    --radius-sm: 10px;
     --radius-full: 100px;
     --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
@@ -24,20 +25,20 @@
 }
 
 [data-theme="dark"] {
-    --bg: #0a0a0f;
-    --bg-alt: #12121a;
-    --surface: #1a1a2e;
-    --surface-hover: #252540;
-    --border: #2a2a3e;
-    --text: #f0f0f5;
-    --text-secondary: #a0a0b5;
-    --text-muted: #6a6a80;
-    --accent: #818cf8;
-    --accent-hover: #6366f1;
-    --accent-light: rgba(129, 140, 248, 0.1);
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
-    --shadow-lg: 0 12px 40px rgba(0,0,0,0.4);
+    --bg: #121010;
+    --bg-alt: #1a1614;
+    --surface: #231e1b;
+    --surface-hover: #2e2723;
+    --border: #3a322c;
+    --text: #f5f0eb;
+    --text-secondary: #bfb3a8;
+    --text-muted: #7a6e63;
+    --accent: #f48c06;
+    --accent-hover: #e85d04;
+    --accent-light: rgba(244, 140, 6, 0.1);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.5);
 }
 
 * {
@@ -440,10 +441,7 @@ section {
 }
 
 .step-number {
-    font-family: var(--font-mono);
     font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--accent);
     margin-bottom: 16px;
 }
 

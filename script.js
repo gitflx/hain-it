@@ -109,27 +109,27 @@ function initChatbot() {
         const lower = input.toLowerCase();
 
         if (lower.includes('preis') || lower.includes('kost') || lower.includes('was kostet')) {
-            return 'Die Kosten hängen vom Projektumfang ab. Ein Erstgespräch ist kostenlos — dort kann ich dir eine realistische Einschätzung geben. Schreib mir gerne über das <a href="#contact">Kontaktformular</a>.';
+            return 'Das kommt ganz auf dein Projekt an — aber keine Sorge, das Erstgespräch ist komplett kostenlos und unverbindlich. Da kann ich dir schnell eine realistische Einschätzung geben. Schreib mir einfach über das <a href="#contact">Kontaktformular</a>! 😊';
         }
         if (lower.includes('smart home') || lower.includes('haus') || lower.includes('homeassistant')) {
-            return 'Ich biete professionelle Smart Home Architektur an — basierend auf Home Assistant, mit Enterprise-Grade Automation. Von der Planung bis zur Übergabe.';
+            return 'Smart Home ist meine Leidenschaft! 🏠 Ich plane und setze professionelle Smart-Home-Systeme mit Home Assistant um — zuverlässig, sicher und auf deine Bedürfnisse abgestimmt. Kein Bastel-Chaos, versprochen!';
         }
         if (lower.includes('ki') || lower.includes('copilot') || lower.includes('ai') || lower.includes('künstliche')) {
-            return 'Ich helfe bei KI-Strategie, Copilot-Einführung und Custom AI-Lösungen mit Azure AI Foundry. Von der Readiness-Analyse bis zum produktiven Betrieb.';
+            return 'KI ist ein super spannendes Thema! 🤖 Ich helfe dir dabei, Copilot oder andere AI-Tools so einzusetzen, dass sie wirklich Zeit sparen — nicht nur cool klingen. Erzähl mir mehr, was du dir vorstellst?';
         }
         if (lower.includes('power platform') || lower.includes('power apps') || lower.includes('automate')) {
-            return 'Power Platform ist einer meiner Schwerpunkte: Power Apps, Power Automate, Dataverse und ALM. Ich berate und setze um — von einfachen Flows bis zu Enterprise-Lösungen.';
+            return 'Power Platform ist genau mein Ding! Ob Power Apps, Power Automate oder Dataverse — ich kann dir helfen, das Beste rauszuholen. Hast du schon was im Einsatz oder fängst du gerade an?';
         }
         if (lower.includes('web') || lower.includes('app') || lower.includes('entwickl') || lower.includes('software')) {
-            return 'Ich entwickle Web-Apps, APIs und Portale — mit modernen Technologien wie React, Next.js oder auch Low-Code mit Power Platform. Was schwebt dir vor?';
+            return 'Cool, Softwareentwicklung! 💻 Ich baue Web-Apps, APIs und Portale mit modernen Technologien. Erzähl mir mehr — hast du schon eine konkrete Idee oder brauchst du erstmal Orientierung?';
         }
         if (lower.includes('kontakt') || lower.includes('termin') || lower.includes('gespräch') || lower.includes('buchen')) {
-            return 'Am besten erreichst du mich über das <a href="#contact">Kontaktformular</a> oder direkt per Mail an <a href="mailto:info@hain.it">info@hain.it</a>. Ich melde mich innerhalb von 24h.';
+            return 'Klar! Am einfachsten über das <a href="#contact">Kontaktformular</a> hier auf der Seite oder direkt per Mail an <a href="mailto:info@hain.it">info@hain.it</a>. Ich melde mich schnell bei dir — versprochen! ✌️';
         }
         if (lower.includes('hallo') || lower.includes('hi') || lower.includes('hey') || lower.includes('moin')) {
-            return 'Hallo! 👋 Schön, dass du hier bist. Wie kann ich dir helfen? Frag mich zu Leistungen, Preisen oder meinem Vorgehen.';
+            return 'Hey! 👋 Freut mich! Was führt dich her? Ich kann dir was zu meinen Leistungen erzählen, bei Fragen helfen oder dich mit Felix verbinden.';
         }
-        return 'Gute Frage! Für eine individuelle Antwort schreib mir gerne über das <a href="#contact">Kontaktformular</a> oder per Mail an info@hain.it. Ich melde mich schnell bei dir.';
+        return 'Gute Frage! Das beantworte ich dir am besten persönlich. Schreib mir kurz über das <a href="#contact">Kontaktformular</a> oder an info@hain.it — ich melde mich fix! 🙌';
     }
 }
 
