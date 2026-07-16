@@ -184,14 +184,8 @@ nav {
     letter-spacing: -0.02em;
 }
 
-.logo::after {
-    content: '';
-    display: inline-block;
-    width: 2px;
-    height: 1.1em;
-    background: var(--accent);
-    margin-left: 1px;
-    vertical-align: text-bottom;
+.logo-blink {
+    color: var(--accent);
     animation: blink 1.2s step-end infinite;
 }
 
@@ -211,62 +205,20 @@ nav .btn-primary:hover {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 24px;
 }
 
-.nav-links a,
-.nav-dropdown-trigger {
+.nav-links a {
     color: var(--text-secondary);
     font-size: 0.85rem;
     font-weight: 500;
     transition: color 0.2s;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: var(--font);
-    padding: 0;
+    white-space: nowrap;
 }
 
 .nav-links a:hover,
-.nav-dropdown-trigger:hover,
 .nav-links a[aria-current="page"] {
     color: var(--text);
-}
-
-.nav-dropdown { position: relative; }
-
-.nav-dropdown-menu {
-    position: absolute;
-    top: calc(100% + 12px);
-    left: -16px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 8px;
-    min-width: 220px;
-    box-shadow: var(--shadow-lg);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-8px);
-    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
-}
-
-.nav-dropdown.open .nav-dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.nav-dropdown-menu a {
-    display: block;
-    padding: 10px 14px;
-    border-radius: 6px;
-    font-size: 0.88rem;
-    transition: background 0.15s;
-}
-
-.nav-dropdown-menu a:hover {
-    background: var(--surface-hover);
 }
 
 .nav-cta {
@@ -386,7 +338,7 @@ section {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-top: var(--header-height);
+    padding-top: calc(var(--header-height) + 40px);
     position: relative;
     overflow: hidden;
 }
@@ -1327,29 +1279,33 @@ section {
 
 /* ===== AI CHAT ANIMATION ===== */
 .ai-chat {
-    max-width: 640px;
+    max-width: 680px;
     margin: 0 auto;
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     overflow: hidden;
     background: var(--surface);
+    box-shadow: var(--shadow-lg), 0 0 60px rgba(196, 93, 26, 0.04);
 }
 
 .ai-chat-header {
-    padding: 14px 20px;
+    padding: 16px 24px;
     border-bottom: 1px solid var(--border);
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 0.82rem;
-    color: var(--text-muted);
+    gap: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: linear-gradient(180deg, var(--surface-hover) 0%, var(--surface) 100%);
 }
 
 .ai-chat-header .dot {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
     animation: pulse-dot 2s ease-in-out infinite;
 }
 
@@ -1359,25 +1315,27 @@ section {
 }
 
 .ai-chat-messages {
-    padding: 24px;
+    padding: clamp(20px, 4vw, 32px);
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
 }
 
 .ai-msg {
-    padding: 14px 18px;
-    border-radius: 12px;
+    padding: 16px 20px;
+    border-radius: 16px;
     font-size: 0.9rem;
-    line-height: 1.5;
-    max-width: 85%;
+    line-height: 1.6;
+    max-width: 88%;
 }
 
 .ai-msg.user {
     background: var(--accent-light);
-    border: 1px solid rgba(196,93,26,0.2);
+    border: 1px solid rgba(196,93,26,0.15);
     align-self: flex-end;
     color: var(--text);
+    border-bottom-right-radius: 4px;
+    font-weight: 500;
 }
 
 .ai-msg.assistant {
@@ -1385,6 +1343,24 @@ section {
     border: 1px solid var(--border);
     align-self: flex-start;
     color: var(--text-secondary);
+    border-bottom-left-radius: 4px;
+}
+
+.ai-msg.assistant strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.ai-msg.assistant ol,
+.ai-msg.assistant ul {
+    margin: 8px 0 4px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ai-msg.assistant li {
+    font-size: 0.88rem;
 }
 
 .ai-msg .typing {
@@ -1533,6 +1509,166 @@ section {
 }
 .legal-content a { color: var(--accent); }
 
+/* ===== NAV SEPARATOR ===== */
+.nav-sep {
+    width: 1px;
+    height: 16px;
+    background: var(--border);
+    opacity: 0.6;
+}
+
+/* ===== SPLIT CARDS (Homepage) ===== */
+.section-split {
+    padding: 80px 0 100px;
+}
+
+.split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+}
+
+.split-card {
+    display: flex;
+    flex-direction: column;
+    padding: 48px 40px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.split-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.split-card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+.split-card .label {
+    margin-bottom: 12px;
+}
+
+.split-card h2 {
+    margin-bottom: 12px;
+}
+
+.split-card p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    line-height: 1.7;
+}
+
+.split-card-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.split-card-list li {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    padding-left: 20px;
+    position: relative;
+}
+
+.split-card-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.7;
+}
+
+.split-card-cta {
+    margin-top: auto;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.2s;
+}
+
+.split-card:hover .split-card-cta {
+    gap: 12px;
+}
+
+/* ===== TRUST GRID ===== */
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+}
+
+.trust-item {
+    text-align: center;
+    padding: 32px 24px;
+}
+
+.trust-icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+}
+
+.trust-item h4 {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.trust-item p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* ===== BENEFITS GRID ===== */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+}
+
+.benefit-card {
+    padding: 40px 32px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    text-align: center;
+}
+
+.benefit-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.benefit-card h3 {
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+}
+
+.benefit-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
     .feature-showcase {
@@ -1561,17 +1697,6 @@ section {
         gap: 16px;
     }
     .mobile-toggle { display: block; }
-    .nav-dropdown-menu {
-        position: static;
-        box-shadow: none;
-        border: none;
-        background: transparent;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        padding: 0 0 0 16px;
-        min-width: 0;
-    }
     .hero-stats { flex-direction: column; gap: 24px; }
     .feature-showcase { grid-template-columns: 1fr; min-height: auto; }
     .feature-showcase.reverse { direction: ltr; }
@@ -1590,6 +1715,11 @@ section {
     .timeline::before { left: 16px; }
     .timeline-item { padding-left: 56px; }
     .timeline-dot { left: 6px; }
+    .split-grid { grid-template-columns: 1fr; }
+    .split-card { padding: 36px 28px; }
+    .trust-grid { grid-template-columns: 1fr; gap: 24px; }
+    .benefits-grid { grid-template-columns: 1fr; gap: 24px; }
+    .nav-sep { display: none; }
 
     .modal {
         max-height: 90vh;

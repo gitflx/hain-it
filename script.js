@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     injectFooter();
     initTheme();
     initMobileMenu();
-    initDropdown();
     initModal();
     initHeaderScroll();
     initScrollAnimations();
@@ -39,19 +38,15 @@ function injectHeader() {
 
     header.innerHTML = `
     <nav>
-        <a href="index.html" class="logo">hain.it_</a>
+        <a href="index.html" class="logo">hain.it<span class="logo-blink">_</span></a>
         <div class="nav-links">
-            <div class="nav-dropdown">
-                <button class="nav-dropdown-trigger">Leistungen <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="margin-left:4px;vertical-align:middle"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                <div class="nav-dropdown-menu">
-                    <a href="prozessberatung.html" ${isActive('prozessberatung.html')}>Prozessberatung</a>
-                    <a href="smarthome.html" ${isActive('smarthome.html')}>Smart Home</a>
-                    <a href="entwicklung.html" ${isActive('entwicklung.html')}>Individualentwicklung</a>
-                    <a href="microsoft.html" ${isActive('microsoft.html')}>Microsoft</a>
-                </div>
-            </div>
+            <a href="unternehmen.html" ${isActive('unternehmen.html')}>Unternehmen</a>
+            <a href="prozessberatung.html" ${isActive('prozessberatung.html')}>Prozessberatung</a>
+            <a href="microsoft.html" ${isActive('microsoft.html')}>Microsoft</a>
+            <a href="entwicklung.html" ${isActive('entwicklung.html')}>Entwicklung</a>
+            <span class="nav-sep"></span>
+            <a href="zuhause.html" ${isActive('zuhause.html')}>Smart Home</a>
             <a href="portfolio.html" ${isActive('portfolio.html')}>Portfolio</a>
-            <a href="index.html#contact" >Kontakt</a>
         </div>
         <div class="nav-cta">
             <button class="theme-toggle" aria-label="Theme wechseln">
@@ -72,7 +67,7 @@ function injectFooter() {
     footer.innerHTML = `
     <div class="footer-grid">
         <div class="footer-brand">
-            <a href="index.html" class="logo">hain.it_</a>
+            <a href="index.html" class="logo">hain.it<span class="logo-blink">_</span></a>
             <p>Digitalisierung, Automatisierung & Smart Living.</p>
         </div>
         <div class="footer-col">
@@ -155,25 +150,6 @@ function initHeaderScroll() {
             ticking = true;
         }
     });
-}
-
-function initDropdown() {
-    const dropdown = document.querySelector('.nav-dropdown');
-    if (!dropdown) return;
-    let timeout;
-    dropdown.addEventListener('mouseenter', () => {
-        clearTimeout(timeout);
-        dropdown.classList.add('open');
-    });
-    dropdown.addEventListener('mouseleave', () => {
-        timeout = setTimeout(() => dropdown.classList.remove('open'), 200);
-    });
-    const trigger = dropdown.querySelector('.nav-dropdown-trigger');
-    trigger?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        dropdown.classList.toggle('open');
-    });
-    document.addEventListener('click', () => dropdown.classList.remove('open'));
 }
 
 function initModal() {
