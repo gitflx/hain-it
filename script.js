@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initDropdown();
     initModal();
+    initHeaderScroll();
     initScrollAnimations();
     initContactForm();
     if (document.getElementById('calc-users')) initCalculator();
@@ -139,6 +140,21 @@ function initMobileMenu() {
     links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
         links.classList.remove('active');
     }));
+}
+
+function initHeaderScroll() {
+    const header = document.getElementById('site-header');
+    if (!header) return;
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                header.classList.toggle('scrolled', window.scrollY > 50);
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
 }
 
 function initDropdown() {
