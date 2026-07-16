@@ -25,6 +25,6 @@ jobs:
             set net:timeout 30;
             open ${{ secrets.FTP_SERVER }};
             user ${{ secrets.FTP_USERNAME }} ${{ secrets.FTP_PASSWORD }};
-            mirror --reverse --delete --verbose --exclude .git/ --exclude .github/ --exclude backup/ --exclude node_modules/ ./ /;
+            mirror --reverse --delete --verbose --exclude .git/ --exclude .github/ --exclude backup/ --exclude node_modules/ ./ /www/;
             bye
           "
