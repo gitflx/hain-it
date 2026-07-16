@@ -638,7 +638,17 @@ section {
 }
 
 .floorplan-hero .floorplan-wrapper {
-    max-width: 700px;
+    max-width: 800px;
+}
+
+.fp-floor-label {
+    font-family: var(--font-mono, monospace);
+    font-size: 16px;
+    font-weight: 700;
+    fill: var(--accent, #c45d1a);
+    letter-spacing: 2px;
+    pointer-events: none;
+    opacity: 0.8;
 }
 
 .floorplan-wrapper svg {

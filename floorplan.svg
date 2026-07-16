@@ -1,143 +1,172 @@
-<svg viewBox="0 0 800 1000" xmlns="http://www.w3.org/2000/svg" class="fp-svg">
+<svg viewBox="0 0 900 1050" xmlns="http://www.w3.org/2000/svg" class="fp-svg">
     <defs>
         <filter id="fp-glow-on">
-            <feGaussianBlur stdDeviation="4" result="blur"/>
+            <feGaussianBlur stdDeviation="3" result="blur"/>
             <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
-        <filter id="fp-glow-room">
-            <feGaussianBlur stdDeviation="8" result="blur"/>
-            <feComposite in="blur" in2="SourceGraphic" operator="atop"/>
-        </filter>
         <radialGradient id="fp-light-grad" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="var(--accent, #f5a623)" stop-opacity="0.6"/>
+            <stop offset="0%" stop-color="var(--accent, #f5a623)" stop-opacity="0.5"/>
             <stop offset="100%" stop-color="var(--accent, #f5a623)" stop-opacity="0"/>
         </radialGradient>
-        <linearGradient id="fp-wall-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
-            <stop offset="100%" stop-color="rgba(255,255,255,0.7)"/>
-        </linearGradient>
     </defs>
 
-    <!-- Outer walls -->
-    <rect x="20" y="20" width="760" height="960" fill="none" stroke="var(--fp-wall, rgba(255,255,255,0.85))" stroke-width="6" rx="2"/>
+    <!-- ==================== OG (Top, offset top-right) ==================== -->
+    <g id="floor-og" transform="translate(160, 0)">
+        <!-- Floor label -->
+        <text x="-60" y="35" class="fp-floor-label">OG</text>
 
-    <!-- WOHNZIMMER (L-shape, top-left, large) -->
-    <path class="fp-room" id="room-wohnzimmer"
-        d="M 23 23 L 560 23 L 560 420 L 400 420 L 400 560 L 23 560 Z"
-        fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.85))" stroke-width="3"/>
-    <text x="240" y="260" class="fp-room-label">Wohnzimmer</text>
-    <text x="240" y="285" class="fp-room-temp">22.4°C</text>
+        <!-- Outer wall -->
+        <rect x="20" y="20" width="540" height="300" fill="var(--fp-floor-bg, rgba(255,255,255,0.02))" stroke="var(--fp-wall, rgba(255,255,255,0.7))" stroke-width="4" rx="2"/>
 
-    <!-- KÜCHE (top-right) -->
-    <rect class="fp-room" id="room-kueche" x="563" y="23" width="214" height="370"
-        fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.85))" stroke-width="3"/>
-    <text x="670" y="180" class="fp-room-label">Küche</text>
-    <text x="670" y="205" class="fp-room-temp">21.8°C</text>
+        <!-- Rooms -->
+        <rect class="fp-room" id="room-kinderzimmer1" x="23" y="23" width="200" height="294" fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.5))" stroke-width="2"/>
+        <text x="123" y="150" class="fp-room-label">Kinderzimmer</text>
+        <text x="123" y="172" class="fp-room-temp">21.5°C</text>
 
-    <!-- GÄSTE-WC (right side, below küche) -->
-    <rect class="fp-room" id="room-gaestewc" x="620" y="396" width="157" height="110"
-        fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.85))" stroke-width="3"/>
-    <text x="698" y="458" class="fp-room-label-sm">Gäste-WC</text>
+        <rect class="fp-room" id="room-kinderzimmer2" x="226" y="23" width="200" height="170" fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.5))" stroke-width="2"/>
+        <text x="326" y="110" class="fp-room-label">Spielzimmer</text>
+        <text x="326" y="132" class="fp-room-temp">22.1°C</text>
 
-    <!-- WINDFANG (right side, below gäste-wc) -->
-    <rect class="fp-room" id="room-windfang" x="620" y="509" width="157" height="140"
-        fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.85))" stroke-width="3"/>
-    <text x="698" y="585" class="fp-room-label-sm">Windfang</text>
+        <rect class="fp-room" id="room-bad-og" x="429" y="23" width="128" height="170" fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.5))" stroke-width="2"/>
+        <text x="493" y="105" class="fp-room-label-sm">Bad OG</text>
+        <text x="493" y="125" class="fp-room-temp">23.5°C</text>
 
-    <!-- FLUR (center, vertical) -->
-    <rect class="fp-room" id="room-flur" x="403" y="423" width="100" height="390"
-        fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.85))" stroke-width="2.5"/>
-    <text x="453" y="620" class="fp-room-label-sm">Flur</text>
+        <rect class="fp-room" id="room-flur-og" x="226" y="196" width="331" height="121" fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.5))" stroke-width="2"/>
+        <text x="391" y="265" class="fp-room-label-sm">Galerie</text>
 
-    <!-- SCHLAFZIMMER (left, middle) -->
-    <rect class="fp-room" id="room-schlafzimmer" x="23" y="563" width="377" height="310"
-        fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.85))" stroke-width="3"/>
-    <text x="210" y="710" class="fp-room-label">Schlafzimmer</text>
-    <text x="210" y="735" class="fp-room-temp">20.5°C</text>
+        <!-- Lights OG -->
+        <circle class="fp-light fp-light-off" cx="123" cy="120" r="5"/>
+        <circle class="fp-light fp-light-off" cx="326" cy="85" r="5"/>
+        <circle class="fp-light fp-light-on" cx="493" cy="80" r="4" filter="url(#fp-glow-on)"/>
+        <circle class="fp-light fp-light-dim" cx="391" cy="240" r="4"/>
 
-    <!-- TREPPE (right, middle) -->
-    <rect class="fp-room" id="room-treppe" x="506" y="423" width="111" height="83"
-        fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.85))" stroke-width="2"/>
-    <text x="561" y="470" class="fp-room-label-sm">Treppe</text>
-    <!-- Stair lines -->
-    <line x1="516" y1="440" x2="607" y2="440" stroke="var(--fp-wall, rgba(255,255,255,0.3))" stroke-width="1"/>
-    <line x1="516" y1="452" x2="607" y2="452" stroke="var(--fp-wall, rgba(255,255,255,0.3))" stroke-width="1"/>
-    <line x1="516" y1="464" x2="607" y2="464" stroke="var(--fp-wall, rgba(255,255,255,0.3))" stroke-width="1"/>
-    <line x1="516" y1="476" x2="607" y2="476" stroke="var(--fp-wall, rgba(255,255,255,0.3))" stroke-width="1"/>
-    <line x1="516" y1="488" x2="607" y2="488" stroke="var(--fp-wall, rgba(255,255,255,0.3))" stroke-width="1"/>
+        <!-- Window indicators -->
+        <rect x="60" y="14" width="70" height="5" fill="rgba(100,200,255,0.4)" rx="2"/>
+        <rect x="280" y="14" width="70" height="5" fill="rgba(100,200,255,0.4)" rx="2"/>
+        <rect x="555" y="60" width="5" height="50" fill="rgba(100,200,255,0.4)" rx="2"/>
+    </g>
 
-    <!-- BAD (right, below treppe) -->
-    <rect class="fp-room" id="room-bad" x="506" y="509" width="111" height="180"
-        fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.85))" stroke-width="3"/>
-    <text x="561" y="605" class="fp-room-label-sm">Bad</text>
-    <text x="561" y="625" class="fp-room-temp">23.1°C</text>
+    <!-- Connecting lines (isometric depth) -->
+    <line x1="180" y1="320" x2="100" y2="390" stroke="var(--fp-wall, rgba(255,255,255,0.15))" stroke-width="1" stroke-dasharray="4 4"/>
+    <line x1="700" y1="320" x2="620" y2="390" stroke="var(--fp-wall, rgba(255,255,255,0.15))" stroke-width="1" stroke-dasharray="4 4"/>
 
-    <!-- BÜRO (bottom-left) -->
-    <rect class="fp-room" id="room-buero" x="23" y="876" width="377" height="101"
-        fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.85))" stroke-width="3"/>
-    <text x="210" y="932" class="fp-room-label">Büro</text>
-    <text x="210" y="955" class="fp-room-temp">22.0°C</text>
+    <!-- ==================== EG (Middle, main floor) ==================== -->
+    <g id="floor-eg" transform="translate(80, 350)">
+        <!-- Floor label -->
+        <text x="-60" y="35" class="fp-floor-label">EG</text>
 
-    <!-- GÄSTEZIMMER (bottom-right) -->
-    <rect class="fp-room" id="room-gaestezimmer" x="506" y="692" width="271" height="285"
-        fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.85))" stroke-width="3"/>
-    <text x="641" y="830" class="fp-room-label">Gästezimmer</text>
-    <text x="641" y="855" class="fp-room-temp">21.2°C</text>
+        <!-- Outer wall -->
+        <rect x="20" y="20" width="620" height="370" fill="var(--fp-floor-bg, rgba(255,255,255,0.02))" stroke="var(--fp-wall, rgba(255,255,255,0.85))" stroke-width="5" rx="2"/>
 
-    <!-- HAUSWIRTSCHAFT (bottom-center) -->
-    <rect class="fp-room" id="room-hwl" x="403" y="816" width="100" height="161"
-        fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.85))" stroke-width="2"/>
-    <text x="453" y="895" class="fp-room-label-xs">HWR</text>
+        <!-- Wohnzimmer (L-shape) -->
+        <path class="fp-room" id="room-wohnzimmer"
+            d="M 23 23 L 420 23 L 420 200 L 310 200 L 310 260 L 23 260 Z"
+            fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.7))" stroke-width="2.5"/>
+        <text x="190" y="130" class="fp-room-label">Wohnzimmer</text>
+        <text x="190" y="155" class="fp-room-temp">22.4°C</text>
 
-    <!-- === DOORS === -->
-    <!-- Haustür (right side, windfang) -->
-    <rect x="772" y="545" width="8" height="70" fill="var(--accent, #f5a623)" opacity="0.7" rx="2"/>
-    <!-- Terrassentür (top-left, wohnzimmer) -->
-    <rect x="80" y="14" width="90" height="8" fill="var(--accent, #f5a623)" opacity="0.7" rx="2"/>
+        <!-- Küche -->
+        <rect class="fp-room" id="room-kueche" x="423" y="23" width="214" height="180"
+            fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.7))" stroke-width="2.5"/>
+        <text x="530" y="105" class="fp-room-label">Küche</text>
+        <text x="530" y="128" class="fp-room-temp">21.8°C</text>
 
-    <!-- === WINDOWS === -->
-    <rect x="440" y="14" width="80" height="6" fill="rgba(100,200,255,0.5)" rx="2"/>
-    <rect x="772" y="180" width="6" height="60" fill="rgba(100,200,255,0.5)" rx="2"/>
-    <rect x="772" y="430" width="6" height="45" fill="rgba(100,200,255,0.5)" rx="2"/>
-    <rect x="772" y="750" width="6" height="70" fill="rgba(100,200,255,0.5)" rx="2"/>
-    <rect x="200" y="971" width="80" height="6" fill="rgba(100,200,255,0.5)" rx="2"/>
+        <!-- Flur -->
+        <rect class="fp-room" id="room-flur" x="313" y="203" width="70" height="184"
+            fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.5))" stroke-width="2"/>
+        <text x="348" y="300" class="fp-room-label-xs">Flur</text>
 
-    <!-- === LIGHTS === -->
-    <!-- Wohnzimmer Deckenlampe -->
-    <circle class="fp-light fp-light-on" cx="280" cy="200" r="8" filter="url(#fp-glow-on)"/>
-    <!-- Esstisch -->
-    <circle class="fp-light fp-light-on" cx="440" cy="320" r="7" filter="url(#fp-glow-on)"/>
-    <!-- Wohnzimmer Leselicht -->
-    <circle class="fp-light fp-light-dim" cx="120" cy="420" r="5"/>
-    <!-- Küche -->
-    <circle class="fp-light fp-light-on" cx="670" cy="150" r="6" filter="url(#fp-glow-on)"/>
-    <!-- Schlafzimmer -->
-    <circle class="fp-light fp-light-off" cx="210" cy="680" r="6"/>
-    <!-- Bad -->
-    <circle class="fp-light fp-light-on" cx="561" cy="570" r="5" filter="url(#fp-glow-on)"/>
-    <!-- Büro -->
-    <circle class="fp-light fp-light-on" cx="210" cy="920" r="6" filter="url(#fp-glow-on)"/>
+        <!-- Gäste-WC -->
+        <rect class="fp-room" id="room-gaestewc" x="500" y="206" width="137" height="80"
+            fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.5))" stroke-width="2"/>
+        <text x="568" y="252" class="fp-room-label-sm">Gäste-WC</text>
 
-    <!-- === LIGHT CONES (subtle ambient glow) === -->
-    <ellipse cx="280" cy="200" rx="50" ry="40" fill="url(#fp-light-grad)" class="fp-cone"/>
-    <ellipse cx="440" cy="320" rx="40" ry="30" fill="url(#fp-light-grad)" class="fp-cone"/>
-    <ellipse cx="670" cy="150" rx="35" ry="28" fill="url(#fp-light-grad)" class="fp-cone"/>
+        <!-- Windfang -->
+        <rect class="fp-room" id="room-windfang" x="500" y="289" width="137" height="98"
+            fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.5))" stroke-width="2"/>
+        <text x="568" y="345" class="fp-room-label-sm">Windfang</text>
 
-    <!-- === FURNITURE (subtle indicators) === -->
-    <!-- Couch (wohnzimmer) -->
-    <rect x="100" y="300" width="120" height="50" rx="8" fill="var(--fp-furniture, rgba(255,255,255,0.06))" stroke="var(--fp-wall, rgba(255,255,255,0.15))" stroke-width="1"/>
-    <!-- TV -->
-    <rect x="80" y="200" width="8" height="60" rx="2" fill="var(--fp-furniture, rgba(255,255,255,0.1))"/>
-    <!-- Küche Zeile -->
-    <rect x="570" y="30" width="200" height="25" rx="4" fill="var(--fp-furniture, rgba(255,255,255,0.06))" stroke="var(--fp-wall, rgba(255,255,255,0.15))" stroke-width="1"/>
-    <!-- Esstisch -->
-    <rect x="410" y="290" width="80" height="55" rx="6" fill="var(--fp-furniture, rgba(255,255,255,0.06))" stroke="var(--fp-wall, rgba(255,255,255,0.15))" stroke-width="1"/>
-    <!-- Bett -->
-    <rect x="130" y="640" width="140" height="100" rx="8" fill="var(--fp-furniture, rgba(255,255,255,0.06))" stroke="var(--fp-wall, rgba(255,255,255,0.15))" stroke-width="1"/>
-    <!-- Schreibtisch (Büro) -->
-    <rect x="120" y="900" width="100" height="40" rx="4" fill="var(--fp-furniture, rgba(255,255,255,0.06))" stroke="var(--fp-wall, rgba(255,255,255,0.15))" stroke-width="1"/>
+        <!-- Schlafzimmer -->
+        <rect class="fp-room" id="room-schlafzimmer" x="23" y="263" width="287" height="124"
+            fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.7))" stroke-width="2.5"/>
+        <text x="166" y="325" class="fp-room-label">Schlafzimmer</text>
+        <text x="166" y="348" class="fp-room-temp">20.5°C</text>
 
-    <!-- === STATUS INDICATORS === -->
-    <circle cx="750" cy="580" r="4" fill="#4ade80" class="fp-status-online"/>
-    <text x="750" y="598" class="fp-status-text">Verschlossen</text>
+        <!-- Bad -->
+        <rect class="fp-room" id="room-bad" x="386" y="206" width="111" height="100"
+            fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.5))" stroke-width="2"/>
+        <text x="441" y="260" class="fp-room-label-sm">Bad</text>
+        <text x="441" y="278" class="fp-room-temp">23.1°C</text>
+
+        <!-- Lights EG -->
+        <circle class="fp-light fp-light-on" cx="190" cy="100" r="6" filter="url(#fp-glow-on)"/>
+        <circle class="fp-light fp-light-on" cx="350" cy="100" r="5" filter="url(#fp-glow-on)"/>
+        <circle class="fp-light fp-light-on" cx="530" cy="75" r="5" filter="url(#fp-glow-on)"/>
+        <circle class="fp-light fp-light-dim" cx="100" cy="220" r="4"/>
+        <circle class="fp-light fp-light-off" cx="166" cy="310" r="5"/>
+        <circle class="fp-light fp-light-on" cx="441" cy="235" r="4" filter="url(#fp-glow-on)"/>
+
+        <!-- Light cones -->
+        <ellipse cx="190" cy="100" rx="40" ry="30" fill="url(#fp-light-grad)" class="fp-cone"/>
+        <ellipse cx="530" cy="75" rx="30" ry="25" fill="url(#fp-light-grad)" class="fp-cone"/>
+
+        <!-- Doors -->
+        <rect x="634" y="310" width="6" height="50" fill="var(--accent, #f5a623)" opacity="0.6" rx="2"/>
+        <rect x="80" y="14" width="70" height="6" fill="var(--accent, #f5a623)" opacity="0.6" rx="2"/>
+
+        <!-- Windows -->
+        <rect x="250" y="14" width="80" height="5" fill="rgba(100,200,255,0.4)" rx="2"/>
+        <rect x="634" y="100" width="5" height="50" fill="rgba(100,200,255,0.4)" rx="2"/>
+        <rect x="634" y="220" width="5" height="40" fill="rgba(100,200,255,0.4)" rx="2"/>
+        <rect x="80" y="384" width="70" height="5" fill="rgba(100,200,255,0.4)" rx="2"/>
+
+        <!-- Furniture hints -->
+        <rect x="55" y="120" width="90" height="40" rx="6" fill="var(--fp-furniture, rgba(255,255,255,0.04))" stroke="var(--fp-wall, rgba(255,255,255,0.1))" stroke-width="1"/>
+        <rect x="430" y="30" width="190" height="18" rx="3" fill="var(--fp-furniture, rgba(255,255,255,0.04))" stroke="var(--fp-wall, rgba(255,255,255,0.1))" stroke-width="1"/>
+        <rect x="70" y="290" width="110" height="70" rx="6" fill="var(--fp-furniture, rgba(255,255,255,0.04))" stroke="var(--fp-wall, rgba(255,255,255,0.1))" stroke-width="1"/>
+
+        <!-- Status: Haustür -->
+        <circle cx="630" cy="335" r="3" fill="#4ade80" class="fp-status-online"/>
+    </g>
+
+    <!-- Connecting lines EG → KG -->
+    <line x1="100" y1="720" x2="40" y2="790" stroke="var(--fp-wall, rgba(255,255,255,0.15))" stroke-width="1" stroke-dasharray="4 4"/>
+    <line x1="700" y1="720" x2="640" y2="790" stroke="var(--fp-wall, rgba(255,255,255,0.15))" stroke-width="1" stroke-dasharray="4 4"/>
+
+    <!-- ==================== KG (Bottom, offset bottom-left) ==================== -->
+    <g id="floor-kg" transform="translate(0, 750)">
+        <!-- Floor label -->
+        <text x="10" y="12" class="fp-floor-label">KG</text>
+
+        <!-- Outer wall -->
+        <rect x="20" y="20" width="520" height="240" fill="var(--fp-floor-bg, rgba(255,255,255,0.02))" stroke="var(--fp-wall, rgba(255,255,255,0.5))" stroke-width="3.5" rx="2"/>
+
+        <!-- Technikraum -->
+        <rect class="fp-room" id="room-technik" x="23" y="23" width="200" height="234"
+            fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.4))" stroke-width="2"/>
+        <text x="123" y="130" class="fp-room-label">Technikraum</text>
+        <text x="123" y="152" class="fp-room-label-xs">HA Server</text>
+        <text x="123" y="172" class="fp-room-temp">19.8°C</text>
+
+        <!-- Waschraum -->
+        <rect class="fp-room" id="room-waschraum" x="226" y="23" width="170" height="234"
+            fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.4))" stroke-width="2"/>
+        <text x="311" y="140" class="fp-room-label-sm">Waschraum</text>
+
+        <!-- Lager -->
+        <rect class="fp-room" id="room-lager" x="399" y="23" width="138" height="234"
+            fill="var(--fp-room-bg, rgba(255,255,255,0.03))" stroke="var(--fp-wall, rgba(255,255,255,0.4))" stroke-width="2"/>
+        <text x="468" y="140" class="fp-room-label-sm">Lager</text>
+
+        <!-- Lights KG -->
+        <circle class="fp-light fp-light-on" cx="123" cy="100" r="4" filter="url(#fp-glow-on)"/>
+        <circle class="fp-light fp-light-off" cx="311" cy="110" r="4"/>
+        <circle class="fp-light fp-light-off" cx="468" cy="110" r="4"/>
+
+        <!-- Server rack indicator -->
+        <rect x="50" y="50" width="40" height="60" rx="4" fill="var(--fp-furniture, rgba(255,255,255,0.06))" stroke="var(--accent, #c45d1a)" stroke-width="1.5" opacity="0.6"/>
+        <circle cx="70" cy="65" r="2" fill="#4ade80" class="fp-status-online"/>
+        <circle cx="70" cy="75" r="2" fill="#4ade80" class="fp-status-online"/>
+        <circle cx="70" cy="85" r="2" fill="var(--accent, #c45d1a)" class="fp-status-online"/>
+    </g>
 </svg>

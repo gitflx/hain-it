@@ -160,40 +160,31 @@
         function initFloorplanAnimations() {
             if (typeof gsap === 'undefined') return;
 
-            gsap.from('.fp-room', {
-                opacity: 0,
-                scale: 0.95,
-                duration: 0.8,
-                stagger: 0.08,
-                ease: 'power2.out',
-                transformOrigin: 'center center'
-            });
+            const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
 
-            gsap.from('.fp-light', {
-                opacity: 0,
-                scale: 0,
-                duration: 0.5,
-                stagger: 0.1,
-                delay: 0.6,
-                ease: 'back.out(2)'
-            });
+            // Reveal floors bottom to top
+            tl.from('#floor-kg', { opacity: 0, y: 40, duration: 0.8 })
+              .from('#floor-eg', { opacity: 0, y: 40, duration: 0.8 }, '-=0.4')
+              .from('#floor-og', { opacity: 0, y: 40, duration: 0.8 }, '-=0.4');
 
-            gsap.from('.fp-room-label, .fp-room-label-sm, .fp-room-label-xs', {
-                opacity: 0,
-                y: 5,
-                duration: 0.5,
-                stagger: 0.05,
-                delay: 0.4,
-                ease: 'power2.out'
-            });
+            // Rooms fade in per floor
+            tl.from('#floor-kg .fp-room', { opacity: 0, scale: 0.95, duration: 0.5, stagger: 0.1, transformOrigin: 'center center' }, '-=0.5')
+              .from('#floor-eg .fp-room', { opacity: 0, scale: 0.95, duration: 0.5, stagger: 0.06, transformOrigin: 'center center' }, '-=0.3')
+              .from('#floor-og .fp-room', { opacity: 0, scale: 0.95, duration: 0.5, stagger: 0.08, transformOrigin: 'center center' }, '-=0.3');
 
-            gsap.from('.fp-room-temp', {
-                opacity: 0,
-                duration: 0.6,
-                stagger: 0.1,
-                delay: 1,
-                ease: 'power2.out'
-            });
+            // Labels
+            tl.from('.fp-room-label, .fp-room-label-sm, .fp-room-label-xs', {
+                opacity: 0, y: 5, duration: 0.4, stagger: 0.03
+            }, '-=0.4');
+
+            // Floor labels
+            tl.from('.fp-floor-label', { opacity: 0, x: -10, duration: 0.5, stagger: 0.15 }, '-=0.6');
+
+            // Lights pop in
+            tl.from('.fp-light', { opacity: 0, scale: 0, duration: 0.4, stagger: 0.06, ease: 'back.out(2)' }, '-=0.3');
+
+            // Temperatures
+            tl.from('.fp-room-temp', { opacity: 0, duration: 0.5, stagger: 0.08 }, '-=0.2');
         }
     </script>
 </body>
