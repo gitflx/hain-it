@@ -1,5 +1,3 @@
-// hain.it_ — Professional Site Script
-
 document.addEventListener('DOMContentLoaded', () => {
     initAccentColor();
     injectHeader();
@@ -13,14 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('calc-users')) initCalculator();
 });
 
-// Dynamic Accent Color
 function initAccentColor() {
     const palettes = [
-        { accent: '#c45d1a', hover: '#a84e15', light: 'rgba(196,93,26,0.08)', lightDark: 'rgba(212,118,58,0.1)', dark: '#d4763a', darkHover: '#e88a4a' },
-        { accent: '#1a6b8a', hover: '#155a74', light: 'rgba(26,107,138,0.08)', lightDark: 'rgba(42,140,178,0.1)', dark: '#2a8cb2', darkHover: '#3da5cc' },
-        { accent: '#6b4c9a', hover: '#5a3f84', light: 'rgba(107,76,154,0.08)', lightDark: 'rgba(140,108,186,0.1)', dark: '#8c6cba', darkHover: '#a388cc' },
-        { accent: '#2d8a5e', hover: '#247549', light: 'rgba(45,138,94,0.08)', lightDark: 'rgba(60,170,116,0.1)', dark: '#3caa74', darkHover: '#4fc48c' },
-        { accent: '#b84c4c', hover: '#9e3f3f', light: 'rgba(184,76,76,0.08)', lightDark: 'rgba(210,100,100,0.1)', dark: '#d26464', darkHover: '#e27a7a' },
+        { accent: '#c45d1a', hover: '#e88a4a', light: 'rgba(196,93,26,0.08)' },
+        { accent: '#1a6b8a', hover: '#4a9ab8', light: 'rgba(26,107,138,0.08)' },
+        { accent: '#6b4c9a', hover: '#8b6cba', light: 'rgba(107,76,154,0.08)' },
+        { accent: '#2d8a5e', hover: '#4aaa7e', light: 'rgba(45,138,94,0.08)' },
+        { accent: '#b84c4c', hover: '#d46c6c', light: 'rgba(184,76,76,0.08)' },
     ];
     const idx = Math.floor(Math.random() * palettes.length);
     const p = palettes[idx];
@@ -28,135 +25,125 @@ function initAccentColor() {
     root.style.setProperty('--accent', p.accent);
     root.style.setProperty('--accent-hover', p.hover);
     root.style.setProperty('--accent-light', p.light);
-    document.documentElement.dataset.accentIdx = idx;
-
     const style = document.createElement('style');
-    style.textContent = `[data-theme="dark"] { --accent: ${p.dark}; --accent-hover: ${p.darkHover}; --accent-light: ${p.lightDark}; }`;
+    style.textContent = `[data-theme="light"] { --accent: ${p.accent}; --accent-hover: ${p.hover}; --accent-light: ${p.light}; }`;
     document.head.appendChild(style);
 }
 
-// Shared Header
 function injectHeader() {
     const header = document.getElementById('site-header');
     if (!header) return;
-
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const page = window.location.pathname.split('/').pop() || 'index.html';
+    const isActive = (href) => page === href ? 'aria-current="page"' : '';
 
     header.innerHTML = `
-        <nav>
-            <a href="index.html" class="logo">hain.it<span class="accent">_</span></a>
-            <div class="nav-links">
-                <div class="nav-dropdown">
-                    <button class="nav-dropdown-trigger">Leistungen <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
-                    <div class="nav-dropdown-menu">
-                        <a href="prozessberatung.html"${currentPage === 'prozessberatung.html' ? ' aria-current="page"' : ''}>Prozessberatung</a>
-                        <a href="smarthome.html"${currentPage === 'smarthome.html' ? ' aria-current="page"' : ''}>Smart Home</a>
-                        <a href="entwicklung.html"${currentPage === 'entwicklung.html' ? ' aria-current="page"' : ''}>Individualentwicklung</a>
-                    </div>
+    <nav>
+        <a href="index.html" class="logo">hain.it_</a>
+        <div class="nav-links">
+            <div class="nav-dropdown">
+                <button class="nav-dropdown-trigger">Leistungen <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="margin-left:4px;vertical-align:middle"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="prozessberatung.html" ${isActive('prozessberatung.html')}>Prozessberatung</a>
+                    <a href="smarthome.html" ${isActive('smarthome.html')}>Smart Home</a>
+                    <a href="entwicklung.html" ${isActive('entwicklung.html')}>Individualentwicklung</a>
+                    <a href="microsoft.html" ${isActive('microsoft.html')}>Microsoft</a>
                 </div>
-                <a href="microsoft.html"${currentPage === 'microsoft.html' ? ' aria-current="page"' : ''}>Portfolio</a>
-                <a href="index.html#contact">Kontakt</a>
             </div>
-            <div class="nav-actions">
-                <button id="theme-toggle" aria-label="Theme wechseln">
-                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                </button>
-                <a href="index.html#contact" class="btn btn-primary btn-sm">Kontakt aufnehmen</a>
-            </div>
-            <button class="mobile-menu-btn" aria-label="Menü öffnen">
-                <span></span><span></span><span></span>
+            <a href="portfolio.html" ${isActive('portfolio.html')}>Portfolio</a>
+            <a href="index.html#contact" >Kontakt</a>
+        </div>
+        <div class="nav-cta">
+            <button class="theme-toggle" aria-label="Theme wechseln">
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
             </button>
-        </nav>
-    `;
+            <a href="index.html#contact" class="btn btn-primary btn-sm">Kontakt aufnehmen</a>
+            <button class="mobile-toggle" aria-label="Menü">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            </button>
+        </div>
+    </nav>`;
 }
 
-// Shared Footer
 function injectFooter() {
     const footer = document.getElementById('site-footer');
     if (!footer) return;
-
     footer.innerHTML = `
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <span class="logo">hain.it<span class="accent">_</span></span>
-                    <p>Digitalisierung, Automatisierung & Smart Living</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Leistungen</h4>
-                    <a href="prozessberatung.html">Prozessberatung</a>
-                    <a href="smarthome.html">Smart Home</a>
-                    <a href="entwicklung.html">Individualentwicklung</a>
-                </div>
-                <div class="footer-links">
-                    <h4>Portfolio</h4>
-                    <a href="microsoft.html">Microsoft</a>
-                </div>
-                <div class="footer-links">
-                    <h4>Kontakt</h4>
-                    <a href="mailto:info@hain.it">info@hain.it</a>
-                    <a href="index.html#contact">Kontaktformular</a>
-                </div>
-                <div class="footer-links">
-                    <h4>Rechtliches</h4>
-                    <a href="impressum.html">Impressum</a>
-                    <a href="datenschutz.html">Datenschutz</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; ${new Date().getFullYear()} hain.it_ &mdash; Felix Hain</p>
-            </div>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <a href="index.html" class="logo">hain.it_</a>
+            <p>Digitalisierung, Automatisierung & Smart Living.</p>
         </div>
-    `;
+        <div class="footer-col">
+            <h4>Leistungen</h4>
+            <a href="prozessberatung.html">Prozessberatung</a>
+            <a href="smarthome.html">Smart Home</a>
+            <a href="entwicklung.html">Individualentwicklung</a>
+            <a href="microsoft.html">Microsoft</a>
+        </div>
+        <div class="footer-col">
+            <h4>Portfolio</h4>
+            <a href="portfolio.html">Technologien</a>
+        </div>
+        <div class="footer-col">
+            <h4>Kontakt</h4>
+            <a href="mailto:info@hain.it">info@hain.it</a>
+            <a href="index.html#contact">Kontaktformular</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; ${new Date().getFullYear()} hain.it_ &mdash; Felix Hain</span>
+        &nbsp;&middot;&nbsp;
+        <a href="impressum.html">Impressum</a>
+        &nbsp;&middot;&nbsp;
+        <a href="datenschutz.html">Datenschutz</a>
+    </div>`;
 }
 
-// Theme
 function initTheme() {
-    const toggle = document.getElementById('theme-toggle');
-    if (!toggle) return;
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = stored || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+    updateThemeIcon(theme);
 
-    const saved = localStorage.getItem('theme');
-    if (saved) {
-        document.documentElement.setAttribute('data-theme', saved);
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-    }
-
-    toggle.addEventListener('click', () => {
+    document.querySelector('.theme-toggle')?.addEventListener('click', () => {
         const current = document.documentElement.getAttribute('data-theme');
         const next = current === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
+        updateThemeIcon(next);
     });
 }
 
-// Mobile Menu
+function updateThemeIcon(theme) {
+    const sun = document.querySelector('.icon-sun');
+    const moon = document.querySelector('.icon-moon');
+    if (!sun || !moon) return;
+    if (theme === 'dark') {
+        sun.style.display = 'block';
+        moon.style.display = 'none';
+    } else {
+        sun.style.display = 'none';
+        moon.style.display = 'block';
+    }
+}
+
 function initMobileMenu() {
-    const btn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-    if (!btn || !navLinks) return;
-
-    btn.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        btn.classList.toggle('active');
+    const toggle = document.querySelector('.mobile-toggle');
+    const links = document.querySelector('.nav-links');
+    if (!toggle || !links) return;
+    toggle.addEventListener('click', () => {
+        links.classList.toggle('active');
     });
-
-    navLinks.addEventListener('click', (e) => {
-        if (e.target.tagName === 'A') {
-            navLinks.classList.remove('active');
-            btn.classList.remove('active');
-        }
-    });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        links.classList.remove('active');
+    }));
 }
 
-// Dropdown Navigation
 function initDropdown() {
     const dropdown = document.querySelector('.nav-dropdown');
     if (!dropdown) return;
-
     let timeout;
     dropdown.addEventListener('mouseenter', () => {
         clearTimeout(timeout);
@@ -165,38 +152,29 @@ function initDropdown() {
     dropdown.addEventListener('mouseleave', () => {
         timeout = setTimeout(() => dropdown.classList.remove('open'), 200);
     });
-
     const trigger = dropdown.querySelector('.nav-dropdown-trigger');
-    trigger.addEventListener('click', (e) => {
+    trigger?.addEventListener('click', (e) => {
         e.stopPropagation();
         dropdown.classList.toggle('open');
     });
-
-    document.addEventListener('click', () => {
-        dropdown.classList.remove('open');
-    });
+    document.addEventListener('click', () => dropdown.classList.remove('open'));
 }
 
-// Modal System
 function initModal() {
-    document.addEventListener('click', (e) => {
-        const trigger = e.target.closest('[data-modal]');
-        if (trigger) {
-            e.preventDefault();
-            openModal(trigger.dataset.modal);
-        }
-
-        if (e.target.classList.contains('modal-overlay')) {
-            closeModal();
-        }
-
-        if (e.target.closest('.modal-close')) {
-            closeModal();
-        }
+    document.querySelectorAll('[data-modal]').forEach(trigger => {
+        trigger.addEventListener('click', () => openModal(trigger.getAttribute('data-modal')));
     });
-
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(overlay); });
+    });
+    document.querySelectorAll('.modal-close').forEach(btn => {
+        btn.addEventListener('click', () => closeModal(btn.closest('.modal-overlay')));
+    });
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
+        if (e.key === 'Escape') {
+            const active = document.querySelector('.modal-overlay.active');
+            if (active) closeModal(active);
+        }
     });
 }
 
@@ -207,91 +185,173 @@ function openModal(id) {
     document.body.style.overflow = 'hidden';
 }
 
-function closeModal() {
-    const active = document.querySelector('.modal-overlay.active');
-    if (!active) return;
-    active.classList.remove('active');
+function closeModal(overlay) {
+    overlay.classList.remove('active');
     document.body.style.overflow = '';
 }
 
-// Scroll Animations
 function initScrollAnimations() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        document.querySelectorAll('.animate-in').forEach(el => el.classList.add('visible'));
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+        initFallbackAnimations();
         return;
     }
 
-    const elements = document.querySelectorAll('.animate-in');
-    if (!elements.length) return;
+    gsap.registerPlugin(ScrollTrigger);
 
+    gsap.utils.toArray('.reveal').forEach(el => {
+        gsap.fromTo(el,
+            { opacity: 0, y: 50 },
+            { opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+              scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' } }
+        );
+    });
+
+    gsap.utils.toArray('.reveal-left').forEach(el => {
+        gsap.fromTo(el,
+            { opacity: 0, x: -60 },
+            { opacity: 1, x: 0, duration: 1, ease: 'power3.out',
+              scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' } }
+        );
+    });
+
+    gsap.utils.toArray('.reveal-right').forEach(el => {
+        gsap.fromTo(el,
+            { opacity: 0, x: 60 },
+            { opacity: 1, x: 0, duration: 1, ease: 'power3.out',
+              scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' } }
+        );
+    });
+
+    gsap.utils.toArray('.reveal-scale').forEach(el => {
+        gsap.fromTo(el,
+            { opacity: 0, scale: 0.9 },
+            { opacity: 1, scale: 1, duration: 1.2, ease: 'power3.out',
+              scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' } }
+        );
+    });
+
+    // Staggered card reveals
+    gsap.utils.toArray('.cards-grid, .cards-grid-2, .cards-grid-3, .tech-grid').forEach(grid => {
+        const items = grid.children;
+        if (!items.length) return;
+        gsap.fromTo(items,
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: 'power2.out',
+              scrollTrigger: { trigger: grid, start: 'top 82%', toggleActions: 'play none none none' } }
+        );
+    });
+
+    // Badge stagger
+    gsap.utils.toArray('.badge-list').forEach(list => {
+        const badges = list.children;
+        if (!badges.length) return;
+        gsap.fromTo(badges,
+            { opacity: 0, scale: 0.8 },
+            { opacity: 1, scale: 1, duration: 0.4, stagger: 0.03, ease: 'back.out(1.5)',
+              scrollTrigger: { trigger: list, start: 'top 85%', toggleActions: 'play none none none' } }
+        );
+    });
+
+    // Hero parallax fade
+    const heroContent = document.querySelector('.hero-content');
+    if (heroContent) {
+        gsap.to(heroContent, {
+            y: -100, opacity: 0,
+            ease: 'none',
+            scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+        });
+    }
+
+    // Feature showcases
+    gsap.utils.toArray('.feature-showcase').forEach(showcase => {
+        const text = showcase.querySelector('.feature-text');
+        const visual = showcase.querySelector('.feature-visual');
+        const isReverse = showcase.classList.contains('reverse');
+
+        if (text) {
+            gsap.fromTo(text,
+                { opacity: 0, x: isReverse ? 50 : -50 },
+                { opacity: 1, x: 0, duration: 1, ease: 'power3.out',
+                  scrollTrigger: { trigger: showcase, start: 'top 75%', toggleActions: 'play none none none' } }
+            );
+        }
+        if (visual) {
+            gsap.fromTo(visual,
+                { opacity: 0, x: isReverse ? -50 : 50 },
+                { opacity: 1, x: 0, duration: 1, delay: 0.1, ease: 'power3.out',
+                  scrollTrigger: { trigger: showcase, start: 'top 75%', toggleActions: 'play none none none' } }
+            );
+        }
+    });
+
+    // Timeline stagger
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    if (timelineItems.length) {
+        gsap.fromTo(timelineItems,
+            { opacity: 0, x: -30 },
+            { opacity: 1, x: 0, duration: 0.6, stagger: 0.12, ease: 'power2.out',
+              scrollTrigger: { trigger: '.timeline', start: 'top 80%', toggleActions: 'play none none none' } }
+        );
+    }
+}
+
+function initFallbackAnimations() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                entry.target.classList.add('active');
                 observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
 
-    elements.forEach((el, i) => {
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach((el, i) => {
         el.style.transitionDelay = `${(i % 4) * 80}ms`;
+        el.style.transitionDuration = '0.7s';
+        el.style.transitionTimingFunction = 'cubic-bezier(0.4, 0, 0.2, 1)';
         observer.observe(el);
     });
 }
 
-// Contact Form
 function initContactForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
-
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         const data = new FormData(form);
-        const subject = encodeURIComponent(`[hain.it] ${data.get('subject')} — ${data.get('name')}`);
-        const body = encodeURIComponent(`Name: ${data.get('name')}\nE-Mail: ${data.get('email')}\nBetreff: ${data.get('subject')}\n\n${data.get('message')}`);
+        const subject = encodeURIComponent(data.get('subject') || 'Anfrage über hain.it');
+        const body = encodeURIComponent(
+            `Name: ${data.get('name')}\nE-Mail: ${data.get('email')}\n\n${data.get('message')}`
+        );
         window.location.href = `mailto:info@hain.it?subject=${subject}&body=${body}`;
-        form.reset();
     });
 }
 
-// Licensing Calculator
 function initCalculator() {
     const users = document.getElementById('calc-users');
     const plan = document.getElementById('calc-plan');
     const copilot = document.getElementById('calc-copilot');
     const power = document.getElementById('calc-power');
-    const powerUsers = document.getElementById('calc-powerusers');
+    const powerusers = document.getElementById('calc-powerusers');
 
-    if (!users || !plan) return;
-
-    function calculate() {
-        const numUsers = parseInt(users.value) || 0;
-        const planCost = parseFloat(plan.value) || 0;
-        const copilotCost = copilot ? parseFloat(copilot.value) || 0 : 0;
-        const powerCost = power ? parseFloat(power.value) || 0 : 0;
-        const numPowerUsers = powerUsers ? parseInt(powerUsers.value) || 0 : 0;
-
-        const m365Monthly = numUsers * (planCost + copilotCost);
-        const powerMonthly = numPowerUsers * powerCost;
-        const totalMonthly = m365Monthly + powerMonthly;
-        const totalYearly = totalMonthly * 12;
-        const perUser = numUsers > 0 ? totalMonthly / numUsers : 0;
-
-        const fmt = (n) => n.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
-
-        const elMonthly = document.getElementById('calc-monthly');
-        const elYearly = document.getElementById('calc-yearly');
-        const elPerUser = document.getElementById('calc-peruser');
-
-        if (elMonthly) elMonthly.textContent = fmt(totalMonthly);
-        if (elYearly) elYearly.textContent = fmt(totalYearly);
-        if (elPerUser) elPerUser.textContent = fmt(perUser);
+    function calc() {
+        const u = parseInt(users.value) || 0;
+        const p = parseFloat(plan.value) || 0;
+        const c = parseFloat(copilot.value) || 0;
+        const pw = parseFloat(power.value) || 0;
+        const pu = parseInt(powerusers.value) || 0;
+        const monthly = (u * (p + c)) + (pu * pw);
+        const yearly = monthly * 12;
+        const perUser = u > 0 ? monthly / u : 0;
+        const fmt = (v) => v.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+        document.getElementById('calc-monthly').textContent = fmt(monthly);
+        document.getElementById('calc-yearly').textContent = fmt(yearly);
+        document.getElementById('calc-peruser').textContent = fmt(perUser);
     }
 
-    [users, plan, copilot, power, powerUsers].filter(Boolean).forEach(el => {
-        el.addEventListener('input', calculate);
-        el.addEventListener('change', calculate);
+    [users, plan, copilot, power, powerusers].forEach(el => {
+        el.addEventListener('input', calc);
+        el.addEventListener('change', calc);
     });
-
-    calculate();
+    calc();
 }
