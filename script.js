@@ -1,28 +1,230 @@
-// hain.it_ — Main Script
+// hain.it_ — Professional Site Script
 
 document.addEventListener('DOMContentLoaded', () => {
+    injectHeader();
+    injectFooter();
     initTheme();
-    initCalculator();
-    initChatbot();
-    initScrollAnimations();
     initMobileMenu();
+    initDropdown();
+    initModal();
+    initScrollAnimations();
     initContactForm();
+    if (document.getElementById('calc-users')) initCalculator();
 });
 
-// Theme Toggle
+// Shared Header
+function injectHeader() {
+    const header = document.getElementById('site-header');
+    if (!header) return;
+
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+    header.innerHTML = `
+        <nav>
+            <a href="index.html" class="logo">hain.it<span class="accent">_</span></a>
+            <div class="nav-links">
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-trigger">Leistungen <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+                    <div class="nav-dropdown-menu">
+                        <a href="prozessberatung.html"${currentPage === 'prozessberatung.html' ? ' aria-current="page"' : ''}>Prozessberatung</a>
+                        <a href="microsoft.html"${currentPage === 'microsoft.html' ? ' aria-current="page"' : ''}>Microsoft</a>
+                        <a href="entwicklung.html"${currentPage === 'entwicklung.html' ? ' aria-current="page"' : ''}>Individualentwicklung</a>
+                        <a href="smarthome.html"${currentPage === 'smarthome.html' ? ' aria-current="page"' : ''}>Smart Home</a>
+                    </div>
+                </div>
+                <a href="index.html#contact">Kontakt</a>
+            </div>
+            <div class="nav-actions">
+                <button id="theme-toggle" aria-label="Theme wechseln">
+                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <a href="index.html#contact" class="btn btn-primary btn-sm">Kontakt aufnehmen</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Menü öffnen">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    `;
+}
+
+// Shared Footer
+function injectFooter() {
+    const footer = document.getElementById('site-footer');
+    if (!footer) return;
+
+    footer.innerHTML = `
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo">hain.it<span class="accent">_</span></span>
+                    <p>Digitalisierung, Automatisierung & Smart Living</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Leistungen</h4>
+                    <a href="prozessberatung.html">Prozessberatung</a>
+                    <a href="microsoft.html">Microsoft</a>
+                    <a href="entwicklung.html">Individualentwicklung</a>
+                    <a href="smarthome.html">Smart Home</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Kontakt</h4>
+                    <a href="mailto:info@hain.it">info@hain.it</a>
+                    <a href="index.html#contact">Kontaktformular</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Rechtliches</h4>
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; ${new Date().getFullYear()} hain.it_ &mdash; Felix Hain</p>
+            </div>
+        </div>
+    `;
+}
+
+// Theme
 function initTheme() {
     const toggle = document.getElementById('theme-toggle');
+    if (!toggle) return;
+
     const saved = localStorage.getItem('theme');
     if (saved) {
         document.documentElement.setAttribute('data-theme', saved);
-    } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
         document.documentElement.setAttribute('data-theme', 'light');
     }
+
     toggle.addEventListener('click', () => {
         const current = document.documentElement.getAttribute('data-theme');
         const next = current === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
+    });
+}
+
+// Mobile Menu
+function initMobileMenu() {
+    const btn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    if (!btn || !navLinks) return;
+
+    btn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        btn.classList.toggle('active');
+    });
+
+    navLinks.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+            navLinks.classList.remove('active');
+            btn.classList.remove('active');
+        }
+    });
+}
+
+// Dropdown Navigation
+function initDropdown() {
+    const dropdown = document.querySelector('.nav-dropdown');
+    if (!dropdown) return;
+
+    let timeout;
+    dropdown.addEventListener('mouseenter', () => {
+        clearTimeout(timeout);
+        dropdown.classList.add('open');
+    });
+    dropdown.addEventListener('mouseleave', () => {
+        timeout = setTimeout(() => dropdown.classList.remove('open'), 200);
+    });
+
+    const trigger = dropdown.querySelector('.nav-dropdown-trigger');
+    trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', () => {
+        dropdown.classList.remove('open');
+    });
+}
+
+// Modal System
+function initModal() {
+    document.addEventListener('click', (e) => {
+        const trigger = e.target.closest('[data-modal]');
+        if (trigger) {
+            e.preventDefault();
+            openModal(trigger.dataset.modal);
+        }
+
+        if (e.target.classList.contains('modal-overlay')) {
+            closeModal();
+        }
+
+        if (e.target.closest('.modal-close')) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
+}
+
+function openModal(id) {
+    const overlay = document.getElementById(id);
+    if (!overlay) return;
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    const active = document.querySelector('.modal-overlay.active');
+    if (!active) return;
+    active.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Scroll Animations
+function initScrollAnimations() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('.animate-in').forEach(el => el.classList.add('visible'));
+        return;
+    }
+
+    const elements = document.querySelectorAll('.animate-in');
+    if (!elements.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+    elements.forEach((el, i) => {
+        el.style.transitionDelay = `${(i % 4) * 80}ms`;
+        observer.observe(el);
+    });
+}
+
+// Contact Form
+function initContactForm() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        const subject = encodeURIComponent(`[hain.it] ${data.get('subject')} — ${data.get('name')}`);
+        const body = encodeURIComponent(`Name: ${data.get('name')}\nE-Mail: ${data.get('email')}\nBetreff: ${data.get('subject')}\n\n${data.get('message')}`);
+        window.location.href = `mailto:info@hain.it?subject=${subject}&body=${body}`;
+        form.reset();
     });
 }
 
@@ -34,12 +236,14 @@ function initCalculator() {
     const power = document.getElementById('calc-power');
     const powerUsers = document.getElementById('calc-powerusers');
 
+    if (!users || !plan) return;
+
     function calculate() {
         const numUsers = parseInt(users.value) || 0;
         const planCost = parseFloat(plan.value) || 0;
-        const copilotCost = parseFloat(copilot.value) || 0;
-        const powerCost = parseFloat(power.value) || 0;
-        const numPowerUsers = parseInt(powerUsers.value) || 0;
+        const copilotCost = copilot ? parseFloat(copilot.value) || 0 : 0;
+        const powerCost = power ? parseFloat(power.value) || 0 : 0;
+        const numPowerUsers = powerUsers ? parseInt(powerUsers.value) || 0 : 0;
 
         const m365Monthly = numUsers * (planCost + copilotCost);
         const powerMonthly = numPowerUsers * powerCost;
@@ -47,143 +251,21 @@ function initCalculator() {
         const totalYearly = totalMonthly * 12;
         const perUser = numUsers > 0 ? totalMonthly / numUsers : 0;
 
-        document.getElementById('calc-monthly').textContent = formatCurrency(totalMonthly);
-        document.getElementById('calc-yearly').textContent = formatCurrency(totalYearly);
-        document.getElementById('calc-peruser').textContent = formatCurrency(perUser);
+        const fmt = (n) => n.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+
+        const elMonthly = document.getElementById('calc-monthly');
+        const elYearly = document.getElementById('calc-yearly');
+        const elPerUser = document.getElementById('calc-peruser');
+
+        if (elMonthly) elMonthly.textContent = fmt(totalMonthly);
+        if (elYearly) elYearly.textContent = fmt(totalYearly);
+        if (elPerUser) elPerUser.textContent = fmt(perUser);
     }
 
-    function formatCurrency(amount) {
-        return amount.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
-    }
-
-    [users, plan, copilot, power, powerUsers].forEach(el => {
+    [users, plan, copilot, power, powerUsers].filter(Boolean).forEach(el => {
         el.addEventListener('input', calculate);
         el.addEventListener('change', calculate);
     });
 
     calculate();
-}
-
-// Chatbot
-function initChatbot() {
-    const widget = document.getElementById('chatbot');
-    const toggle = document.getElementById('chatbot-toggle');
-    const input = document.getElementById('chatbot-input');
-    const send = document.getElementById('chatbot-send');
-    const messages = document.getElementById('chatbot-messages');
-
-    toggle.addEventListener('click', () => {
-        widget.classList.toggle('open');
-        if (widget.classList.contains('open')) {
-            input.focus();
-        }
-    });
-
-    function sendMessage() {
-        const text = input.value.trim();
-        if (!text) return;
-
-        appendMessage(text, 'user');
-        input.value = '';
-
-        setTimeout(() => {
-            const response = getBotResponse(text);
-            appendMessage(response, 'bot');
-        }, 800);
-    }
-
-    send.addEventListener('click', sendMessage);
-    input.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') sendMessage();
-    });
-
-    function appendMessage(text, type) {
-        const msg = document.createElement('div');
-        msg.className = `chat-message ${type}`;
-        msg.innerHTML = `<p>${text}</p>`;
-        messages.appendChild(msg);
-        messages.scrollTop = messages.scrollHeight;
-    }
-
-    function getBotResponse(input) {
-        const lower = input.toLowerCase();
-
-        if (lower.includes('preis') || lower.includes('kost') || lower.includes('was kostet')) {
-            return 'Das kommt ganz auf dein Projekt an — aber keine Sorge, das Erstgespräch ist komplett kostenlos und unverbindlich. Da kann ich dir schnell eine realistische Einschätzung geben. Schreib mir einfach über das <a href="#contact">Kontaktformular</a>! 😊';
-        }
-        if (lower.includes('smart home') || lower.includes('haus') || lower.includes('homeassistant')) {
-            return 'Smart Home ist meine Leidenschaft! 🏠 Ich plane und setze professionelle Smart-Home-Systeme mit Home Assistant um — zuverlässig, sicher und auf deine Bedürfnisse abgestimmt. Kein Bastel-Chaos, versprochen!';
-        }
-        if (lower.includes('ki') || lower.includes('copilot') || lower.includes('ai') || lower.includes('künstliche')) {
-            return 'KI ist ein super spannendes Thema! 🤖 Ich helfe dir dabei, Copilot oder andere AI-Tools so einzusetzen, dass sie wirklich Zeit sparen — nicht nur cool klingen. Erzähl mir mehr, was du dir vorstellst?';
-        }
-        if (lower.includes('power platform') || lower.includes('power apps') || lower.includes('automate')) {
-            return 'Power Platform ist genau mein Ding! Ob Power Apps, Power Automate oder Dataverse — ich kann dir helfen, das Beste rauszuholen. Hast du schon was im Einsatz oder fängst du gerade an?';
-        }
-        if (lower.includes('web') || lower.includes('app') || lower.includes('entwickl') || lower.includes('software')) {
-            return 'Cool, Softwareentwicklung! 💻 Ich baue Web-Apps, APIs und Portale mit modernen Technologien. Erzähl mir mehr — hast du schon eine konkrete Idee oder brauchst du erstmal Orientierung?';
-        }
-        if (lower.includes('kontakt') || lower.includes('termin') || lower.includes('gespräch') || lower.includes('buchen')) {
-            return 'Klar! Am einfachsten über das <a href="#contact">Kontaktformular</a> hier auf der Seite oder direkt per Mail an <a href="mailto:info@hain.it">info@hain.it</a>. Ich melde mich schnell bei dir — versprochen! ✌️';
-        }
-        if (lower.includes('hallo') || lower.includes('hi') || lower.includes('hey') || lower.includes('moin')) {
-            return 'Hey! 👋 Freut mich! Was führt dich her? Ich kann dir was zu meinen Leistungen erzählen, bei Fragen helfen oder dich mit Felix verbinden.';
-        }
-        return 'Gute Frage! Das beantworte ich dir am besten persönlich. Schreib mir kurz über das <a href="#contact">Kontaktformular</a> oder an info@hain.it — ich melde mich fix! 🙌';
-    }
-}
-
-// Scroll Animations
-function initScrollAnimations() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const elements = document.querySelectorAll('.service-card, .process-step, .calc-result-card, .contact-card');
-    elements.forEach((el, i) => {
-        el.classList.add('animate-in');
-        el.style.transitionDelay = `${i % 4 * 100}ms`;
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
-
-    elements.forEach(el => observer.observe(el));
-}
-
-// Mobile Menu
-function initMobileMenu() {
-    const btn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-
-    btn.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        btn.classList.toggle('active');
-    });
-
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            btn.classList.remove('active');
-        });
-    });
-}
-
-// Contact Form
-function initContactForm() {
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const data = new FormData(form);
-        const subject = encodeURIComponent(`[hain.it] ${data.get('subject')} — ${data.get('name')}`);
-        const body = encodeURIComponent(`Name: ${data.get('name')}\nE-Mail: ${data.get('email')}\nBetreff: ${data.get('subject')}\n\n${data.get('message')}`);
-
-        window.location.href = `mailto:info@hain.it?subject=${subject}&body=${body}`;
-
-        form.reset();
-    });
 }

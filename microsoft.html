@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Beratung | hain.it_</title>
+    <meta name="description" content="Microsoft 365, Power Platform, Dynamics 365 und Azure — Beratung, Lizenzoptimierung und Copilot-Einführung.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="site-header"></header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <nav class="breadcrumb"><a href="index.html">Home</a> <span>/</span> Microsoft</nav>
+                <h1>Microsoft Beratung</h1>
+                <p>Ich unterstütze Sie bei der optimalen Nutzung des Microsoft-Ökosystems — von der Lizenzstrategie über Power Platform bis zur Copilot-Einführung.</p>
+            </div>
+        </section>
+
+        <!-- Capabilities -->
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Kompetenzen</span>
+                    <h2>Das Microsoft-Ökosystem nutzen</h2>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card animate-in">
+                        <h3>Microsoft 365</h3>
+                        <p>Einführung, Migration und Optimierung von Microsoft 365 — inklusive Governance, Security und Adoption.</p>
+                        <ul class="card-tags">
+                            <li>Exchange Online</li>
+                            <li>Teams</li>
+                            <li>SharePoint</li>
+                            <li>Intune</li>
+                        </ul>
+                    </div>
+                    <div class="service-card animate-in">
+                        <h3>Power Platform</h3>
+                        <p>Low-Code-Lösungen mit Power Apps, Power Automate und Power BI — von einfachen Formularen bis zu unternehmensweiten Plattformen.</p>
+                        <ul class="card-tags">
+                            <li>Power Apps</li>
+                            <li>Power Automate</li>
+                            <li>Power BI</li>
+                            <li>Dataverse</li>
+                        </ul>
+                    </div>
+                    <div class="service-card animate-in">
+                        <h3>Copilot & KI</h3>
+                        <p>Strategische Einführung von Microsoft 365 Copilot — von der Readiness-Bewertung bis zum Rollout mit messbarem ROI.</p>
+                        <ul class="card-tags">
+                            <li>M365 Copilot</li>
+                            <li>Copilot Studio</li>
+                            <li>Azure OpenAI</li>
+                        </ul>
+                    </div>
+                    <div class="service-card animate-in">
+                        <h3>Azure & Dynamics</h3>
+                        <p>Cloud-Architektur und Dynamics 365 Beratung — für Unternehmen, die ihre Infrastruktur modernisieren oder ERP/CRM konsolidieren möchten.</p>
+                        <ul class="card-tags">
+                            <li>Azure</li>
+                            <li>Dynamics 365</li>
+                            <li>Logic Apps</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calculator -->
+        <section id="calculator" style="background: var(--bg-alt);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Tool</span>
+                    <h2>Lizenzkosten-Rechner</h2>
+                    <p>Kalkulieren Sie die monatlichen und jährlichen Kosten für Microsoft 365 und Power Platform Lizenzen.</p>
+                </div>
+                <div class="calc-wrapper">
+                    <div class="calc-inputs">
+                        <div class="calc-group">
+                            <label for="calc-users">Anzahl Nutzer</label>
+                            <input type="number" id="calc-users" min="1" max="10000" value="25" placeholder="z.B. 25">
+                        </div>
+                        <div class="calc-group">
+                            <label for="calc-plan">Microsoft 365 Plan</label>
+                            <select id="calc-plan">
+                                <option value="0">Kein M365</option>
+                                <option value="6.00">Business Basic — 6,00 €</option>
+                                <option value="12.50" selected>Business Standard — 12,50 €</option>
+                                <option value="22.00">Business Premium — 22,00 €</option>
+                                <option value="36.00">E3 — 36,00 €</option>
+                                <option value="57.00">E5 — 57,00 €</option>
+                            </select>
+                        </div>
+                        <div class="calc-group">
+                            <label for="calc-copilot">Microsoft 365 Copilot</label>
+                            <select id="calc-copilot">
+                                <option value="0">Nein</option>
+                                <option value="30.00">Ja — 30,00 € / Nutzer / Monat</option>
+                            </select>
+                        </div>
+                        <div class="calc-group">
+                            <label for="calc-power">Power Platform Add-On</label>
+                            <select id="calc-power">
+                                <option value="0">Keine</option>
+                                <option value="20.00">Power Apps Premium — 20,00 €</option>
+                                <option value="40.00">Power Automate Premium — 40,00 €</option>
+                                <option value="60.00">Power Apps + Automate — 60,00 €</option>
+                            </select>
+                        </div>
+                        <div class="calc-group">
+                            <label for="calc-powerusers">Power Platform Nutzer</label>
+                            <input type="number" id="calc-powerusers" min="0" max="10000" value="5" placeholder="z.B. 5">
+                        </div>
+                    </div>
+                    <div class="calc-results">
+                        <div class="calc-result-card">
+                            <span class="calc-label">Monatliche Kosten</span>
+                            <span class="calc-value" id="calc-monthly">—</span>
+                        </div>
+                        <div class="calc-result-card">
+                            <span class="calc-label">Jährliche Kosten</span>
+                            <span class="calc-value" id="calc-yearly">—</span>
+                        </div>
+                        <div class="calc-result-card highlight">
+                            <span class="calc-label">Pro Nutzer / Monat</span>
+                            <span class="calc-value" id="calc-peruser">—</span>
+                        </div>
+                        <a href="index.html#contact" class="btn btn-primary btn-full">Individuelle Beratung anfragen</a>
+                        <div class="calc-disclaimer">
+                            Preise basieren auf öffentlichen Microsoft-Listenpreisen (netto, Stand: Juli 2026). Volumenrabatte, EA/CSP-Konditionen und Non-Profit-Lizenzen auf Anfrage.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- References -->
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Referenzen</span>
+                    <h2>Beispielprojekte</h2>
+                </div>
+                <div class="references-grid">
+                    <div class="reference-card animate-in" data-modal="modal-ref-m365">
+                        <div class="ref-industry">Dienstleistung</div>
+                        <h3>M365 Migration & Governance</h3>
+                        <p>Migration von On-Premise Exchange und File Shares zu Microsoft 365 mit Governance-Konzept für 200 Nutzer.</p>
+                        <ul class="ref-tags">
+                            <li>Exchange Online</li>
+                            <li>SharePoint</li>
+                            <li>Intune</li>
+                        </ul>
+                    </div>
+                    <div class="reference-card animate-in" data-modal="modal-ref-copilot">
+                        <div class="ref-industry">Beratung</div>
+                        <h3>Copilot-Einführung</h3>
+                        <p>Strukturierte Copilot-Einführung mit Readiness-Assessment, Pilotgruppe und Adoption-Kampagne.</p>
+                        <ul class="ref-tags">
+                            <li>M365 Copilot</li>
+                            <li>Change Management</li>
+                            <li>Adoption</li>
+                        </ul>
+                    </div>
+                    <div class="reference-card animate-in" data-modal="modal-ref-powerplat">
+                        <div class="ref-industry">Industrie</div>
+                        <h3>Power Platform Center of Excellence</h3>
+                        <p>Aufbau eines CoE für Power Platform inklusive Governance, Schulung und Template-Bibliothek.</p>
+                        <ul class="ref-tags">
+                            <li>Power Apps</li>
+                            <li>CoE Toolkit</li>
+                            <li>Governance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section style="background: var(--bg-alt);">
+            <div class="container" style="text-align: center;">
+                <div class="section-header centered">
+                    <h2>Microsoft-Strategie optimieren?</h2>
+                    <p>Ob Lizenzoptimierung, Copilot-Einführung oder Power Platform — lassen Sie uns über Ihre Ziele sprechen.</p>
+                </div>
+                <a href="index.html#contact" class="btn btn-primary">Erstgespräch vereinbaren</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Reference Modals -->
+    <div class="modal-overlay" id="modal-ref-m365">
+        <div class="modal">
+            <button class="modal-close">&times;</button>
+            <span class="modal-badge">Referenzprojekt</span>
+            <h3>M365 Migration & Governance</h3>
+            <p><strong>Branche:</strong> Beratungsunternehmen, 200 Mitarbeiter</p>
+            <h4>Ausgangslage</h4>
+            <p>On-Premise Exchange 2016, File Shares ohne Struktur, keine Mobile-Device-Strategie. Hoher administrativer Aufwand, keine zentrale Governance.</p>
+            <h4>Lösung</h4>
+            <ul>
+                <li>Phasenweise Migration zu Exchange Online und SharePoint</li>
+                <li>Governance-Framework mit Namenskonventionen, Aufbewahrungsrichtlinien und DLP</li>
+                <li>Intune-Rollout für BYOD- und Firmengeräte</li>
+                <li>Schulungskonzept mit Champions-Netzwerk</li>
+            </ul>
+            <h4>Ergebnis</h4>
+            <p>Vollständige Cloud-Migration in 4 Monaten. IT-Betriebskosten um 40% reduziert. Nutzerzufriedenheit durch Self-Service deutlich gestiegen.</p>
+        </div>
+    </div>
+    <div class="modal-overlay" id="modal-ref-copilot">
+        <div class="modal">
+            <button class="modal-close">&times;</button>
+            <span class="modal-badge">Referenzprojekt</span>
+            <h3>Copilot-Einführung</h3>
+            <p><strong>Branche:</strong> Unternehmensberatung, 80 Mitarbeiter</p>
+            <h4>Ausgangslage</h4>
+            <p>Geschäftsführung wollte Microsoft 365 Copilot einführen, war sich aber unsicher über Readiness, Datenschutz und erwartbaren ROI.</p>
+            <h4>Lösung</h4>
+            <ul>
+                <li>Readiness-Assessment: Datenqualität, Berechtigungsstruktur, Oversharing-Check</li>
+                <li>Pilotgruppe mit 15 Nutzern aus verschiedenen Abteilungen</li>
+                <li>Messung von Zeitersparnis pro Use Case (E-Mail, Meetings, Dokumente)</li>
+                <li>Adoption-Kampagne mit Prompt-Bibliothek und wöchentlichen Tipps</li>
+            </ul>
+            <h4>Ergebnis</h4>
+            <p>Durchschnittlich 4,5 Stunden Zeitersparnis pro Nutzer/Woche in der Pilotgruppe. Rollout auf alle Nutzer nach 6 Wochen. Positive Resonanz durch praxisnahe Einführung.</p>
+        </div>
+    </div>
+    <div class="modal-overlay" id="modal-ref-powerplat">
+        <div class="modal">
+            <button class="modal-close">&times;</button>
+            <span class="modal-badge">Referenzprojekt</span>
+            <h3>Power Platform Center of Excellence</h3>
+            <p><strong>Branche:</strong> Industrieunternehmen, 500+ Mitarbeiter</p>
+            <h4>Ausgangslage</h4>
+            <p>Vereinzelte Power Apps in Fachabteilungen, keine zentrale Governance. Shadow IT wuchs unkontrolliert, Sicherheitsbedenken der IT-Abteilung.</p>
+            <h4>Lösung</h4>
+            <ul>
+                <li>Einführung des Microsoft CoE Toolkit</li>
+                <li>Environment-Strategie (Dev/Test/Prod) mit DLP-Policies</li>
+                <li>Template-Bibliothek und Schulungsprogramm für Citizen Developer</li>
+                <li>Genehmigungsworkflow für produktive Apps</li>
+            </ul>
+            <h4>Ergebnis</h4>
+            <p>Kontrollierte Skalierung von 12 auf 85 produktive Apps in 12 Monaten. Null Security-Incidents. IT-Abteilung als Enabler statt Blocker positioniert.</p>
+        </div>
+    </div>
+
+    <footer id="site-footer"></footer>
+    <script src="script.js"></script>
+</body>
+</html>

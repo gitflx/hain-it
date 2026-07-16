@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datenschutz | hain.it_</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
         .legal-content { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
@@ -15,24 +16,14 @@
         .legal-content h3 { margin-top: 20px; margin-bottom: 8px; font-size: 1rem; }
         .legal-content p, .legal-content li { color: var(--text-secondary); line-height: 1.8; margin-bottom: 12px; }
         .legal-content ul { padding-left: 24px; }
-        .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); text-decoration: none; font-weight: 500; margin-bottom: 32px; }
+        .legal-content a { color: var(--accent); }
     </style>
 </head>
 <body>
-    <header id="header">
-        <nav>
-            <a href="index.html" class="logo">hain.it<span class="accent">_</span></a>
-            <div class="nav-actions">
-                <button id="theme-toggle" aria-label="Theme wechseln">
-                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                </button>
-            </div>
-        </nav>
-    </header>
+    <header id="site-header"></header>
 
     <main class="legal-content">
-        <a href="index.html" class="back-link">← Zurück zur Startseite</a>
+        <nav class="breadcrumb"><a href="index.html">Home</a> <span>/</span> Datenschutz</nav>
         <h1>Datenschutzerklärung</h1>
 
         <h2>1. Datenschutz auf einen Blick</h2>
@@ -59,7 +50,7 @@
         <p>
             Felix Hain<br>
             hain.it_<br>
-            E-Mail: info@hain.it
+            E-Mail: <a href="mailto:info@hain.it">info@hain.it</a>
         </p>
 
         <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
@@ -75,34 +66,26 @@
 
         <h3>Kontaktformular</h3>
         <p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+        <p>Das Kontaktformular auf dieser Website löst eine E-Mail an den Betreiber aus (mailto-Link). Es findet keine serverseitige Speicherung der Formulardaten statt.</p>
 
         <h3>Anfrage per E-Mail</h3>
         <p>Wenn Sie uns per E-Mail kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden personenbezogenen Daten (Name, Anfrage) zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet.</p>
 
         <h2>5. Plugins und Tools</h2>
 
-        <h3>Google Fonts (lokales Hosting)</h3>
-        <p>Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so genannte Google Fonts, die von Google bereitgestellt werden. Die Google Fonts werden über externe Server (fonts.googleapis.com, fonts.gstatic.com) geladen. Dabei wird Ihre IP-Adresse an Google übermittelt.</p>
+        <h3>Google Fonts (externes Hosting)</h3>
+        <p>Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so genannte Google Fonts, die von Google bereitgestellt werden. Die Google Fonts werden über externe Server (fonts.googleapis.com, fonts.gstatic.com) geladen. Dabei wird Ihre IP-Adresse an Google übermittelt. Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Datenschutzerklärung</a>.</p>
 
         <h3>Cloudflare</h3>
         <p>Wir nutzen Cloudflare als CDN und DNS-Provider. Cloudflare kann dabei technisch notwendige Daten verarbeiten. Weitere Informationen finden Sie in der Datenschutzerklärung von Cloudflare: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">https://www.cloudflare.com/privacypolicy/</a></p>
 
-        <h2>6. Chatbot</h2>
-        <p>Auf dieser Website wird ein Chatbot-Widget eingesetzt. Die im Chat eingegebenen Nachrichten werden zum Zweck der Beantwortung verarbeitet. Es findet keine dauerhafte Speicherung der Chatverläufe statt, sofern Sie nicht explizit eine Kontaktanfrage darüber stellen.</p>
+        <h2>6. Speicherung im Browser</h2>
+        <p>Diese Website speichert Ihre Einstellung zur Farbdarstellung (hell/dunkel) im localStorage Ihres Browsers. Es handelt sich um eine rein technische Speicherung ohne personenbezogene Daten. Eine Einwilligung ist hierfür nicht erforderlich.</p>
 
         <p><em>Stand: Juli 2026</em></p>
     </main>
 
-    <script>
-        const toggle = document.getElementById('theme-toggle');
-        const saved = localStorage.getItem('theme');
-        if (saved) document.documentElement.setAttribute('data-theme', saved);
-        else if (window.matchMedia('(prefers-color-scheme: light)').matches) document.documentElement.setAttribute('data-theme', 'light');
-        toggle.addEventListener('click', () => {
-            const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-        });
-    </script>
+    <footer id="site-footer"></footer>
+    <script src="script.js"></script>
 </body>
 </html>

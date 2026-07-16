@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home | hain.it_</title>
+    <meta name="description" content="Professionelle Smart-Home-Planung und Umsetzung mit Home Assistant — zuverlässig, sicher und herstellerunabhängig.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="site-header"></header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <nav class="breadcrumb"><a href="index.html">Home</a> <span>/</span> Smart Home</nav>
+                <h1>Smart Home</h1>
+                <p>Ich plane und realisiere professionelle Smart-Home-Systeme auf Basis von Home Assistant — zuverlässig, herstellerunabhängig und auf Ihre Bedürfnisse zugeschnitten.</p>
+            </div>
+        </section>
+
+        <!-- Capabilities -->
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Leistungen</span>
+                    <h2>Smart Home — professionell umgesetzt</h2>
+                    <p>Kein Bastelprojekt, sondern eine durchdachte Lösung mit klarer Architektur.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card animate-in">
+                        <h3>Planung & Konzeption</h3>
+                        <p>Bedarfsanalyse, Raumplanung und Geräteauswahl — abgestimmt auf Ihr Budget, Ihre Bausubstanz und Ihre Anforderungen an Komfort und Sicherheit.</p>
+                        <ul class="card-tags">
+                            <li>Bedarfsanalyse</li>
+                            <li>Raumplanung</li>
+                            <li>Geräteauswahl</li>
+                        </ul>
+                    </div>
+                    <div class="service-card animate-in">
+                        <h3>Home Assistant</h3>
+                        <p>Zentrale Steuerung aller Gewerke über Home Assistant — lokal, ohne Cloud-Abhängigkeit, mit vollem Zugriff auf Ihre Daten.</p>
+                        <ul class="card-tags">
+                            <li>Home Assistant</li>
+                            <li>Lokal / Privat</li>
+                            <li>Open Source</li>
+                        </ul>
+                    </div>
+                    <div class="service-card animate-in">
+                        <h3>Automation & Szenen</h3>
+                        <p>Intelligente Automationen basierend auf Anwesenheit, Tageszeit, Wetter oder individuellen Triggern — passgenau für Ihren Alltag.</p>
+                        <ul class="card-tags">
+                            <li>Automationen</li>
+                            <li>Szenen</li>
+                            <li>Bedingungslogik</li>
+                        </ul>
+                    </div>
+                    <div class="service-card animate-in">
+                        <h3>Integration & Protokolle</h3>
+                        <p>Herstellerunabhängig durch Unterstützung aller gängigen Protokolle — KNX, Zigbee, Z-Wave, Matter, MQTT und viele mehr.</p>
+                        <ul class="card-tags">
+                            <li>KNX</li>
+                            <li>Zigbee / Z-Wave</li>
+                            <li>Matter / Thread</li>
+                            <li>MQTT</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Floorplan -->
+        <section style="background: var(--bg-alt);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Beispiel</span>
+                    <h2>Interaktiver Grundriss</h2>
+                    <p>Klicken Sie auf einen Raum, um die Smart-Home-Ausstattung zu sehen. Beispiel: Einfamilienhaus, EG.</p>
+                </div>
+                <div class="floorplan-container">
+                    <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Outer walls -->
+                        <rect x="40" y="40" width="720" height="420" fill="none" stroke="var(--border)" stroke-width="3" rx="2"/>
+
+                        <!-- Wohnzimmer -->
+                        <g class="room" data-modal="modal-room-wohnzimmer">
+                            <rect x="42" y="42" width="320" height="250"/>
+                            <text class="room-label" x="200" y="170" text-anchor="middle">Wohnzimmer</text>
+                        </g>
+
+                        <!-- Küche -->
+                        <g class="room" data-modal="modal-room-kueche">
+                            <rect x="362" y="42" width="200" height="250"/>
+                            <text class="room-label" x="462" y="170" text-anchor="middle">Küche</text>
+                        </g>
+
+                        <!-- Büro -->
+                        <g class="room" data-modal="modal-room-buero">
+                            <rect x="562" y="42" width="196" height="250"/>
+                            <text class="room-label" x="660" y="170" text-anchor="middle">Büro</text>
+                        </g>
+
+                        <!-- Flur -->
+                        <g class="room" data-modal="modal-room-flur">
+                            <rect x="42" y="292" width="360" height="80"/>
+                            <text class="room-label" x="222" y="337" text-anchor="middle">Flur</text>
+                        </g>
+
+                        <!-- Bad -->
+                        <g class="room" data-modal="modal-room-bad">
+                            <rect x="402" y="292" width="160" height="166"/>
+                            <text class="room-label" x="482" y="380" text-anchor="middle">Bad</text>
+                        </g>
+
+                        <!-- Schlafzimmer -->
+                        <g class="room" data-modal="modal-room-schlafzimmer">
+                            <rect x="562" y="292" width="196" height="166"/>
+                            <text class="room-label" x="660" y="380" text-anchor="middle">Schlafzimmer</text>
+                        </g>
+
+                        <!-- Gäste-WC -->
+                        <g class="room" data-modal="modal-room-gaeste">
+                            <rect x="42" y="372" width="150" height="86"/>
+                            <text class="room-label" x="117" y="420" text-anchor="middle">Gäste-WC</text>
+                        </g>
+
+                        <!-- HWR -->
+                        <g class="room" data-modal="modal-room-hwr">
+                            <rect x="192" y="372" width="210" height="86"/>
+                            <text class="room-label" x="297" y="420" text-anchor="middle">HWR / Technik</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- What's included -->
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Ablauf</span>
+                    <h2>Von der Idee zum smarten Zuhause</h2>
+                </div>
+                <div class="methodology-grid">
+                    <div class="method-card animate-in">
+                        <div class="method-num">01</div>
+                        <h3>Beratung</h3>
+                        <p>Bedarfsanalyse, Budgetplanung und Empfehlung einer passenden Systemarchitektur.</p>
+                    </div>
+                    <div class="method-card animate-in">
+                        <div class="method-num">02</div>
+                        <h3>Planung</h3>
+                        <p>Detailplanung mit Grundriss, Geräteliste, Verkabelungsplan und Protokollauswahl.</p>
+                    </div>
+                    <div class="method-card animate-in">
+                        <div class="method-num">03</div>
+                        <h3>Installation</h3>
+                        <p>Einrichtung von Home Assistant, Integration aller Geräte, Konfiguration der Automationen.</p>
+                    </div>
+                    <div class="method-card animate-in">
+                        <div class="method-num">04</div>
+                        <h3>Visualisierung</h3>
+                        <p>Erstellung eines Dashboards mit Grundriss, Steuerungselementen und Übersichten.</p>
+                    </div>
+                    <div class="method-card animate-in">
+                        <div class="method-num">05</div>
+                        <h3>Einweisung</h3>
+                        <p>Schulung aller Bewohner, Dokumentation und Übergabe der Administration.</p>
+                    </div>
+                    <div class="method-card animate-in">
+                        <div class="method-num">06</div>
+                        <h3>Support</h3>
+                        <p>Optionaler Wartungsvertrag für Updates, Erweiterungen und Fehleranalyse.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section style="background: var(--bg-alt);">
+            <div class="container" style="text-align: center;">
+                <div class="section-header centered">
+                    <h2>Smart Home planen?</h2>
+                    <p>Ob Neubau, Nachrüstung oder Erweiterung — lassen Sie uns Ihre Möglichkeiten besprechen.</p>
+                </div>
+                <a href="index.html#contact" class="btn btn-primary">Erstgespräch vereinbaren</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Room Modals -->
+    <div class="modal-overlay" id="modal-room-wohnzimmer">
+        <div class="modal">
+            <button class="modal-close">&times;</button>
+            <span class="modal-badge">Wohnzimmer</span>
+            <h3>Smart-Home-Ausstattung</h3>
+            <h4>Beleuchtung</h4>
+            <ul>
+                <li>Dimmbare LED-Spots (Zigbee) mit Farbtemperatursteuerung</li>
+                <li>Indirekte Beleuchtung hinter TV-Möbel (WLED)</li>
+                <li>Szenen: TV-Abend, Lesen, Gäste, Abwesend</li>
+            </ul>
+            <h4>Medien</h4>
+            <ul>
+                <li>Multiroom-Audio (Sonos / Home Assistant Media Player)</li>
+                <li>TV-Integration (HDMI CEC + IR-Steuerung)</li>
+            </ul>
+            <h4>Klima</h4>
+            <ul>
+                <li>Smarte Heizkörperventile (Zigbee)</li>
+                <li>Temperatur- und Luftfeuchtigkeitssensor</li>
+                <li>Automatische Heizungssteuerung nach Anwesenheit</li>
+            </ul>
+            <h4>Automation</h4>
+            <ul>
+                <li>Licht aus bei TV-Start</li>
+                <li>Rollläden schließen bei Sonnenuntergang</li>
+                <li>Heizung runter bei offenem Fenster (Fensterkontakt)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-room-kueche">
+        <div class="modal">
+            <button class="modal-close">&times;</button>
+            <span class="modal-badge">Küche</span>
+            <h3>Smart-Home-Ausstattung</h3>
+            <h4>Beleuchtung</h4>
+            <ul>
+                <li>Arbeitsflächenbeleuchtung (LED-Streifen, schaltbar)</li>
+                <li>Deckenleuchte mit Bewegungsmelder</li>
+            </ul>
+            <h4>Sicherheit</h4>
+            <ul>
+                <li>Wassermelder unter Spüle und Spülmaschine</li>
+                <li>Rauchmelder (vernetzt)</li>
+            </ul>
+            <h4>Komfort</h4>
+            <ul>
+                <li>Smarte Steckdose für Kaffeemaschine (Timer)</li>
+                <li>Tablet-Wandhalterung als Küchensteuerung</li>
+            </ul>
+            <h4>Automation</h4>
+            <ul>
+                <li>Licht an bei Betreten (Bewegungsmelder, nur bei Dunkelheit)</li>
+                <li>Dunstabzug-Erinnerung nach 30 Minuten Kochen</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-room-buero">
+        <div class="modal">
+            <button class="modal-close">&times;</button>
+            <span class="modal-badge">Büro</span>
+            <h3>Smart-Home-Ausstattung</h3>
+            <h4>Beleuchtung</h4>
+            <ul>
+                <li>Schreibtischleuchte mit adaptiver Farbtemperatur (zirkadian)</li>
+                <li>Bias Lighting hinter Monitoren (WLED)</li>
+            </ul>
+            <h4>Klima</h4>
+            <ul>
+                <li>CO₂-Sensor mit Lüftungserinnerung</li>
+                <li>Smarte Rollladen-Steuerung (Blendschutz)</li>
+            </ul>
+            <h4>Präsenz</h4>
+            <ul>
+                <li>Anwesenheitserkennung (mmWave-Sensor)</li>
+                <li>Meeting-Modus (Türschild, DND-Signal)</li>
+            </ul>
+            <h4>Automation</h4>
+            <ul>
+                <li>Arbeitsplatzbeleuchtung an bei Anwesenheit</li>
+                <li>Rollläden automatisch bei Sonneneinstrahlung</li>
+                <li>Alles aus nach 10 Minuten Abwesenheit</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-room-flur">
+        <div class="modal">
+            <button class="modal-close">&times;</button>
+            <span class="modal-badge">Flur</span>
+            <h3>Smart-Home-Ausstattung</h3>
+            <h4>Beleuchtung</h4>
+            <ul>
+                <li>Bewegungsgesteuerte Deckenleuchte</li>
+                <li>Nachtlicht-Modus (gedimmtes warmweißes Licht ab 22 Uhr)</li>
+            </ul>
+            <h4>Sicherheit</h4>
+            <ul>
+                <li>Türkontakt an Haustür</li>
+                <li>Videoklingel mit Home Assistant Integration</li>
+                <li>Schlüsselfertiges Alarmsystem-Panel</li>
+            </ul>
+            <h4>Automation</h4>
+            <ul>
+                <li>Licht an bei Betreten, aus nach 2 Minuten</li>
+                <li>Begrüßungsszene bei Heimkehr (Licht + Musik)</li>
+                <li>Alles-aus-Taste am Ausgang</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-room-bad">
+        <div class="modal">
+            <button class="modal-close">&times;</button>
+            <span class="modal-badge">Bad</span>
+            <h3>Smart-Home-Ausstattung</h3>
+            <h4>Beleuchtung</h4>
+            <ul>
+                <li>Spiegelbeleuchtung (warmweiß morgens, neutralweiß tags)</li>
+                <li>Nachtlicht-Modus (gedimmt, rot)</li>
+            </ul>
+            <h4>Klima</h4>
+            <ul>
+                <li>Luftfeuchtigkeitssensor</li>
+                <li>Automatische Lüftersteuerung bei hoher Feuchtigkeit</li>
+                <li>Fußbodenheizung mit Zeitprogramm</li>
+            </ul>
+            <h4>Sicherheit</h4>
+            <ul>
+                <li>Wassermelder am Boden</li>
+            </ul>
+            <h4>Automation</h4>
+            <ul>
+                <li>Morgenroutine: Licht + Heizung 30 Min vor Weckzeit</li>
+                <li>Lüfter automatisch bei &gt;65% Luftfeuchtigkeit</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-room-schlafzimmer">
+        <div class="modal">
+            <button class="modal-close">&times;</button>
+            <span class="modal-badge">Schlafzimmer</span>
+            <h3>Smart-Home-Ausstattung</h3>
+            <h4>Beleuchtung</h4>
+            <ul>
+                <li>Nachttischlampen (dimmbar, warmweiß)</li>
+                <li>Wake-up-Light (simulierter Sonnenaufgang)</li>
+            </ul>
+            <h4>Klima</h4>
+            <ul>
+                <li>Temperatur- und CO₂-Überwachung</li>
+                <li>Heizung: Absenkung nachts, Aufheizung vor Weckzeit</li>
+            </ul>
+            <h4>Rollläden</h4>
+            <ul>
+                <li>Automatisches Verdunkeln ab Schlafenszeit</li>
+                <li>Sanftes Öffnen zum Weckzeitpunkt</li>
+            </ul>
+            <h4>Automation</h4>
+            <ul>
+                <li>Gute-Nacht-Szene: Alles aus, Rollläden zu, Alarm scharf</li>
+                <li>Aufwach-Szene: Rollläden, Licht, Kaffee starten</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-room-gaeste">
+        <div class="modal">
+            <button class="modal-close">&times;</button>
+            <span class="modal-badge">Gäste-WC</span>
+            <h3>Smart-Home-Ausstattung</h3>
+            <h4>Beleuchtung</h4>
+            <ul>
+                <li>Bewegungsgesteuerte Deckenleuchte</li>
+                <li>Automatisches Aus nach 5 Minuten</li>
+            </ul>
+            <h4>Klima</h4>
+            <ul>
+                <li>Lüfter gekoppelt an Licht (Nachlauf 3 Min)</li>
+            </ul>
+            <h4>Sicherheit</h4>
+            <ul>
+                <li>Wassermelder</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-room-hwr">
+        <div class="modal">
+            <button class="modal-close">&times;</button>
+            <span class="modal-badge">HWR / Technik</span>
+            <h3>Smart-Home-Ausstattung</h3>
+            <h4>Infrastruktur</h4>
+            <ul>
+                <li>Home Assistant Server (Mini-PC oder Raspberry Pi 5)</li>
+                <li>Zigbee-Coordinator (ConBee II oder SkyConnect)</li>
+                <li>Netzwerk-Switch und WLAN Access Point</li>
+                <li>USV (unterbrechungsfreie Stromversorgung)</li>
+            </ul>
+            <h4>Überwachung</h4>
+            <ul>
+                <li>Stromzähler (Shelly 3EM) für PV-Monitoring</li>
+                <li>Wassermelder an Waschmaschine und Heizung</li>
+                <li>Temperaturüberwachung Serverbereich</li>
+            </ul>
+            <h4>Sicherheit</h4>
+            <ul>
+                <li>Rauchmelder</li>
+                <li>Benachrichtigung bei Wasseralarm oder Übertemperatur</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer id="site-footer"></footer>
+    <script src="script.js"></script>
+</body>
+</html>
