@@ -3,6 +3,8 @@
     --bg-alt: #111111;
     --surface: #181818;
     --surface-hover: #222222;
+    --accent-business: #1a7a9a;
+    --accent-home: #2d8a5e;
     --border: #262626;
     --text: #f5f5f5;
     --text-secondary: #a3a3a3;
@@ -1832,6 +1834,55 @@ section {
     .hero-cta { flex-direction: column; align-items: center; }
     .badge-list { gap: 6px; }
     .badge { font-size: 0.72rem; padding: 6px 12px; }
+}
+
+/* ===== LANGUAGE SWITCHING ===== */
+[lang="en"] [data-de] { display: none !important; }
+[lang="de"] [data-en] { display: none !important; }
+
+.lang-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: var(--font);
+    letter-spacing: 0.02em;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.lang-toggle:hover {
+    color: var(--text);
+    border-color: var(--text-muted);
+    background: var(--surface);
+}
+
+/* ===== HEADER COLOR SEPARATION ===== */
+.nav-group[data-section="business"] .nav-group-label {
+    color: var(--accent-business);
+}
+
+.nav-group[data-section="home"] .nav-group-label {
+    color: var(--accent-home);
+}
+
+.nav-group[data-section="business"] .nav-group-items a:hover {
+    color: var(--accent-business);
+}
+
+.nav-group[data-section="home"] .nav-group-items a:hover {
+    color: var(--accent-home);
+}
+
+.nav-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--border);
+    margin: 0 12px;
+    opacity: 0.6;
 }
 
 /* ===== REDUCED MOTION ===== */

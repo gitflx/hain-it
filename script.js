@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    initAccentColor();
+    initLang();
     injectHeader();
     injectFooter();
     initTheme();
@@ -11,8 +11,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('calc-users')) initCalculator();
 });
 
-function initAccentColor() {
-    // Fixed brand identity — no random rotation
+function initLang() {
+    const stored = localStorage.getItem('lang');
+    const browserLang = (navigator.language || navigator.userLanguage || 'en').slice(0, 2);
+    const lang = stored || (browserLang === 'de' ? 'de' : 'en');
+    document.documentElement.lang = lang;
+}
+
+function toggleLang() {
+    const current = document.documentElement.lang;
+    const next = current === 'de' ? 'en' : 'de';
+    document.documentElement.lang = next;
+    localStorage.setItem('lang', next);
+    const btn = document.querySelector('.lang-toggle');
+    if (btn) btn.textContent = next === 'de' ? 'EN' : 'DE';
 }
 
 function injectHeader() {
@@ -26,20 +38,24 @@ function injectHeader() {
     const isBusiness = businessPages.includes(page);
     const isHome = homePages.includes(page);
 
+    const lang = document.documentElement.lang || 'en';
+    const langLabel = lang === 'de' ? 'EN' : 'DE';
+
     header.innerHTML = `
     <nav>
         <a href="index.html" class="logo">hain.it<span class="logo-blink">_</span></a>
         <div class="nav-links">
             <div class="nav-group ${isBusiness ? 'active' : ''}" data-section="business">
-                <span class="nav-group-label">Business</span>
+                <span class="nav-group-label"><span data-en>Business</span><span data-de>Unternehmen</span></span>
                 <div class="nav-group-items">
-                    <a href="consulting.html" ${isActive('consulting.html')}>Consulting</a>
+                    <a href="consulting.html" ${isActive('consulting.html')}><span data-en>Consulting</span><span data-de>Beratung</span></a>
                     <a href="microsoft.html" ${isActive('microsoft.html')}>Microsoft</a>
-                    <a href="development.html" ${isActive('development.html')}>Development</a>
+                    <a href="development.html" ${isActive('development.html')}><span data-en>Development</span><span data-de>Entwicklung</span></a>
                 </div>
             </div>
+            <div class="nav-divider"></div>
             <div class="nav-group ${isHome ? 'active' : ''}" data-section="home">
-                <span class="nav-group-label">Private</span>
+                <span class="nav-group-label"><span data-en>Private</span><span data-de>Privat</span></span>
                 <div class="nav-group-items">
                     <a href="home.html" ${isActive('home.html')}>Smart Home</a>
                 </div>
@@ -47,11 +63,12 @@ function injectHeader() {
             <a href="portfolio.html" ${isActive('portfolio.html')} class="nav-standalone">Portfolio</a>
         </div>
         <div class="nav-cta">
+            <button class="lang-toggle" onclick="toggleLang()" aria-label="Switch language">${langLabel}</button>
             <button class="theme-toggle" aria-label="Toggle theme">
                 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
                 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
             </button>
-            <a href="contact.html" class="btn btn-primary btn-sm">Get in touch</a>
+            <a href="contact.html" class="btn btn-primary btn-sm"><span data-en>Get in touch</span><span data-de>Kontakt</span></a>
             <button class="mobile-toggle" aria-label="Menu">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
             </button>
@@ -66,31 +83,31 @@ function injectFooter() {
     <div class="footer-grid">
         <div class="footer-brand">
             <a href="index.html" class="logo">hain.it<span class="logo-blink">_</span></a>
-            <p>Digitalization, automation & smart living.</p>
+            <p><span data-en>Digitalization, automation & smart living.</span><span data-de>Digitalisierung, Automatisierung & Smart Living.</span></p>
         </div>
         <div class="footer-col">
-            <h4>Services</h4>
-            <a href="consulting.html">Process Consulting</a>
+            <h4><span data-en>Services</span><span data-de>Leistungen</span></h4>
+            <a href="consulting.html"><span data-en>Process Consulting</span><span data-de>Prozessberatung</span></a>
             <a href="home.html">Smart Home</a>
-            <a href="development.html">Development</a>
+            <a href="development.html"><span data-en>Development</span><span data-de>Entwicklung</span></a>
             <a href="microsoft.html">Microsoft</a>
         </div>
         <div class="footer-col">
             <h4>Portfolio</h4>
-            <a href="portfolio.html">Technologies</a>
+            <a href="portfolio.html"><span data-en>Technologies</span><span data-de>Technologien</span></a>
         </div>
         <div class="footer-col">
-            <h4>Contact</h4>
+            <h4><span data-en>Contact</span><span data-de>Kontakt</span></h4>
             <a href="mailto:info@hain.it">info@hain.it</a>
-            <a href="contact.html">Contact form</a>
+            <a href="contact.html"><span data-en>Contact form</span><span data-de>Kontaktformular</span></a>
         </div>
     </div>
     <div class="footer-bottom">
         <span>&copy; ${new Date().getFullYear()} hain.it_ &mdash; Felix Hain</span>
         &nbsp;&middot;&nbsp;
-        <a href="impressum.html">Imprint</a>
+        <a href="impressum.html"><span data-en>Imprint</span><span data-de>Impressum</span></a>
         &nbsp;&middot;&nbsp;
-        <a href="datenschutz.html">Privacy</a>
+        <a href="datenschutz.html"><span data-en>Privacy</span><span data-de>Datenschutz</span></a>
     </div>`;
 }
 

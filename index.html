@@ -10,6 +10,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
+        [lang="en"] [data-de] { display: none !important; }
+        [lang="de"] [data-en] { display: none !important; }
+    </style>
+    <style>
         :root {
             --font: 'Inter', -apple-system, sans-serif;
             --mono: 'JetBrains Mono', monospace;
@@ -217,6 +221,25 @@
             pointer-events: none;
         }
 
+        .lang-toggle-splash {
+            position: absolute;
+            top: 28px;
+            right: 28px;
+            z-index: 20;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+            opacity: 0;
+        }
+        .lang-toggle-splash:hover { background: rgba(255,255,255,0.12); }
+
         @media (max-width: 768px) {
             .intro-wrapper { flex-direction: column; }
             .intro-divider { top: 50%; left: 0; width: 100%; height: 1px; }
@@ -226,28 +249,36 @@
             .intro-wrapper:has(.panel-home:hover) .panel-business { flex: 0.7; }
             .intro-wrapper:has(.panel-business:hover) .intro-divider,
             .intro-wrapper:has(.panel-home:hover) .intro-divider { left: 0; }
-            .intro-title { font-size: 1.2rem; }
+            .intro-title { font-size: 1.1rem; }
+            .intro-desc { font-size: 0.8rem; margin-bottom: 16px; }
             .intro-content { max-width: 280px; }
+            .intro-panel { padding: 30px 20px; }
+            .intro-tags { gap: 4px; margin-bottom: 16px; }
+            .intro-tag { font-size: 0.62rem; padding: 3px 7px; }
+            .intro-cta { font-size: 0.75rem; padding: 9px 18px; }
+            .intro-logo { font-size: 1rem; top: 18px; }
+            .lang-toggle-splash { top: 18px; right: 18px; }
         }
     </style>
 </head>
 <body>
     <div class="intro-bg-grid"></div>
     <span class="intro-logo">hain.it<span>_</span></span>
+    <button class="lang-toggle-splash" onclick="toggleLangSplash()" aria-label="Switch language">DE</button>
 
     <div class="intro-wrapper">
         <a href="business.html" class="intro-panel panel-business">
             <div class="intro-content">
-                <div class="intro-label">For Business</div>
-                <h2 class="intro-title">Digitize processes.<br>Deploy AI with purpose.</h2>
-                <p class="intro-desc">From analysis to intelligent automation — pragmatic, measurable, and vendor-independent.</p>
+                <div class="intro-label"><span data-en>For Business</span><span data-de>Für Unternehmen</span></div>
+                <h2 class="intro-title"><span data-en>Digitize processes.<br>Deploy AI with purpose.</span><span data-de>Prozesse digitalisieren.<br>KI gezielt einsetzen.</span></h2>
+                <p class="intro-desc"><span data-en>From analysis to intelligent automation — pragmatic, measurable, and vendor-independent.</span><span data-de>Von der Analyse bis zur intelligenten Automatisierung — pragmatisch, messbar und herstellerunabhängig.</span></p>
                 <div class="intro-tags">
-                    <span class="intro-tag">AI & Automation</span>
-                    <span class="intro-tag">Process Consulting</span>
+                    <span class="intro-tag"><span data-en>AI & Automation</span><span data-de>KI & Automatisierung</span></span>
+                    <span class="intro-tag"><span data-en>Process Consulting</span><span data-de>Prozessberatung</span></span>
                     <span class="intro-tag">Microsoft 365</span>
-                    <span class="intro-tag">Custom Development</span>
+                    <span class="intro-tag"><span data-en>Custom Development</span><span data-de>Individualentwicklung</span></span>
                 </div>
-                <span class="intro-cta">Explore services <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="intro-cta"><span data-en>Explore services</span><span data-de>Leistungen entdecken</span> <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </div>
         </a>
 
@@ -255,25 +286,46 @@
 
         <a href="home.html" class="intro-panel panel-home">
             <div class="intro-content">
-                <div class="intro-label">For Your Home</div>
-                <h2 class="intro-title">Your smart home.<br>Professionally built.</h2>
-                <p class="intro-desc">Intelligent building automation on open standards — locally controlled, secure, and tailored to you.</p>
+                <div class="intro-label"><span data-en>For Your Home</span><span data-de>Für Zuhause</span></div>
+                <h2 class="intro-title"><span data-en>Your smart home.<br>Professionally built.</span><span data-de>Dein Smart Home.<br>Professionell umgesetzt.</span></h2>
+                <p class="intro-desc"><span data-en>Intelligent building automation on open standards — locally controlled, secure, and tailored to you.</span><span data-de>Intelligente Gebäudeautomation auf offenen Standards — lokal gesteuert, sicher und ganz auf dich zugeschnitten.</span></p>
                 <div class="intro-tags">
                     <span class="intro-tag">Home Assistant</span>
                     <span class="intro-tag">KNX & Zigbee</span>
-                    <span class="intro-tag">Lighting & Climate</span>
-                    <span class="intro-tag">Security</span>
+                    <span class="intro-tag"><span data-en>Lighting & Climate</span><span data-de>Licht & Klima</span></span>
+                    <span class="intro-tag"><span data-en>Security</span><span data-de>Sicherheit</span></span>
                 </div>
-                <span class="intro-cta">Explore smart home <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="intro-cta"><span data-en>Explore smart home</span><span data-de>Smart Home entdecken</span> <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </div>
         </a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
     <script>
+        (function() {
+            const stored = localStorage.getItem('lang');
+            const browserLang = (navigator.language || navigator.userLanguage || 'en').slice(0, 2);
+            const lang = stored || (browserLang === 'de' ? 'de' : 'en');
+            document.documentElement.lang = lang;
+            document.addEventListener('DOMContentLoaded', () => {
+                const btn = document.querySelector('.lang-toggle-splash');
+                if (btn) btn.textContent = lang === 'de' ? 'EN' : 'DE';
+            });
+        })();
+
+        function toggleLangSplash() {
+            const current = document.documentElement.lang;
+            const next = current === 'de' ? 'en' : 'de';
+            document.documentElement.lang = next;
+            localStorage.setItem('lang', next);
+            const btn = document.querySelector('.lang-toggle-splash');
+            if (btn) btn.textContent = next === 'de' ? 'EN' : 'DE';
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const tl = gsap.timeline({ defaults: { ease: 'power3.out' }});
             tl.to('.intro-logo', { opacity: 1, duration: 0.6, delay: 0.3 })
+              .to('.lang-toggle-splash', { opacity: 1, duration: 0.3 }, '-=0.3')
               .to('.intro-label', { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 }, '-=0.2')
               .to('.intro-title', { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 }, '-=0.3')
               .to('.intro-desc', { opacity: 1, y: 0, duration: 0.4, stagger: 0.1 }, '-=0.2')
