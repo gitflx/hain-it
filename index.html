@@ -1,164 +1,285 @@
 <!DOCTYPE html>
-<html lang="de" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hain.it_ | Digitalisierung für Unternehmen & Zuhause</title>
-    <meta name="description" content="hain.it_ — KI-Automatisierung und Prozessberatung für Unternehmen, professionelle Smart-Home-Systeme für Ihr Zuhause. Felix Hain, Wendelstein.">
+    <title>hain.it_ | Technology for Business & Home</title>
+    <meta name="description" content="hain.it_ — AI automation and process consulting for businesses, professional smart home systems for your home.">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --font: 'Inter', -apple-system, sans-serif;
+            --mono: 'JetBrains Mono', monospace;
+            --bg: #0a0a0b;
+            --text: #f0f0f2;
+            --text-secondary: #7a7a8a;
+            --border: rgba(255,255,255,0.08);
+            --accent-business: #1a6b8a;
+            --accent-business-glow: rgba(26,107,138,0.2);
+            --accent-home: #2d8a5e;
+            --accent-home-glow: rgba(45,138,94,0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .intro-wrapper {
+            display: flex;
+            height: 100vh;
+            position: relative;
+        }
+
+        .intro-panel {
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 40px;
+            text-align: center;
+            overflow: hidden;
+            transition: flex 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .intro-panel::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .panel-business::before {
+            background: radial-gradient(ellipse at 50% 60%, var(--accent-business-glow), transparent 65%);
+        }
+
+        .panel-home::before {
+            background: radial-gradient(ellipse at 50% 60%, var(--accent-home-glow), transparent 65%);
+        }
+
+        .intro-panel:hover::before { opacity: 1; }
+
+        .intro-wrapper:has(.panel-business:hover) .panel-business { flex: 1.5; }
+        .intro-wrapper:has(.panel-business:hover) .panel-home { flex: 0.5; }
+        .intro-wrapper:has(.panel-home:hover) .panel-home { flex: 1.5; }
+        .intro-wrapper:has(.panel-home:hover) .panel-business { flex: 0.5; }
+
+        .intro-divider {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 1px;
+            height: 100%;
+            background: var(--border);
+            z-index: 10;
+            pointer-events: none;
+            transition: left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .intro-wrapper:has(.panel-business:hover) .intro-divider { left: 60%; }
+        .intro-wrapper:has(.panel-home:hover) .intro-divider { left: 40%; }
+
+        .intro-content {
+            position: relative;
+            z-index: 2;
+            max-width: 380px;
+        }
+
+        .intro-label {
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(16px);
+        }
+
+        .panel-business .intro-label { color: var(--accent-business); }
+        .panel-home .intro-label { color: var(--accent-home); }
+
+        .intro-title {
+            font-size: clamp(1.4rem, 2.5vw, 2rem);
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 14px;
+            letter-spacing: -0.02em;
+            opacity: 0;
+            transform: translateY(16px);
+        }
+
+        .intro-desc {
+            font-size: 0.88rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(16px);
+        }
+
+        .intro-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 11px 22px;
+            border-radius: 5px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(16px);
+        }
+
+        .panel-business .intro-cta {
+            color: var(--accent-business);
+            border-color: rgba(26,107,138,0.4);
+        }
+        .panel-business:hover .intro-cta {
+            background: var(--accent-business);
+            color: white;
+            border-color: var(--accent-business);
+        }
+
+        .panel-home .intro-cta {
+            color: var(--accent-home);
+            border-color: rgba(45,138,94,0.4);
+        }
+        .panel-home:hover .intro-cta {
+            background: var(--accent-home);
+            color: white;
+            border-color: var(--accent-home);
+        }
+
+        .intro-cta svg {
+            transition: transform 0.3s ease;
+        }
+        .intro-panel:hover .intro-cta svg {
+            transform: translateX(3px);
+        }
+
+        .intro-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(16px);
+        }
+
+        .intro-tag {
+            font-size: 0.68rem;
+            padding: 4px 9px;
+            border-radius: 3px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .intro-logo {
+            position: absolute;
+            top: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            font-family: var(--mono);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            opacity: 0;
+        }
+
+        .intro-logo span { animation: blink 1s step-end infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .intro-bg-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+            background-size: 72px 72px;
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .intro-wrapper { flex-direction: column; }
+            .intro-divider { top: 50%; left: 0; width: 100%; height: 1px; }
+            .intro-wrapper:has(.panel-business:hover) .panel-business,
+            .intro-wrapper:has(.panel-home:hover) .panel-home { flex: 1.3; }
+            .intro-wrapper:has(.panel-business:hover) .panel-home,
+            .intro-wrapper:has(.panel-home:hover) .panel-business { flex: 0.7; }
+            .intro-wrapper:has(.panel-business:hover) .intro-divider,
+            .intro-wrapper:has(.panel-home:hover) .intro-divider { left: 0; }
+            .intro-title { font-size: 1.2rem; }
+            .intro-content { max-width: 280px; }
+        }
+    </style>
 </head>
 <body>
-    <header id="site-header"></header>
+    <div class="intro-bg-grid"></div>
+    <span class="intro-logo">hain.it<span>_</span></span>
 
-    <main>
-        <!-- HERO -->
-        <section class="hero">
-            <div class="hero-content">
-                <p class="label">Digitalisierung & Automatisierung</p>
-                <h1 class="display-xl">Technologie, die<br><span class="accent">wirklich weiterhilft.</span></h1>
-                <p class="body-lg">Ob Unternehmen oder Eigenheim — wir bringen intelligente Lösungen dorthin, wo sie den größten Unterschied machen.</p>
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <div class="number">10+</div>
-                        <div class="stat-label">Jahre Erfahrung</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="number">KI</div>
-                        <div class="stat-label">Fokus seit 2023</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="number">E2E</div>
-                        <div class="stat-label">Analyse bis Betrieb</div>
-                    </div>
+    <div class="intro-wrapper">
+        <a href="business.html" class="intro-panel panel-business">
+            <div class="intro-content">
+                <div class="intro-label">For Business</div>
+                <h2 class="intro-title">Digitize processes.<br>Deploy AI with purpose.</h2>
+                <p class="intro-desc">From analysis to intelligent automation — pragmatic, measurable, and vendor-independent.</p>
+                <div class="intro-tags">
+                    <span class="intro-tag">AI & Automation</span>
+                    <span class="intro-tag">Process Consulting</span>
+                    <span class="intro-tag">Microsoft 365</span>
+                    <span class="intro-tag">Custom Development</span>
                 </div>
+                <span class="intro-cta">Explore services <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </div>
-        </section>
+        </a>
 
-        <!-- ZWEI EINSTIEGE -->
-        <section class="section-split">
-            <div class="container">
-                <div class="split-grid">
-                    <a href="unternehmen.html" class="split-card split-card-business reveal">
-                        <div class="split-card-icon">🏢</div>
-                        <span class="label">Für Unternehmen</span>
-                        <h2 class="display-sm">Prozesse digitalisieren & KI einsetzen</h2>
-                        <p>KI-Strategie, Prozessberatung, Microsoft 365, Individualentwicklung — von der Analyse bis zur Automatisierung.</p>
-                        <ul class="split-card-list">
-                            <li>KI & Automatisierung</li>
-                            <li>Prozessberatung</li>
-                            <li>Microsoft 365 & Copilot</li>
-                            <li>Individualentwicklung</li>
-                        </ul>
-                        <span class="split-card-cta">Leistungen entdecken <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                    </a>
-                    <a href="zuhause.html" class="split-card split-card-home reveal">
-                        <div class="split-card-icon">🏠</div>
-                        <span class="label">Für Ihr Zuhause</span>
-                        <h2 class="display-sm">Smart Home — professionell umgesetzt</h2>
-                        <p>Ihr intelligentes Zuhause auf Basis offener Standards. Lokal, sicher und herstellerunabhängig.</p>
-                        <ul class="split-card-list">
-                            <li>Home Assistant</li>
-                            <li>Licht, Klima & Sicherheit</li>
-                            <li>KNX, Zigbee & Matter</li>
-                            <li>Beratung bis Installation</li>
-                        </ul>
-                        <span class="split-card-cta">Smart Home entdecken <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                    </a>
+        <div class="intro-divider"></div>
+
+        <a href="home.html" class="intro-panel panel-home">
+            <div class="intro-content">
+                <div class="intro-label">For Your Home</div>
+                <h2 class="intro-title">Your smart home.<br>Professionally built.</h2>
+                <p class="intro-desc">Intelligent building automation on open standards — locally controlled, secure, and tailored to you.</p>
+                <div class="intro-tags">
+                    <span class="intro-tag">Home Assistant</span>
+                    <span class="intro-tag">KNX & Zigbee</span>
+                    <span class="intro-tag">Lighting & Climate</span>
+                    <span class="intro-tag">Security</span>
                 </div>
+                <span class="intro-cta">Explore smart home <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </div>
-        </section>
-
-        <!-- VERTRAUEN -->
-        <section class="section-dark">
-            <div class="container">
-                <div class="section-header centered reveal">
-                    <h2 class="display-md">Ein Ansprechpartner. Beide Welten.</h2>
-                    <p style="max-width: 640px;">Ob digitale Transformation im Unternehmen oder smarte Technik im Eigenheim — bei hain.it_ bekommen Sie beides aus einer Hand. Persönlich, pragmatisch und technisch auf höchstem Niveau.</p>
-                </div>
-                <div class="trust-grid reveal">
-                    <div class="trust-item">
-                        <div class="trust-icon">⚡</div>
-                        <h4>Pragmatisch</h4>
-                        <p>Keine Buzzwords, sondern Lösungen die funktionieren und sich rechnen.</p>
-                    </div>
-                    <div class="trust-item">
-                        <div class="trust-icon">🔒</div>
-                        <h4>Unabhängig</h4>
-                        <p>Herstellerunabhängige Beratung — wir empfehlen, was zu Ihnen passt.</p>
-                    </div>
-                    <div class="trust-item">
-                        <div class="trust-icon">🎯</div>
-                        <h4>Persönlich</h4>
-                        <p>Direkter Kontakt, kurze Wege, keine Agentur-Overhead.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section id="contact">
-            <div class="container">
-                <div class="section-header centered reveal">
-                    <span class="label">Kontakt</span>
-                    <h2 class="display-md">Projekt besprechen</h2>
-                    <p>Beschreiben Sie kurz Ihr Vorhaben — wir melden uns zeitnah mit einer Einschätzung.</p>
-                </div>
-                <div class="contact-grid reveal">
-                    <form class="contact-form" id="contact-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" placeholder="Ihr Name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">E-Mail</label>
-                                <input type="email" id="email" name="email" placeholder="ihre@email.de" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Thema</label>
-                            <select id="subject" name="subject">
-                                <option value="KI & Automatisierung">KI & Automatisierung</option>
-                                <option value="Prozessberatung">Prozessberatung</option>
-                                <option value="Smart Home">Smart Home</option>
-                                <option value="Individualentwicklung">Individualentwicklung</option>
-                                <option value="Microsoft">Microsoft</option>
-                                <option value="Sonstiges">Sonstiges</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Nachricht</label>
-                            <textarea id="message" name="message" placeholder="Beschreiben Sie kurz Ihr Vorhaben..." rows="5"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Nachricht senden</button>
-                    </form>
-                    <div class="contact-info">
-                        <div class="contact-info-card">
-                            <h4>E-Mail</h4>
-                            <p><a href="mailto:info@hain.it">info@hain.it</a></p>
-                        </div>
-                        <div class="contact-info-card">
-                            <h4>Antwortzeit</h4>
-                            <p>In der Regel innerhalb von 24 Stunden.</p>
-                        </div>
-                        <div class="contact-info-card">
-                            <h4>Erstgespräch</h4>
-                            <p>Kostenlos und unverbindlich — zur Einschätzung von Aufwand und Vorgehen.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer id="site-footer"></footer>
+        </a>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tl = gsap.timeline({ defaults: { ease: 'power3.out' }});
+            tl.to('.intro-logo', { opacity: 1, duration: 0.6, delay: 0.3 })
+              .to('.intro-label', { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 }, '-=0.2')
+              .to('.intro-title', { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 }, '-=0.3')
+              .to('.intro-desc', { opacity: 1, y: 0, duration: 0.4, stagger: 0.1 }, '-=0.2')
+              .to('.intro-tags', { opacity: 1, y: 0, duration: 0.4, stagger: 0.1 }, '-=0.2')
+              .to('.intro-cta', { opacity: 1, y: 0, duration: 0.4, stagger: 0.1 }, '-=0.1');
+        });
+    </script>
 </body>
 </html>

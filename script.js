@@ -12,22 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initAccentColor() {
-    const palettes = [
-        { accent: '#c45d1a', hover: '#e88a4a', light: 'rgba(196,93,26,0.08)' },
-        { accent: '#1a6b8a', hover: '#4a9ab8', light: 'rgba(26,107,138,0.08)' },
-        { accent: '#6b4c9a', hover: '#8b6cba', light: 'rgba(107,76,154,0.08)' },
-        { accent: '#2d8a5e', hover: '#4aaa7e', light: 'rgba(45,138,94,0.08)' },
-        { accent: '#b84c4c', hover: '#d46c6c', light: 'rgba(184,76,76,0.08)' },
-    ];
-    const idx = Math.floor(Math.random() * palettes.length);
-    const p = palettes[idx];
-    const root = document.documentElement;
-    root.style.setProperty('--accent', p.accent);
-    root.style.setProperty('--accent-hover', p.hover);
-    root.style.setProperty('--accent-light', p.light);
-    const style = document.createElement('style');
-    style.textContent = `[data-theme="light"] { --accent: ${p.accent}; --accent-hover: ${p.hover}; --accent-light: ${p.light}; }`;
-    document.head.appendChild(style);
+    // Fixed brand identity — no random rotation
 }
 
 function injectHeader() {
@@ -36,25 +21,38 @@ function injectHeader() {
     const page = window.location.pathname.split('/').pop() || 'index.html';
     const isActive = (href) => page === href ? 'aria-current="page"' : '';
 
+    const businessPages = ['business.html','consulting.html','microsoft.html','development.html'];
+    const homePages = ['home.html','smarthome.html'];
+    const isBusiness = businessPages.includes(page);
+    const isHome = homePages.includes(page);
+
     header.innerHTML = `
     <nav>
         <a href="index.html" class="logo">hain.it<span class="logo-blink">_</span></a>
         <div class="nav-links">
-            <a href="unternehmen.html" ${isActive('unternehmen.html')}>Unternehmen</a>
-            <a href="prozessberatung.html" ${isActive('prozessberatung.html')}>Prozessberatung</a>
-            <a href="microsoft.html" ${isActive('microsoft.html')}>Microsoft</a>
-            <a href="entwicklung.html" ${isActive('entwicklung.html')}>Entwicklung</a>
-            <span class="nav-sep"></span>
-            <a href="zuhause.html" ${isActive('zuhause.html')}>Smart Home</a>
-            <a href="portfolio.html" ${isActive('portfolio.html')}>Portfolio</a>
+            <div class="nav-group ${isBusiness ? 'active' : ''}" data-section="business">
+                <span class="nav-group-label">Business</span>
+                <div class="nav-group-items">
+                    <a href="consulting.html" ${isActive('consulting.html')}>Consulting</a>
+                    <a href="microsoft.html" ${isActive('microsoft.html')}>Microsoft</a>
+                    <a href="development.html" ${isActive('development.html')}>Development</a>
+                </div>
+            </div>
+            <div class="nav-group ${isHome ? 'active' : ''}" data-section="home">
+                <span class="nav-group-label">Private</span>
+                <div class="nav-group-items">
+                    <a href="home.html" ${isActive('home.html')}>Smart Home</a>
+                </div>
+            </div>
+            <a href="portfolio.html" ${isActive('portfolio.html')} class="nav-standalone">Portfolio</a>
         </div>
         <div class="nav-cta">
-            <button class="theme-toggle" aria-label="Theme wechseln">
+            <button class="theme-toggle" aria-label="Toggle theme">
                 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
                 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
             </button>
-            <a href="index.html#contact" class="btn btn-primary btn-sm">Kontakt aufnehmen</a>
-            <button class="mobile-toggle" aria-label="Menü">
+            <a href="contact.html" class="btn btn-primary btn-sm">Get in touch</a>
+            <button class="mobile-toggle" aria-label="Menu">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
             </button>
         </div>
@@ -68,31 +66,31 @@ function injectFooter() {
     <div class="footer-grid">
         <div class="footer-brand">
             <a href="index.html" class="logo">hain.it<span class="logo-blink">_</span></a>
-            <p>Digitalisierung, Automatisierung & Smart Living.</p>
+            <p>Digitalization, automation & smart living.</p>
         </div>
         <div class="footer-col">
-            <h4>Leistungen</h4>
-            <a href="prozessberatung.html">Prozessberatung</a>
-            <a href="smarthome.html">Smart Home</a>
-            <a href="entwicklung.html">Individualentwicklung</a>
+            <h4>Services</h4>
+            <a href="consulting.html">Process Consulting</a>
+            <a href="home.html">Smart Home</a>
+            <a href="development.html">Development</a>
             <a href="microsoft.html">Microsoft</a>
         </div>
         <div class="footer-col">
             <h4>Portfolio</h4>
-            <a href="portfolio.html">Technologien</a>
+            <a href="portfolio.html">Technologies</a>
         </div>
         <div class="footer-col">
-            <h4>Kontakt</h4>
+            <h4>Contact</h4>
             <a href="mailto:info@hain.it">info@hain.it</a>
-            <a href="index.html#contact">Kontaktformular</a>
+            <a href="contact.html">Contact form</a>
         </div>
     </div>
     <div class="footer-bottom">
         <span>&copy; ${new Date().getFullYear()} hain.it_ &mdash; Felix Hain</span>
         &nbsp;&middot;&nbsp;
-        <a href="impressum.html">Impressum</a>
+        <a href="impressum.html">Imprint</a>
         &nbsp;&middot;&nbsp;
-        <a href="datenschutz.html">Datenschutz</a>
+        <a href="datenschutz.html">Privacy</a>
     </div>`;
 }
 

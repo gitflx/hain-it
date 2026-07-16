@@ -205,12 +205,13 @@ nav .btn-primary:hover {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 8px;
 }
 
-.nav-links a {
+.nav-links a,
+.nav-group-label {
     color: var(--text-secondary);
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 500;
     transition: color 0.2s;
     white-space: nowrap;
@@ -219,6 +220,68 @@ nav .btn-primary:hover {
 .nav-links a:hover,
 .nav-links a[aria-current="page"] {
     color: var(--text);
+}
+
+.nav-group {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.nav-group-label {
+    cursor: default;
+    padding: 6px 12px;
+    border-radius: 4px;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: color 0.2s, background 0.2s;
+}
+
+.nav-group:hover .nav-group-label,
+.nav-group.active .nav-group-label {
+    color: var(--text);
+}
+
+.nav-group-items {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    overflow: hidden;
+    max-width: 0;
+    opacity: 0;
+    transition: max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, padding 0.3s ease;
+    padding-left: 0;
+}
+
+.nav-group:hover .nav-group-items,
+.nav-group.active .nav-group-items {
+    max-width: 400px;
+    opacity: 1;
+    padding-left: 4px;
+}
+
+.nav-group-items a {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    transition: color 0.2s, background 0.2s;
+}
+
+.nav-group-items a:hover {
+    background: var(--surface);
+}
+
+.nav-standalone {
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin-left: 8px;
+}
+
+.nav-standalone:hover {
+    background: var(--surface);
 }
 
 .nav-cta {
@@ -1544,12 +1607,6 @@ section {
 .legal-content a { color: var(--accent); }
 
 /* ===== NAV SEPARATOR ===== */
-.nav-sep {
-    width: 1px;
-    height: 16px;
-    background: var(--border);
-    opacity: 0.6;
-}
 
 /* ===== SPLIT CARDS (Homepage) ===== */
 .section-split {
@@ -1753,7 +1810,9 @@ section {
     .split-card { padding: 36px 28px; }
     .trust-grid { grid-template-columns: 1fr; gap: 24px; }
     .benefits-grid { grid-template-columns: 1fr; gap: 24px; }
-    .nav-sep { display: none; }
+    .nav-group-items { max-width: none; opacity: 1; padding-left: 0; }
+    .nav-group { flex-wrap: wrap; }
+    .nav-standalone { margin-left: 0; }
 
     .modal {
         max-height: 90vh;
