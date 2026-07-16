@@ -1,6 +1,7 @@
 // hain.it_ — Professional Site Script
 
 document.addEventListener('DOMContentLoaded', () => {
+    initAccentColor();
     injectHeader();
     injectFooter();
     initTheme();
@@ -11,6 +12,28 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
     if (document.getElementById('calc-users')) initCalculator();
 });
+
+// Dynamic Accent Color
+function initAccentColor() {
+    const palettes = [
+        { accent: '#c45d1a', hover: '#a84e15', light: 'rgba(196,93,26,0.08)', lightDark: 'rgba(212,118,58,0.1)', dark: '#d4763a', darkHover: '#e88a4a' },
+        { accent: '#1a6b8a', hover: '#155a74', light: 'rgba(26,107,138,0.08)', lightDark: 'rgba(42,140,178,0.1)', dark: '#2a8cb2', darkHover: '#3da5cc' },
+        { accent: '#6b4c9a', hover: '#5a3f84', light: 'rgba(107,76,154,0.08)', lightDark: 'rgba(140,108,186,0.1)', dark: '#8c6cba', darkHover: '#a388cc' },
+        { accent: '#2d8a5e', hover: '#247549', light: 'rgba(45,138,94,0.08)', lightDark: 'rgba(60,170,116,0.1)', dark: '#3caa74', darkHover: '#4fc48c' },
+        { accent: '#b84c4c', hover: '#9e3f3f', light: 'rgba(184,76,76,0.08)', lightDark: 'rgba(210,100,100,0.1)', dark: '#d26464', darkHover: '#e27a7a' },
+    ];
+    const idx = Math.floor(Math.random() * palettes.length);
+    const p = palettes[idx];
+    const root = document.documentElement;
+    root.style.setProperty('--accent', p.accent);
+    root.style.setProperty('--accent-hover', p.hover);
+    root.style.setProperty('--accent-light', p.light);
+    document.documentElement.dataset.accentIdx = idx;
+
+    const style = document.createElement('style');
+    style.textContent = `[data-theme="dark"] { --accent: ${p.dark}; --accent-hover: ${p.darkHover}; --accent-light: ${p.lightDark}; }`;
+    document.head.appendChild(style);
+}
 
 // Shared Header
 function injectHeader() {
@@ -27,11 +50,11 @@ function injectHeader() {
                     <button class="nav-dropdown-trigger">Leistungen <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
                     <div class="nav-dropdown-menu">
                         <a href="prozessberatung.html"${currentPage === 'prozessberatung.html' ? ' aria-current="page"' : ''}>Prozessberatung</a>
-                        <a href="microsoft.html"${currentPage === 'microsoft.html' ? ' aria-current="page"' : ''}>Microsoft</a>
-                        <a href="entwicklung.html"${currentPage === 'entwicklung.html' ? ' aria-current="page"' : ''}>Individualentwicklung</a>
                         <a href="smarthome.html"${currentPage === 'smarthome.html' ? ' aria-current="page"' : ''}>Smart Home</a>
+                        <a href="entwicklung.html"${currentPage === 'entwicklung.html' ? ' aria-current="page"' : ''}>Individualentwicklung</a>
                     </div>
                 </div>
+                <a href="microsoft.html"${currentPage === 'microsoft.html' ? ' aria-current="page"' : ''}>Portfolio</a>
                 <a href="index.html#contact">Kontakt</a>
             </div>
             <div class="nav-actions">
@@ -63,9 +86,12 @@ function injectFooter() {
                 <div class="footer-links">
                     <h4>Leistungen</h4>
                     <a href="prozessberatung.html">Prozessberatung</a>
-                    <a href="microsoft.html">Microsoft</a>
-                    <a href="entwicklung.html">Individualentwicklung</a>
                     <a href="smarthome.html">Smart Home</a>
+                    <a href="entwicklung.html">Individualentwicklung</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Portfolio</h4>
+                    <a href="microsoft.html">Microsoft</a>
                 </div>
                 <div class="footer-links">
                     <h4>Kontakt</h4>

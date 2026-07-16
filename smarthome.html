@@ -19,7 +19,7 @@
             <div class="container">
                 <nav class="breadcrumb"><a href="index.html">Home</a> <span>/</span> Smart Home</nav>
                 <h1>Smart Home</h1>
-                <p>Ich plane und realisiere professionelle Smart-Home-Systeme auf Basis von Home Assistant — zuverlässig, herstellerunabhängig und auf Ihre Bedürfnisse zugeschnitten.</p>
+                <p>Wir planen und realisieren professionelle Smart-Home-Systeme auf Basis von Home Assistant — der führenden Open-Source-Plattform für Gebäudeautomation. Lokal, sicher, herstellerunabhängig.</p>
             </div>
         </section>
 
@@ -73,6 +73,90 @@
             </div>
         </section>
 
+        <!-- Why Home Assistant -->
+        <section style="background: var(--bg-alt);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Plattform</span>
+                    <h2>Warum Home Assistant?</h2>
+                    <p>Wir setzen auf die weltweit führende Open-Source-Plattform für Gebäudeautomation — aus guten Gründen.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card animate-in">
+                        <h3>100% lokal — keine Cloud</h3>
+                        <p>Alle Daten bleiben in Ihrem Netzwerk. Keine Abhängigkeit von Cloud-Diensten, keine Latenz, keine Ausfälle wenn das Internet weg ist. Volle Kontrolle über Ihre Daten.</p>
+                        <ul class="card-tags">
+                            <li>Kein Cloud-Zwang</li>
+                            <li>Offline-fähig</li>
+                            <li>DSGVO-konform</li>
+                        </ul>
+                    </div>
+                    <div class="service-card animate-in">
+                        <h3>Open Source & Community</h3>
+                        <p>Home Assistant ist quelloffen mit über 2.500 Integrationen. Kein Vendor Lock-in, keine Abo-Kosten für die Plattform. Eine aktive Community von über 500.000 Nutzern weltweit.</p>
+                        <ul class="card-tags">
+                            <li>Open Source</li>
+                            <li>2.500+ Integrationen</li>
+                            <li>Aktive Community</li>
+                        </ul>
+                    </div>
+                    <div class="service-card animate-in">
+                        <h3>Sicherheit & Netzwerk</h3>
+                        <p>Wir konfigurieren VLAN-Segmentierung für IoT-Geräte, verschlüsselten Fernzugriff über WireGuard/Tailscale und automatische Updates. Kein offener Port, kein Risiko.</p>
+                        <ul class="card-tags">
+                            <li>VLAN-Isolation</li>
+                            <li>VPN-Zugriff</li>
+                            <li>Auto-Updates</li>
+                        </ul>
+                    </div>
+                    <div class="service-card animate-in">
+                        <h3>Herstellerunabhängig</h3>
+                        <p>Mischen Sie frei: Shelly-Aktoren, Philips Hue Leuchtmittel, Sonos Audio, Homematic Heizung, IKEA Trådfri — alles in einer Oberfläche, einer App, einem Dashboard.</p>
+                        <ul class="card-tags">
+                            <li>Shelly</li>
+                            <li>Philips Hue</li>
+                            <li>Sonos</li>
+                            <li>IKEA</li>
+                            <li>Homematic</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Supported Brands -->
+        <section>
+            <div class="container">
+                <div class="section-header centered">
+                    <span class="section-label">Kompatibilität</span>
+                    <h2>Unterstützte Hersteller & Protokolle</h2>
+                    <p>Eine Auswahl der Systeme, die wir integrieren — die vollständige Liste umfasst über 2.500 Integrationen.</p>
+                </div>
+                <div class="teaser-credentials" style="justify-content: center; gap: 8px; max-width: 700px; margin: 0 auto;">
+                    <span class="credential-badge">Home Assistant</span>
+                    <span class="credential-badge">Shelly</span>
+                    <span class="credential-badge">Philips Hue</span>
+                    <span class="credential-badge">Sonos</span>
+                    <span class="credential-badge">IKEA Trådfri</span>
+                    <span class="credential-badge">Homematic IP</span>
+                    <span class="credential-badge">Bosch</span>
+                    <span class="credential-badge">Nuki</span>
+                    <span class="credential-badge">Aqara</span>
+                    <span class="credential-badge">Tuya</span>
+                    <span class="credential-badge">KNX</span>
+                    <span class="credential-badge">Zigbee (ConBee/SkyConnect)</span>
+                    <span class="credential-badge">Z-Wave</span>
+                    <span class="credential-badge">Matter / Thread</span>
+                    <span class="credential-badge">MQTT</span>
+                    <span class="credential-badge">ESPHome</span>
+                    <span class="credential-badge">WLED</span>
+                    <span class="credential-badge">Frigate NVR</span>
+                    <span class="credential-badge">WireGuard</span>
+                    <span class="credential-badge">UniFi</span>
+                </div>
+            </div>
+        </section>
+
         <!-- Floorplan -->
         <section style="background: var(--bg-alt);">
             <div class="container">
@@ -83,56 +167,157 @@
                 </div>
                 <div class="floorplan-container">
                     <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <filter id="glow-on">
+                                <feGaussianBlur stdDeviation="3" result="blur"/>
+                                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                            </filter>
+                            <filter id="glow-warm">
+                                <feGaussianBlur stdDeviation="2" result="blur"/>
+                                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                            </filter>
+                        </defs>
+
                         <!-- Outer walls -->
                         <rect x="40" y="40" width="720" height="420" fill="none" stroke="var(--border)" stroke-width="3" rx="2"/>
 
                         <!-- Wohnzimmer -->
                         <g class="room" data-modal="modal-room-wohnzimmer">
                             <rect x="42" y="42" width="320" height="250"/>
-                            <text class="room-label" x="200" y="170" text-anchor="middle">Wohnzimmer</text>
+                            <text class="fp-label" x="200" y="68">Wohnzimmer</text>
+                            <text class="fp-temp" x="200" y="82">22.4°C</text>
+                            <!-- Lights -->
+                            <circle class="fp-light fp-on" cx="120" cy="130" r="5" filter="url(#glow-on)"/>
+                            <circle class="fp-light fp-on" cx="200" cy="130" r="5" filter="url(#glow-on)"/>
+                            <circle class="fp-light fp-on" cx="280" cy="130" r="5" filter="url(#glow-on)"/>
+                            <circle class="fp-light fp-off" cx="120" cy="200" r="4"/>
+                            <circle class="fp-light fp-off" cx="280" cy="200" r="4"/>
+                            <!-- TV area -->
+                            <rect x="60" y="230" width="80" height="6" rx="2" fill="var(--text-muted)" opacity="0.3"/>
+                            <text class="fp-temp" x="100" y="254" text-anchor="middle">TV aus</text>
+                            <!-- Rollladen -->
+                            <rect x="42" y="44" width="4" height="60" fill="#4a90d9" opacity="0.5" rx="1"/>
+                            <text class="fp-temp" x="56" y="100">↕ 0%</text>
+                            <!-- Sofa area -->
+                            <rect x="150" y="210" width="100" height="50" rx="4" fill="var(--text-muted)" opacity="0.1" stroke="var(--border)" stroke-width="0.5"/>
                         </g>
 
                         <!-- Küche -->
                         <g class="room" data-modal="modal-room-kueche">
                             <rect x="362" y="42" width="200" height="250"/>
-                            <text class="room-label" x="462" y="170" text-anchor="middle">Küche</text>
+                            <text class="fp-label" x="462" y="68">Küche</text>
+                            <text class="fp-temp" x="462" y="82">21.8°C</text>
+                            <!-- Lights -->
+                            <circle class="fp-light fp-on" cx="462" cy="120" r="5" filter="url(#glow-on)"/>
+                            <circle class="fp-light fp-off" cx="420" cy="180" r="4"/>
+                            <circle class="fp-light fp-off" cx="500" cy="180" r="4"/>
+                            <!-- Arbeitsplatte -->
+                            <rect x="370" y="50" width="180" height="20" rx="2" fill="var(--text-muted)" opacity="0.15"/>
+                            <line x1="370" y1="50" x2="550" y2="50" stroke="#f5c842" stroke-width="2" opacity="0.7"/>
+                            <text class="fp-temp" x="462" y="100" text-anchor="middle">LED-Strip an</text>
+                            <!-- Wassermelder -->
+                            <circle cx="540" cy="270" r="3" fill="#4a90d9" opacity="0.6"/>
+                            <text class="fp-temp" x="530" y="260">💧 OK</text>
                         </g>
 
                         <!-- Büro -->
                         <g class="room" data-modal="modal-room-buero">
                             <rect x="562" y="42" width="196" height="250"/>
-                            <text class="room-label" x="660" y="170" text-anchor="middle">Büro</text>
+                            <text class="fp-label" x="660" y="68">Büro</text>
+                            <text class="fp-temp" x="660" y="82">23.1°C · 620 ppm</text>
+                            <!-- Lights -->
+                            <circle class="fp-light fp-on" cx="660" cy="130" r="5" filter="url(#glow-on)"/>
+                            <circle class="fp-light fp-on" cx="620" cy="180" r="4" filter="url(#glow-warm)"/>
+                            <circle class="fp-light fp-on" cx="700" cy="180" r="4" filter="url(#glow-warm)"/>
+                            <!-- Desk -->
+                            <rect x="590" y="200" width="140" height="40" rx="3" fill="var(--text-muted)" opacity="0.12" stroke="var(--border)" stroke-width="0.5"/>
+                            <text class="fp-temp" x="660" y="225" text-anchor="middle">Schreibtisch</text>
+                            <!-- Presence -->
+                            <circle cx="660" cy="260" r="6" fill="none" stroke="#2ecc71" stroke-width="1.5" opacity="0.8"/>
+                            <circle cx="660" cy="260" r="2" fill="#2ecc71" opacity="0.8"/>
+                            <text class="fp-temp" x="675" y="263">Anwesend</text>
                         </g>
 
                         <!-- Flur -->
                         <g class="room" data-modal="modal-room-flur">
                             <rect x="42" y="292" width="360" height="80"/>
-                            <text class="room-label" x="222" y="337" text-anchor="middle">Flur</text>
+                            <text class="fp-label" x="222" y="318">Flur</text>
+                            <text class="fp-temp" x="222" y="332">20.5°C</text>
+                            <!-- Lights dimmed -->
+                            <circle class="fp-light fp-on" cx="120" cy="340" r="4" filter="url(#glow-warm)" opacity="0.5"/>
+                            <circle class="fp-light fp-off" cx="222" cy="340" r="3"/>
+                            <circle class="fp-light fp-off" cx="320" cy="340" r="3"/>
+                            <!-- Door sensor -->
+                            <rect x="42" y="350" width="14" height="3" rx="1" fill="#2ecc71" opacity="0.7"/>
+                            <text class="fp-temp" x="62" y="356">🔒 Zu</text>
                         </g>
 
                         <!-- Bad -->
                         <g class="room" data-modal="modal-room-bad">
                             <rect x="402" y="292" width="160" height="166"/>
-                            <text class="room-label" x="482" y="380" text-anchor="middle">Bad</text>
+                            <text class="fp-label" x="482" y="318">Bad</text>
+                            <text class="fp-temp" x="482" y="332">24.2°C · 58%</text>
+                            <!-- Lights -->
+                            <circle class="fp-light fp-off" cx="460" cy="380" r="4"/>
+                            <circle class="fp-light fp-off" cx="510" cy="380" r="4"/>
+                            <!-- Fußbodenheizung -->
+                            <line x1="420" y1="430" x2="545" y2="430" stroke="#e74c3c" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,3"/>
+                            <text class="fp-temp" x="482" y="445" text-anchor="middle">FBH aus</text>
+                            <!-- Wassermelder -->
+                            <circle cx="420" cy="440" r="3" fill="#4a90d9" opacity="0.6"/>
                         </g>
 
                         <!-- Schlafzimmer -->
                         <g class="room" data-modal="modal-room-schlafzimmer">
                             <rect x="562" y="292" width="196" height="166"/>
-                            <text class="room-label" x="660" y="380" text-anchor="middle">Schlafzimmer</text>
+                            <text class="fp-label" x="660" y="318">Schlafzimmer</text>
+                            <text class="fp-temp" x="660" y="332">19.8°C · 480 ppm</text>
+                            <!-- Lights off -->
+                            <circle class="fp-light fp-off" cx="620" cy="380" r="4"/>
+                            <circle class="fp-light fp-off" cx="700" cy="380" r="4"/>
+                            <!-- Bed area -->
+                            <rect x="590" y="370" width="140" height="60" rx="4" fill="var(--text-muted)" opacity="0.08" stroke="var(--border)" stroke-width="0.5"/>
+                            <!-- Rollladen -->
+                            <rect x="756" y="294" width="4" height="50" fill="#4a90d9" opacity="0.8" rx="1"/>
+                            <text class="fp-temp" x="740" y="355">↕ 100%</text>
                         </g>
 
                         <!-- Gäste-WC -->
                         <g class="room" data-modal="modal-room-gaeste">
                             <rect x="42" y="372" width="150" height="86"/>
-                            <text class="room-label" x="117" y="420" text-anchor="middle">Gäste-WC</text>
+                            <text class="fp-label" x="117" y="398">Gäste-WC</text>
+                            <text class="fp-temp" x="117" y="412">21.0°C</text>
+                            <!-- Lights -->
+                            <circle class="fp-light fp-off" cx="117" cy="435" r="3"/>
                         </g>
 
                         <!-- HWR -->
                         <g class="room" data-modal="modal-room-hwr">
                             <rect x="192" y="372" width="210" height="86"/>
-                            <text class="room-label" x="297" y="420" text-anchor="middle">HWR / Technik</text>
+                            <text class="fp-label" x="297" y="398">HWR / Technik</text>
+                            <text class="fp-temp" x="297" y="412">18.5°C</text>
+                            <!-- Server indicator -->
+                            <circle cx="250" cy="435" r="3" fill="#2ecc71" opacity="0.8"/>
+                            <text class="fp-temp" x="260" y="438">HA Online</text>
+                            <!-- Energy -->
+                            <text class="fp-temp" x="330" y="438">⚡ 3.2 kW</text>
                         </g>
+
+                        <!-- Inner walls (drawn last to overlay) -->
+                        <line x1="362" y1="42" x2="362" y2="292" stroke="var(--border)" stroke-width="2"/>
+                        <line x1="562" y1="42" x2="562" y2="292" stroke="var(--border)" stroke-width="2"/>
+                        <line x1="42" y1="292" x2="402" y2="292" stroke="var(--border)" stroke-width="2"/>
+                        <line x1="402" y1="292" x2="402" y2="458" stroke="var(--border)" stroke-width="2"/>
+                        <line x1="562" y1="292" x2="562" y2="458" stroke="var(--border)" stroke-width="2"/>
+                        <line x1="42" y1="372" x2="402" y2="372" stroke="var(--border)" stroke-width="2"/>
+                        <line x1="192" y1="372" x2="192" y2="458" stroke="var(--border)" stroke-width="2"/>
+
+                        <!-- Doors (gaps in walls) -->
+                        <rect x="180" y="289" width="40" height="6" fill="var(--bg)"/>
+                        <rect x="440" y="289" width="40" height="6" fill="var(--bg)"/>
+                        <rect x="620" y="289" width="40" height="6" fill="var(--bg)"/>
+                        <rect x="90" y="369" width="30" height="6" fill="var(--bg)"/>
+                        <rect x="260" y="369" width="30" height="6" fill="var(--bg)"/>
                     </svg>
                 </div>
             </div>
