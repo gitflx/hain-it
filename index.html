@@ -41,6 +41,7 @@
             display: flex;
             position: fixed;
             inset: 0;
+            background: var(--bg);
         }
 
         .intro-panel {
@@ -203,7 +204,7 @@
 
         .intro-logo {
             position: absolute;
-            top: 28px;
+            top: calc(28px + env(safe-area-inset-top));
             left: 50%;
             transform: translateX(-50%);
             z-index: 20;
@@ -230,7 +231,7 @@
 
         .lang-toggle-splash {
             position: absolute;
-            top: 28px;
+            top: calc(28px + env(safe-area-inset-top));
             right: 28px;
             z-index: 20;
             background: rgba(255,255,255,0.06);
@@ -271,8 +272,8 @@
             .intro-tags { gap: 4px; margin-bottom: 16px; }
             .intro-tag { font-size: 0.62rem; padding: 3px 7px; }
             .intro-cta { font-size: 0.75rem; padding: 9px 18px; }
-            .intro-logo { font-size: 0.9rem; top: 12px; left: 20px; transform: none; }
-            .lang-toggle-splash { top: 12px; right: 20px; }
+            .intro-logo { font-size: 0.9rem; top: calc(8px + env(safe-area-inset-top)); left: 20px; transform: none; }
+            .lang-toggle-splash { top: calc(8px + env(safe-area-inset-top)); right: 20px; }
         }
     </style>
 </head>
