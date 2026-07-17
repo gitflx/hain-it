@@ -60,7 +60,25 @@
         }
 
         .panel-business {
-            background: linear-gradient(rgba(10,10,11,0.75), rgba(10,10,11,0.6)), url('images/splash-business.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.4)), url('images/splash-business.jpg') center/cover no-repeat;
+        }
+
+        .panel-business .intro-content {
+            color: #1a1a2e;
+        }
+
+        .panel-business .intro-title {
+            color: #1a1a2e;
+        }
+
+        .panel-business .intro-desc {
+            color: #4a4a5a;
+        }
+
+        .panel-business .intro-tag {
+            background: rgba(0,0,0,0.05);
+            border-color: rgba(0,0,0,0.15);
+            color: #4a4a5a;
         }
 
         .panel-home {
@@ -126,13 +144,14 @@
         }
 
         .panel-business .intro-cta {
-            color: var(--accent-business);
-            border-color: rgba(26,107,138,0.4);
+            color: #fff;
+            background: var(--accent-business);
+            border-color: var(--accent-business);
         }
         .panel-business:hover .intro-cta {
-            background: var(--accent-business);
+            background: #14536a;
+            border-color: #14536a;
             color: white;
-            border-color: var(--accent-business);
         }
 
         .panel-home .intro-cta {
