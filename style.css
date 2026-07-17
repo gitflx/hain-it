@@ -2076,6 +2076,14 @@ a.nav-group-label:hover {
     align-items: start;
 }
 
+.about-photo-img {
+    width: 200px;
+    height: 200px;
+    border-radius: var(--radius);
+    object-fit: cover;
+    border: 2px solid var(--border);
+}
+
 .about-photo-placeholder {
     width: 200px;
     height: 200px;
