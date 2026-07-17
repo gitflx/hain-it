@@ -1932,6 +1932,10 @@ section {
     display: block;
 }
 
+.house-light-img { display: none; }
+[data-theme="light"] .house-dark-img { display: none; }
+[data-theme="light"] .house-light-img { display: block; }
+
 .room-zone {
     position: absolute;
     cursor: pointer;
