@@ -101,13 +101,19 @@
             position: relative;
             z-index: 2;
             max-width: 380px;
+            background: rgba(10,10,11,0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 16px;
+            padding: 32px 28px;
+            border: 1px solid rgba(255,255,255,0.06);
         }
 
         .intro-label {
             text-transform: uppercase;
-            font-size: 0.7rem;
+            font-size: 0.85rem;
             letter-spacing: 4px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 20px;
             opacity: 0;
             transform: translateY(16px);
@@ -129,7 +135,7 @@
         .intro-desc {
             font-size: 0.88rem;
             line-height: 1.7;
-            color: var(--text-secondary);
+            color: rgba(240,240,242,0.85);
             margin-bottom: 24px;
             opacity: 0;
             transform: translateY(16px);
@@ -187,12 +193,12 @@
         }
 
         .intro-tag {
-            font-size: 0.68rem;
-            padding: 4px 9px;
-            border-radius: 3px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
+            font-size: 0.72rem;
+            padding: 5px 10px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(240,240,242,0.9);
         }
 
         .intro-logo {
@@ -260,7 +266,7 @@
             }
             .intro-title { font-size: 1.1rem; }
             .intro-desc { font-size: 0.8rem; margin-bottom: 16px; }
-            .intro-content { max-width: 280px; }
+            .intro-content { max-width: 280px; padding: 20px 18px; }
             .intro-panel { padding: 30px 20px; }
             .intro-tags { gap: 4px; margin-bottom: 16px; }
             .intro-tag { font-size: 0.62rem; padding: 3px 7px; }
