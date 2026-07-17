@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initContactForm();
     initHouseInteractive();
+    initNavGroups();
     if (document.getElementById('calc-users')) initCalculator();
 });
 
@@ -76,6 +77,20 @@ function injectHeader() {
             </button>
         </div>
     </nav>`;
+}
+
+function initNavGroups() {
+    const groups = document.querySelectorAll('.nav-group');
+    groups.forEach(group => {
+        group.addEventListener('mouseenter', () => {
+            groups.forEach(g => {
+                if (g !== group) g.classList.add('collapsed');
+            });
+        });
+        group.addEventListener('mouseleave', () => {
+            groups.forEach(g => g.classList.remove('collapsed'));
+        });
+    });
 }
 
 function getBasePrefix() {

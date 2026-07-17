@@ -265,6 +265,14 @@ nav .btn-primary:hover {
     padding-left: 4px;
 }
 
+.nav-group.collapsed .nav-group-items {
+    max-width: 0 !important;
+    opacity: 0 !important;
+    padding-left: 0 !important;
+    visibility: hidden;
+    transition: max-width 0.15s ease, opacity 0.1s ease, padding 0.1s ease, visibility 0s;
+}
+
 .nav-group-items a {
     padding: 5px 10px;
     border-radius: 4px;
