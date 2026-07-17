@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initContactForm();
     initHouseInteractive();
-    initNavGroups();
     if (document.getElementById('calc-users')) initCalculator();
 });
 
@@ -45,25 +44,18 @@ function injectHeader() {
 
     header.innerHTML = `
     <nav>
+        <div class="nav-side nav-left">
+            <a href="${base}business/" class="nav-section-label ${isBusiness ? 'active' : ''}"><span data-en>Business</span><span data-de>Unternehmen</span></a>
+            <a href="${base}digital/" ${isActive('digital')}><span data-en>Digital Solutions</span><span data-de>Digitale Lösungen</span></a>
+            <a href="${base}consulting/" ${isActive('consulting')}><span data-en>Consulting</span><span data-de>Beratung</span></a>
+            <a href="${base}development/" ${isActive('development')}><span data-en>Development</span><span data-de>Entwicklung</span></a>
+            <a href="${base}portfolio/" ${isActive('portfolio')}>Portfolio</a>
+        </div>
         <a href="${base}" class="logo">hain.it<span class="logo-blink">_</span></a>
-        <div class="nav-links">
-            <div class="nav-group ${isBusiness ? 'active' : ''}" data-section="business">
-                <a href="${base}business/" class="nav-group-label"><span data-en>Business</span><span data-de>Unternehmen</span></a>
-                <div class="nav-group-items">
-                    <a href="${base}digital/" ${isActive('digital')}><span data-en>Digital Solutions</span><span data-de>Digitale Lösungen</span></a>
-                    <a href="${base}consulting/" ${isActive('consulting')}><span data-en>Consulting</span><span data-de>Beratung</span></a>
-                    <a href="${base}development/" ${isActive('development')}><span data-en>Development</span><span data-de>Entwicklung</span></a>
-                    <a href="${base}portfolio/" ${isActive('portfolio')}>Portfolio</a>
-                </div>
-            </div>
-            <div class="nav-divider"></div>
-            <div class="nav-group ${isHome ? 'active' : ''}" data-section="home">
-                <a href="${base}smarthome/" class="nav-group-label"><span data-en>For Home</span><span data-de>Für Zuhause</span></a>
-                <div class="nav-group-items">
-                    <a href="${base}smarthome/" ${isActive('smarthome')}>Smart Home</a>
-                    <a href="${base}portfolio-home/" ${isActive('portfolio-home')}>Portfolio</a>
-                </div>
-            </div>
+        <div class="nav-side nav-right">
+            <a href="${base}smarthome/" class="nav-section-label ${isHome ? 'active' : ''}"><span data-en>For Home</span><span data-de>Für Zuhause</span></a>
+            <a href="${base}smarthome/" ${isActive('smarthome')}>Smart Home</a>
+            <a href="${base}portfolio-home/" ${isActive('portfolio-home')}>Portfolio</a>
         </div>
         <div class="nav-cta">
             <button class="lang-toggle" onclick="toggleLang()" aria-label="Switch language">${langLabel}</button>
@@ -79,19 +71,6 @@ function injectHeader() {
     </nav>`;
 }
 
-function initNavGroups() {
-    const groups = document.querySelectorAll('.nav-group');
-    groups.forEach(group => {
-        group.addEventListener('mouseenter', () => {
-            groups.forEach(g => {
-                if (g !== group) g.classList.add('collapsed');
-            });
-        });
-        group.addEventListener('mouseleave', () => {
-            groups.forEach(g => g.classList.remove('collapsed'));
-        });
-    });
-}
 
 function getBasePrefix() {
     const path = window.location.pathname.replace(/\/index\.html$/, '/');

@@ -53,6 +53,7 @@
             padding: 60px 40px;
             text-align: center;
             overflow: hidden;
+            min-width: 0;
             transition: flex 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             text-decoration: none;
             color: var(--text);
@@ -66,10 +67,10 @@
             background: linear-gradient(rgba(10,10,11,0.55), rgba(10,10,11,0.35)), url('images/splash-home.jpg') center/cover no-repeat;
         }
 
-        .intro-wrapper:has(.panel-business:hover) .panel-business { flex: 1.5; }
-        .intro-wrapper:has(.panel-business:hover) .panel-home { flex: 0.5; }
-        .intro-wrapper:has(.panel-home:hover) .panel-home { flex: 1.5; }
-        .intro-wrapper:has(.panel-home:hover) .panel-business { flex: 0.5; }
+        .intro-wrapper:has(.panel-business:hover) .panel-business { flex: 1.3; }
+        .intro-wrapper:has(.panel-business:hover) .panel-home { flex: 0.7; }
+        .intro-wrapper:has(.panel-home:hover) .panel-home { flex: 1.3; }
+        .intro-wrapper:has(.panel-home:hover) .panel-business { flex: 0.7; }
 
         .intro-divider {
             position: absolute;
@@ -260,13 +261,13 @@
         <a href="business/" class="intro-panel panel-business">
             <div class="intro-content">
                 <div class="intro-label"><span data-en>For Business</span><span data-de>Für Unternehmen</span></div>
-                <h2 class="intro-title"><span data-en>Digitize processes.<br>Deploy AI with purpose.</span><span data-de>Prozesse digitalisieren.<br>KI gezielt einsetzen.</span></h2>
-                <p class="intro-desc"><span data-en>From analysis to intelligent automation — pragmatic, measurable, and vendor-independent.</span><span data-de>Von der Analyse bis zur intelligenten Automatisierung — pragmatisch, messbar und herstellerunabhängig.</span></p>
+                <h2 class="intro-title"><span data-en>Digital solutions<br>for every business.</span><span data-de>Digitale Lösungen<br>für jedes Unternehmen.</span></h2>
+                <p class="intro-desc"><span data-en>From your first website to enterprise AI — we build what fits your business, whether you're a local practice or a growing company.</span><span data-de>Von der ersten Webseite bis zur Enterprise-KI — wir bauen, was zu Ihrem Unternehmen passt, ob Praxis nebenan oder wachsendes Unternehmen.</span></p>
                 <div class="intro-tags">
-                    <span class="intro-tag"><span data-en>AI & Automation</span><span data-de>KI & Automatisierung</span></span>
-                    <span class="intro-tag"><span data-en>Process Consulting</span><span data-de>Prozessberatung</span></span>
-                    <span class="intro-tag">Microsoft 365</span>
-                    <span class="intro-tag"><span data-en>Custom Development</span><span data-de>Individualentwicklung</span></span>
+                    <span class="intro-tag"><span data-en>Websites & AI Agents</span><span data-de>Webseiten & KI-Agenten</span></span>
+                    <span class="intro-tag"><span data-en>Consulting</span><span data-de>Beratung</span></span>
+                    <span class="intro-tag">Microsoft & Azure</span>
+                    <span class="intro-tag"><span data-en>Development</span><span data-de>Entwicklung</span></span>
                 </div>
                 <span class="intro-cta"><span data-en>Explore services</span><span data-de>Leistungen entdecken</span> <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </div>
