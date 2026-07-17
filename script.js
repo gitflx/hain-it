@@ -51,6 +51,7 @@ function injectHeader() {
                 <div class="nav-group-items">
                     <a href="${base}consulting/" ${isActive('consulting')}><span data-en>Consulting</span><span data-de>Beratung</span></a>
                     <a href="${base}development/" ${isActive('development')}><span data-en>Development</span><span data-de>Entwicklung</span></a>
+                    <a href="${base}portfolio/" ${isActive('portfolio')}>Portfolio</a>
                 </div>
             </div>
             <div class="nav-divider"></div>
@@ -58,13 +59,7 @@ function injectHeader() {
                 <a href="${base}smarthome/" class="nav-group-label"><span data-en>Private</span><span data-de>Privat</span></a>
                 <div class="nav-group-items">
                     <a href="${base}smarthome/" ${isActive('smarthome')}>Smart Home</a>
-                </div>
-            </div>
-            <div class="nav-group ${isPortfolio ? 'active' : ''}" data-section="portfolio">
-                <span class="nav-group-label">Portfolio</span>
-                <div class="nav-group-items">
-                    <a href="${base}portfolio/" ${isActive('portfolio')}>Business</a>
-                    <a href="${base}portfolio-home/" ${isActive('portfolio-home')}>Smart Home</a>
+                    <a href="${base}portfolio-home/" ${isActive('portfolio-home')}>Portfolio</a>
                 </div>
             </div>
         </div>
