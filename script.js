@@ -36,9 +36,8 @@ function injectHeader() {
     const base = getBasePrefix();
     const isActive = (folder) => path.includes('/' + folder + '/') ? 'aria-current="page"' : '';
 
-    const isBusiness = /\/(business|consulting|development|digital)\//.test(path);
-    const isHome = /\/smarthome\//.test(path);
-    const isPortfolio = /\/portfolio/.test(path);
+    const isBusiness = /\/(business|consulting|development|digital|portfolio)\//.test(path) && !/\/portfolio-home\//.test(path);
+    const isHome = /\/(smarthome|portfolio-home)\//.test(path);
 
     const lang = document.documentElement.lang || 'en';
     const langLabel = lang === 'de' ? 'EN' : 'DE';
