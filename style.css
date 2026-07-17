@@ -207,7 +207,9 @@ nav .btn-primary:hover {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 0;
+    flex: 1;
+    justify-content: center;
 }
 
 .nav-links a,
@@ -228,6 +230,16 @@ nav .btn-primary:hover {
     display: flex;
     align-items: center;
     position: relative;
+    flex: 1;
+    padding: 8px 0;
+}
+
+.nav-group[data-section="business"] {
+    justify-content: flex-end;
+}
+
+.nav-group[data-section="home"] {
+    justify-content: flex-start;
 }
 
 .nav-group-label {
@@ -303,11 +315,7 @@ nav .btn-primary:hover {
 }
 
 .nav-divider {
-    width: 1px;
-    height: 20px;
-    background: var(--border);
-    margin: 0 12px;
-    opacity: 0.6;
+    display: none;
 }
 
 .nav-cta {
@@ -2112,6 +2120,61 @@ section {
 @media (max-width: 768px) {
     .target-split {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ===== TARGET HERO SPLIT ===== */
+.target-hero-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 50vh;
+}
+
+.target-hero-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(40px, 6vw, 80px);
+    text-decoration: none;
+    color: var(--text);
+    position: relative;
+    transition: background 0.3s;
+}
+
+.target-hero-card:first-child {
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+}
+
+.target-hero-card:last-child {
+    background: var(--bg);
+}
+
+.target-hero-card:hover {
+    background: rgba(196, 93, 26, 0.03);
+}
+
+.target-hero-content {
+    max-width: 440px;
+}
+
+.target-hero-content .display-md {
+    margin-top: 12px;
+    margin-bottom: 16px;
+}
+
+.target-hero-content .body-lg {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .target-hero-split {
+        grid-template-columns: 1fr;
+    }
+    .target-hero-card:first-child {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
     }
 }
 

@@ -72,20 +72,6 @@
         .intro-wrapper:has(.panel-home:hover) .panel-home { flex: 1.3; }
         .intro-wrapper:has(.panel-home:hover) .panel-business { flex: 0.7; }
 
-        .intro-divider {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 1px;
-            height: 100%;
-            background: var(--border);
-            z-index: 10;
-            pointer-events: none;
-            transition: left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .intro-wrapper:has(.panel-business:hover) .intro-divider { left: 60%; }
-        .intro-wrapper:has(.panel-home:hover) .intro-divider { left: 40%; }
 
         .intro-content {
             position: relative;
@@ -233,13 +219,10 @@
 
         @media (max-width: 768px) {
             .intro-wrapper { flex-direction: column; }
-            .intro-divider { top: 50%; left: 0; width: 100%; height: 1px; }
             .intro-wrapper:has(.panel-business:hover) .panel-business,
             .intro-wrapper:has(.panel-home:hover) .panel-home { flex: 1.3; }
             .intro-wrapper:has(.panel-business:hover) .panel-home,
             .intro-wrapper:has(.panel-home:hover) .panel-business { flex: 0.7; }
-            .intro-wrapper:has(.panel-business:hover) .intro-divider,
-            .intro-wrapper:has(.panel-home:hover) .intro-divider { left: 0; }
             .intro-title { font-size: 1.1rem; }
             .intro-desc { font-size: 0.8rem; margin-bottom: 16px; }
             .intro-content { max-width: 280px; }
@@ -273,7 +256,6 @@
             </div>
         </a>
 
-        <div class="intro-divider"></div>
 
         <a href="smarthome/" class="intro-panel panel-home">
             <div class="intro-content">
