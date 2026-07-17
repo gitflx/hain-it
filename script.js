@@ -332,13 +332,115 @@ function initFallbackAnimations() {
 function initHouseInteractive() {
     const house = document.getElementById('house-interactive');
     if (!house) return;
-    const zones = house.querySelectorAll('.room-zone');
+    const overlay = document.getElementById('room-popup-overlay');
+    if (!overlay) return;
+    const popup = document.getElementById('room-popup');
+    const titleEl = popup.querySelector('.room-popup-title');
+    const devicesEl = popup.querySelector('.room-popup-devices');
 
-    zones.forEach(zone => {
+    const lang = () => document.documentElement.lang || 'en';
+
+    const rooms = {
+        'living-room': {
+            name: { en: 'Living Room', de: 'Wohnzimmer' },
+            devices: [
+                { icon: '💡', name: { en: 'Ceiling Light', de: 'Deckenleuchte' }, value: 'On — 80%', cls: 'on' },
+                { icon: '💡', name: { en: 'Floor Lamp', de: 'Stehlampe' }, value: 'On — 40%', cls: 'on' },
+                { icon: '💡', name: { en: 'LED Strip', de: 'LED-Streifen' }, value: 'On — Warm', cls: 'warm' },
+                { icon: '🌡️', name: { en: 'Temperature', de: 'Temperatur' }, value: '22.4°C', cls: '' },
+                { icon: '📺', name: { en: 'TV / Apple TV', de: 'TV / Apple TV' }, value: 'Standby', cls: '' },
+                { icon: '🔊', name: { en: 'Sonos Speaker', de: 'Sonos Lautsprecher' }, value: 'Playing', cls: 'on' },
+            ]
+        },
+        'kitchen': {
+            name: { en: 'Kitchen', de: 'Küche' },
+            devices: [
+                { icon: '💡', name: { en: 'Spots', de: 'Spots' }, value: 'On — 100%', cls: 'on' },
+                { icon: '💡', name: { en: 'Under-Cabinet', de: 'Unterbauleuchte' }, value: 'On — Warm', cls: 'warm' },
+                { icon: '🌡️', name: { en: 'Temperature', de: 'Temperatur' }, value: '21.8°C', cls: '' },
+                { icon: '🍳', name: { en: 'Oven', de: 'Backofen' }, value: 'Off', cls: '' },
+                { icon: '🫧', name: { en: 'Dishwasher', de: 'Spülmaschine' }, value: 'Running — 42 min', cls: 'on' },
+                { icon: '🪟', name: { en: 'Window Sensor', de: 'Fenstersensor' }, value: 'Closed', cls: '' },
+            ]
+        },
+        'bedroom': {
+            name: { en: 'Bedroom', de: 'Schlafzimmer' },
+            devices: [
+                { icon: '💡', name: { en: 'Ceiling Light', de: 'Deckenleuchte' }, value: 'Off', cls: '' },
+                { icon: '💡', name: { en: 'Bedside Lamps', de: 'Nachttischlampen' }, value: 'On — 15%', cls: 'warm' },
+                { icon: '🌡️', name: { en: 'Temperature', de: 'Temperatur' }, value: '20.5°C', cls: '' },
+                { icon: '🌀', name: { en: 'Fan', de: 'Ventilator' }, value: 'Off', cls: '' },
+                { icon: '🪟', name: { en: 'Blinds', de: 'Rollläden' }, value: 'Closed', cls: '' },
+                { icon: '⏰', name: { en: 'Wake-up Light', de: 'Lichtwecker' }, value: '06:30', cls: '' },
+            ]
+        },
+        'kids-room': {
+            name: { en: 'Kids Room', de: 'Kinderzimmer' },
+            devices: [
+                { icon: '💡', name: { en: 'Ceiling Light', de: 'Deckenleuchte' }, value: 'On — 70%', cls: 'on' },
+                { icon: '🌙', name: { en: 'Night Light', de: 'Nachtlicht' }, value: 'Off', cls: '' },
+                { icon: '🌡️', name: { en: 'Temperature', de: 'Temperatur' }, value: '21.5°C', cls: '' },
+                { icon: '👶', name: { en: 'Baby Monitor', de: 'Babyphone' }, value: 'Active', cls: 'on' },
+                { icon: '🪟', name: { en: 'Blinds', de: 'Rollläden' }, value: 'Open', cls: '' },
+                { icon: '🔇', name: { en: 'Noise Level', de: 'Lautstärke' }, value: '32 dB', cls: '' },
+            ]
+        },
+        'bathroom': {
+            name: { en: 'Bathroom', de: 'Bad' },
+            devices: [
+                { icon: '💡', name: { en: 'Mirror Light', de: 'Spiegellicht' }, value: 'On — 100%', cls: 'on' },
+                { icon: '🌡️', name: { en: 'Temperature', de: 'Temperatur' }, value: '23.5°C', cls: '' },
+                { icon: '🔥', name: { en: 'Floor Heating', de: 'Fußbodenheizung' }, value: 'On — 25°C', cls: 'warm' },
+                { icon: '🌀', name: { en: 'Exhaust Fan', de: 'Abluftventilator' }, value: 'Auto', cls: '' },
+                { icon: '💧', name: { en: 'Humidity', de: 'Luftfeuchtigkeit' }, value: '58%', cls: '' },
+                { icon: '🚿', name: { en: 'Towel Heater', de: 'Handtuchheizung' }, value: 'On', cls: 'warm' },
+            ]
+        },
+        'basement': {
+            name: { en: 'Utility Room', de: 'Technikraum' },
+            devices: [
+                { icon: '💡', name: { en: 'Light', de: 'Licht' }, value: 'Off', cls: '' },
+                { icon: '🖥️', name: { en: 'HA Server', de: 'HA Server' }, value: 'Online — 4d uptime', cls: 'on' },
+                { icon: '🌡️', name: { en: 'Temperature', de: 'Temperatur' }, value: '19.8°C', cls: '' },
+                { icon: '👕', name: { en: 'Washer', de: 'Waschmaschine' }, value: 'Idle', cls: '' },
+                { icon: '⚡', name: { en: 'Energy Today', de: 'Energie heute' }, value: '12.4 kWh', cls: '' },
+                { icon: '☀️', name: { en: 'Solar', de: 'Solar' }, value: '3.2 kW generating', cls: 'on' },
+            ]
+        }
+    };
+
+    house.querySelectorAll('.room-zone').forEach(zone => {
         zone.addEventListener('click', () => {
-            zone.classList.toggle('off');
+            const room = rooms[zone.dataset.room];
+            if (!room) return;
+            const l = lang();
+            titleEl.textContent = room.name[l] || room.name.en;
+            devicesEl.innerHTML = room.devices.map(d => `
+                <div class="room-device">
+                    <div class="room-device-header">
+                        <span class="room-device-name">${d.name[l] || d.name.en}</span>
+                        <span class="room-device-icon">${d.icon}</span>
+                    </div>
+                    <span class="room-device-value ${d.cls}">${d.value}</span>
+                </div>
+            `).join('');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         });
     });
+
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeRoomPopup();
+    });
+    popup.querySelector('.room-popup-close').addEventListener('click', closeRoomPopup);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) closeRoomPopup();
+    });
+
+    function closeRoomPopup() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 }
 
 function initContactForm() {

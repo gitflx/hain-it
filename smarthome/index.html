@@ -29,30 +29,27 @@
             <div class="container">
                 <div class="house-interactive" id="house-interactive">
                     <img src="../images/house-lit.jpg" alt="Smart Home 3D Visualization" class="house-base-image" loading="eager">
-                    <div class="room-zone" data-room="living-room" style="top: 48%; left: 3%; width: 38%; height: 30%;">
-                        <div class="room-tooltip"><span data-en>Living Room</span><span data-de>Wohnzimmer</span><br><small>22.4°C — 3 Lights</small></div>
-                    </div>
-                    <div class="room-zone" data-room="kitchen" style="top: 48%; left: 44%; width: 36%; height: 30%;">
-                        <div class="room-tooltip"><span data-en>Kitchen</span><span data-de>Küche</span><br><small>21.8°C — 2 Lights</small></div>
-                    </div>
-                    <div class="room-zone" data-room="bedroom" style="top: 8%; left: 3%; width: 32%; height: 32%;">
-                        <div class="room-tooltip"><span data-en>Bedroom</span><span data-de>Schlafzimmer</span><br><small>20.5°C — 2 Lights</small></div>
-                    </div>
-                    <div class="room-zone" data-room="kids-room" style="top: 8%; left: 36%; width: 28%; height: 32%;">
-                        <div class="room-tooltip"><span data-en>Kids Room</span><span data-de>Kinderzimmer</span><br><small>21.5°C — 1 Light</small></div>
-                    </div>
-                    <div class="room-zone" data-room="bathroom" style="top: 8%; left: 65%; width: 22%; height: 32%;">
-                        <div class="room-tooltip"><span data-en>Bathroom</span><span data-de>Bad</span><br><small>23.5°C — 1 Light</small></div>
-                    </div>
-                    <div class="room-zone" data-room="basement" style="top: 82%; left: 8%; width: 55%; height: 16%;">
-                        <div class="room-tooltip"><span data-en>Utility Room</span><span data-de>Technikraum</span><br><small>19.8°C — HA Server</small></div>
-                    </div>
+                    <div class="room-zone" data-room="living-room" style="top: 48%; left: 3%; width: 38%; height: 30%;"></div>
+                    <div class="room-zone" data-room="kitchen" style="top: 48%; left: 44%; width: 36%; height: 30%;"></div>
+                    <div class="room-zone" data-room="bedroom" style="top: 8%; left: 3%; width: 32%; height: 32%;"></div>
+                    <div class="room-zone" data-room="kids-room" style="top: 8%; left: 36%; width: 28%; height: 32%;"></div>
+                    <div class="room-zone" data-room="bathroom" style="top: 8%; left: 65%; width: 22%; height: 32%;"></div>
+                    <div class="room-zone" data-room="basement" style="top: 82%; left: 8%; width: 55%; height: 16%;"></div>
                 </div>
                 <p class="house-hint" style="text-align: center; margin-top: 16px; color: var(--text-secondary); font-size: 0.85rem;">
-                    <span data-en>Click on a room to turn off the lights</span><span data-de>Klicke auf einen Raum, um das Licht auszuschalten</span>
+                    <span data-en>Click on a room to see its smart home devices</span><span data-de>Klicke auf einen Raum, um seine Smart-Home-Geräte zu sehen</span>
                 </p>
             </div>
         </section>
+
+        <!-- ROOM POPUPS -->
+        <div class="room-popup-overlay" id="room-popup-overlay">
+            <div class="room-popup" id="room-popup">
+                <button class="room-popup-close">&times;</button>
+                <h3 class="room-popup-title"></h3>
+                <div class="room-popup-devices"></div>
+            </div>
+        </div>
 
         <!-- BENEFITS (from home.html) -->
         <section id="benefits">
