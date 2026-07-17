@@ -2068,6 +2068,63 @@ a.nav-group-label:hover {
 }
 
 
+/* ===== TARGET SPLIT ===== */
+.target-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.target-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.target-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.target-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+}
+
+.target-card h3 {
+    font-size: 1.25rem;
+    line-height: 1.3;
+}
+
+.target-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    flex: 1;
+}
+
+.target-cta {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+    .target-split {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* ===== ABOUT PAGE ===== */
 .about-profile {
     display: grid;

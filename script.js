@@ -35,7 +35,7 @@ function injectHeader() {
     const base = getBasePrefix();
     const isActive = (folder) => path.includes('/' + folder + '/') ? 'aria-current="page"' : '';
 
-    const isBusiness = /\/(business|consulting|development)\//.test(path);
+    const isBusiness = /\/(business|consulting|development|digital)\//.test(path);
     const isHome = /\/smarthome\//.test(path);
     const isPortfolio = /\/portfolio/.test(path);
 
@@ -49,6 +49,7 @@ function injectHeader() {
             <div class="nav-group ${isBusiness ? 'active' : ''}" data-section="business">
                 <a href="${base}business/" class="nav-group-label"><span data-en>Business</span><span data-de>Unternehmen</span></a>
                 <div class="nav-group-items">
+                    <a href="${base}digital/" ${isActive('digital')}><span data-en>Digital Solutions</span><span data-de>Digitale Lösungen</span></a>
                     <a href="${base}consulting/" ${isActive('consulting')}><span data-en>Consulting</span><span data-de>Beratung</span></a>
                     <a href="${base}development/" ${isActive('development')}><span data-en>Development</span><span data-de>Entwicklung</span></a>
                     <a href="${base}portfolio/" ${isActive('portfolio')}>Portfolio</a>
