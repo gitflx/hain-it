@@ -277,7 +277,7 @@ nav .btn-primary:hover {
 .nav-group.active .nav-group-items {
     max-width: 400px;
     opacity: 1;
-    padding-left: 4px;
+    padding-left: 12px;
 }
 
 .nav-group.collapsed .nav-group-items {

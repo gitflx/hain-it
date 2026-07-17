@@ -48,7 +48,7 @@ function injectHeader() {
         <a href="${base}" class="logo">hain.it<span class="logo-blink">_</span></a>
         <div class="nav-links">
             <div class="nav-group ${isBusiness ? 'active' : ''}" data-section="business">
-                <a href="${base}business/" class="nav-group-label"><span data-en>Business</span><span data-de>Unternehmen</span></a>
+                <a href="${base}business/" class="nav-group-label"><span data-en>For Business</span><span data-de>Für Unternehmen</span></a>
                 <div class="nav-group-items">
                     <a href="${base}digital/" ${isActive('digital')}><span data-en>Digital Solutions</span><span data-de>Digitale Lösungen</span></a>
                     <a href="${base}consulting/" ${isActive('consulting')}><span data-en>Consulting</span><span data-de>Beratung</span></a>
