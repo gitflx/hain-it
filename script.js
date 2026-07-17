@@ -56,7 +56,7 @@ function injectHeader() {
             </div>
             <div class="nav-divider"></div>
             <div class="nav-group ${isHome ? 'active' : ''}" data-section="home">
-                <a href="${base}smarthome/" class="nav-group-label"><span data-en>Private</span><span data-de>Privat</span></a>
+                <a href="${base}smarthome/" class="nav-group-label"><span data-en>For Home</span><span data-de>Für Zuhause</span></a>
                 <div class="nav-group-items">
                     <a href="${base}smarthome/" ${isActive('smarthome')}>Smart Home</a>
                     <a href="${base}portfolio-home/" ${isActive('portfolio-home')}>Portfolio</a>
