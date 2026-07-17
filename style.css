@@ -1818,7 +1818,7 @@ section {
 }
 
 @media (max-width: 768px) {
-    .nav-links { display: none; }
+    .nav-links { display: none; margin-left: 0; }
     .nav-links.active {
         display: flex;
         flex-direction: column;
@@ -1831,6 +1831,7 @@ section {
         padding: 24px 32px;
         gap: 0;
         z-index: 100;
+        margin-left: 0;
     }
     .nav-links.active .nav-group {
         flex-direction: column;
