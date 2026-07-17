@@ -34,15 +34,13 @@
             background: var(--bg);
             color: var(--text);
             overflow: hidden;
-            height: 100vh;
-            height: 100dvh;
+            margin: 0;
         }
 
         .intro-wrapper {
             display: flex;
-            height: 100vh;
-            height: 100dvh;
-            position: relative;
+            position: fixed;
+            inset: 0;
         }
 
         .intro-panel {
@@ -273,8 +271,8 @@
             .intro-tags { gap: 4px; margin-bottom: 16px; }
             .intro-tag { font-size: 0.62rem; padding: 3px 7px; }
             .intro-cta { font-size: 0.75rem; padding: 9px 18px; }
-            .intro-logo { font-size: 1rem; top: 18px; }
-            .lang-toggle-splash { top: 18px; right: 18px; }
+            .intro-logo { font-size: 0.9rem; top: 12px; left: 20px; transform: none; }
+            .lang-toggle-splash { top: 12px; right: 20px; }
         }
     </style>
 </head>
