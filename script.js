@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeaderScroll();
     initScrollAnimations();
     initContactForm();
+    initHouseInteractive();
     if (document.getElementById('calc-users')) initCalculator();
 });
 
@@ -30,37 +31,42 @@ function toggleLang() {
 function injectHeader() {
     const header = document.getElementById('site-header');
     if (!header) return;
-    const page = window.location.pathname.split('/').pop() || 'index.html';
-    const isActive = (href) => page === href ? 'aria-current="page"' : '';
+    const path = window.location.pathname;
+    const base = getBasePrefix();
+    const isActive = (folder) => path.includes('/' + folder + '/') ? 'aria-current="page"' : '';
 
-    const businessPages = ['business.html','consulting.html','microsoft.html','development.html'];
-    const homePages = ['home.html','smarthome.html'];
-    const isBusiness = businessPages.includes(page);
-    const isHome = homePages.includes(page);
+    const isBusiness = /\/(business|consulting|development)\//.test(path);
+    const isHome = /\/smarthome\//.test(path);
+    const isPortfolio = /\/portfolio/.test(path);
 
     const lang = document.documentElement.lang || 'en';
     const langLabel = lang === 'de' ? 'EN' : 'DE';
 
     header.innerHTML = `
     <nav>
-        <a href="index.html" class="logo">hain.it<span class="logo-blink">_</span></a>
+        <a href="${base}" class="logo">hain.it<span class="logo-blink">_</span></a>
         <div class="nav-links">
             <div class="nav-group ${isBusiness ? 'active' : ''}" data-section="business">
-                <span class="nav-group-label"><span data-en>Business</span><span data-de>Unternehmen</span></span>
+                <a href="${base}business/" class="nav-group-label"><span data-en>Business</span><span data-de>Unternehmen</span></a>
                 <div class="nav-group-items">
-                    <a href="consulting.html" ${isActive('consulting.html')}><span data-en>Consulting</span><span data-de>Beratung</span></a>
-                    <a href="microsoft.html" ${isActive('microsoft.html')}>Microsoft</a>
-                    <a href="development.html" ${isActive('development.html')}><span data-en>Development</span><span data-de>Entwicklung</span></a>
+                    <a href="${base}consulting/" ${isActive('consulting')}><span data-en>Consulting</span><span data-de>Beratung</span></a>
+                    <a href="${base}development/" ${isActive('development')}><span data-en>Development</span><span data-de>Entwicklung</span></a>
                 </div>
             </div>
             <div class="nav-divider"></div>
             <div class="nav-group ${isHome ? 'active' : ''}" data-section="home">
-                <span class="nav-group-label"><span data-en>Private</span><span data-de>Privat</span></span>
+                <a href="${base}smarthome/" class="nav-group-label"><span data-en>Private</span><span data-de>Privat</span></a>
                 <div class="nav-group-items">
-                    <a href="home.html" ${isActive('home.html')}>Smart Home</a>
+                    <a href="${base}smarthome/" ${isActive('smarthome')}>Smart Home</a>
                 </div>
             </div>
-            <a href="portfolio.html" ${isActive('portfolio.html')} class="nav-standalone">Portfolio</a>
+            <div class="nav-group ${isPortfolio ? 'active' : ''}" data-section="portfolio">
+                <span class="nav-group-label">Portfolio</span>
+                <div class="nav-group-items">
+                    <a href="${base}portfolio/" ${isActive('portfolio')}>Business</a>
+                    <a href="${base}portfolio-home/" ${isActive('portfolio-home')}>Smart Home</a>
+                </div>
+            </div>
         </div>
         <div class="nav-cta">
             <button class="lang-toggle" onclick="toggleLang()" aria-label="Switch language">${langLabel}</button>
@@ -68,7 +74,7 @@ function injectHeader() {
                 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
                 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
             </button>
-            <a href="contact.html" class="btn btn-primary btn-sm"><span data-en>Get in touch</span><span data-de>Kontakt</span></a>
+            <a href="${base}contact/" class="btn btn-primary btn-sm"><span data-en>Get in touch</span><span data-de>Kontakt</span></a>
             <button class="mobile-toggle" aria-label="Menu">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
             </button>
@@ -76,38 +82,46 @@ function injectHeader() {
     </nav>`;
 }
 
+function getBasePrefix() {
+    const path = window.location.pathname.replace(/\/index\.html$/, '/');
+    const segments = path.split('/').filter(Boolean);
+    if (segments.length === 0) return '';
+    return '../';
+}
+
 function injectFooter() {
     const footer = document.getElementById('site-footer');
     if (!footer) return;
+    const base = getBasePrefix();
     footer.innerHTML = `
     <div class="footer-grid">
         <div class="footer-brand">
-            <a href="index.html" class="logo">hain.it<span class="logo-blink">_</span></a>
+            <a href="${base}" class="logo">hain.it<span class="logo-blink">_</span></a>
             <p><span data-en>Digitalization, automation & smart living.</span><span data-de>Digitalisierung, Automatisierung & Smart Living.</span></p>
         </div>
         <div class="footer-col">
             <h4><span data-en>Services</span><span data-de>Leistungen</span></h4>
-            <a href="consulting.html"><span data-en>Process Consulting</span><span data-de>Prozessberatung</span></a>
-            <a href="home.html">Smart Home</a>
-            <a href="development.html"><span data-en>Development</span><span data-de>Entwicklung</span></a>
-            <a href="microsoft.html">Microsoft</a>
+            <a href="${base}consulting/"><span data-en>Process Consulting</span><span data-de>Prozessberatung</span></a>
+            <a href="${base}smarthome/">Smart Home</a>
+            <a href="${base}development/"><span data-en>Development</span><span data-de>Entwicklung</span></a>
         </div>
         <div class="footer-col">
             <h4>Portfolio</h4>
-            <a href="portfolio.html"><span data-en>Technologies</span><span data-de>Technologien</span></a>
+            <a href="${base}portfolio/">Business</a>
+            <a href="${base}portfolio-home/">Smart Home</a>
         </div>
         <div class="footer-col">
             <h4><span data-en>Contact</span><span data-de>Kontakt</span></h4>
             <a href="mailto:info@hain.it">info@hain.it</a>
-            <a href="contact.html"><span data-en>Contact form</span><span data-de>Kontaktformular</span></a>
+            <a href="${base}contact/"><span data-en>Contact form</span><span data-de>Kontaktformular</span></a>
         </div>
     </div>
     <div class="footer-bottom">
         <span>&copy; ${new Date().getFullYear()} hain.it_ &mdash; Felix Hain</span>
         &nbsp;&middot;&nbsp;
-        <a href="impressum.html"><span data-en>Imprint</span><span data-de>Impressum</span></a>
+        <a href="${base}imprint/"><span data-en>Imprint</span><span data-de>Impressum</span></a>
         &nbsp;&middot;&nbsp;
-        <a href="datenschutz.html"><span data-en>Privacy</span><span data-de>Datenschutz</span></a>
+        <a href="${base}privacy/"><span data-en>Privacy</span><span data-de>Datenschutz</span></a>
     </div>`;
 }
 
@@ -317,6 +331,24 @@ function initFallbackAnimations() {
         el.style.transitionDuration = '0.7s';
         el.style.transitionTimingFunction = 'cubic-bezier(0.4, 0, 0.2, 1)';
         observer.observe(el);
+    });
+}
+
+function initHouseInteractive() {
+    const house = document.getElementById('house-interactive');
+    if (!house) return;
+    const zones = house.querySelectorAll('.room-zone');
+    let litCount = 0;
+
+    zones.forEach(zone => {
+        zone.addEventListener('click', () => {
+            zone.classList.toggle('lit');
+            litCount = house.querySelectorAll('.room-zone.lit').length;
+            document.body.classList.remove('house-warm', 'house-warmer', 'house-warmest');
+            if (litCount >= 5) document.body.classList.add('house-warmest');
+            else if (litCount >= 3) document.body.classList.add('house-warmer');
+            else if (litCount >= 1) document.body.classList.add('house-warm');
+        });
     });
 }
 

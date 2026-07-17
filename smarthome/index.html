@@ -4,26 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Home | hain.it_</title>
-    <meta name="description" content="Professional smart home planning and implementation with Home Assistant — reliable, secure, and vendor-independent.">
+    <meta name="description" content="Professional smart home planning and installation based on open standards. Home Assistant, KNX, Zigbee and more — local, secure, vendor-independent.">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <header id="site-header"></header>
 
     <main>
-        <section class="page-hero">
-            <div class="container">
-                <nav class="breadcrumb"><a href="index.html">Home</a> <span>/</span> Smart Home</nav>
-                <h1 class="display-lg">Smart Home</h1>
-                <p class="body-lg"><span data-en>We plan and build professional smart home systems based on Home Assistant — the leading open-source platform for building automation. Local, secure, vendor-independent.</span><span data-de>Wir planen und realisieren professionelle Smart-Home-Systeme auf Basis von Home Assistant — der führenden Open-Source-Plattform für Gebäudeautomation. Lokal, sicher, herstellerunabhängig.</span></p>
+        <!-- PAGE HERO (from home.html) -->
+        <section class="page-hero" style="padding-bottom: 0;">
+            <div class="container" style="text-align: center;">
+                <nav class="breadcrumb"><a href="../">Home</a> <span>/</span> Smart Home</nav>
+                <h1 class="display-lg"><span data-en>Your Home.</span><span data-de>Dein Zuhause.</span><br><span class="accent"><span data-en>Made intelligent.</span><span data-de>Intelligent gemacht.</span></span></h1>
+                <p class="body-lg" style="max-width: 600px; margin: 0 auto;"><span data-en>Professional building automation that adapts to you — not to a manufacturer. Locally controlled, expandable at any time.</span><span data-de>Professionelle Gebäudeautomation, die sich dir anpasst — nicht einem Hersteller. Lokal gesteuert, jederzeit erweiterbar.</span></p>
             </div>
         </section>
 
-        <!-- Capabilities -->
+        <!-- INTERACTIVE 3D HOUSE -->
+        <section class="house-interactive-section">
+            <div class="container">
+                <div class="house-interactive" id="house-interactive">
+                    <img src="../images/house-dark.jpg" alt="Smart Home 3D Visualization" class="house-base-image" loading="eager">
+                    <div class="room-zone" data-room="living-room" style="top: 52%; left: 8%; width: 35%; height: 28%;">
+                        <div class="room-tooltip"><span data-en>Living Room</span><span data-de>Wohnzimmer</span><br><small>22.4°C — 3 Lights</small></div>
+                    </div>
+                    <div class="room-zone" data-room="kitchen" style="top: 52%; left: 48%; width: 30%; height: 28%;">
+                        <div class="room-tooltip"><span data-en>Kitchen</span><span data-de>Küche</span><br><small>21.8°C — 2 Lights</small></div>
+                    </div>
+                    <div class="room-zone" data-room="bedroom" style="top: 10%; left: 5%; width: 30%; height: 30%;">
+                        <div class="room-tooltip"><span data-en>Bedroom</span><span data-de>Schlafzimmer</span><br><small>20.5°C — 2 Lights</small></div>
+                    </div>
+                    <div class="room-zone" data-room="kids-room" style="top: 10%; left: 38%; width: 25%; height: 30%;">
+                        <div class="room-tooltip"><span data-en>Kids Room</span><span data-de>Kinderzimmer</span><br><small>21.5°C — 1 Light</small></div>
+                    </div>
+                    <div class="room-zone" data-room="bathroom" style="top: 10%; left: 66%; width: 20%; height: 30%;">
+                        <div class="room-tooltip"><span data-en>Bathroom</span><span data-de>Bad</span><br><small>23.5°C — 1 Light</small></div>
+                    </div>
+                    <div class="room-zone" data-room="basement" style="top: 82%; left: 10%; width: 50%; height: 15%;">
+                        <div class="room-tooltip"><span data-en>Utility Room</span><span data-de>Technikraum</span><br><small>19.8°C — HA Server</small></div>
+                    </div>
+                </div>
+                <p class="house-hint" style="text-align: center; margin-top: 16px; color: var(--text-secondary); font-size: 0.85rem;">
+                    <span data-en>Click on a room to turn on the lights</span><span data-de>Klicke auf einen Raum, um das Licht einzuschalten</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- BENEFITS (from home.html) -->
+        <section id="benefits">
+            <div class="container">
+                <div class="section-header centered reveal">
+                    <span class="label"><span data-en>Why Smart Home?</span><span data-de>Warum Smart Home?</span></span>
+                    <h2 class="display-md"><span data-en>More comfort. More security. Lower energy costs.</span><span data-de>Mehr Komfort. Mehr Sicherheit. Weniger Energiekosten.</span></h2>
+                </div>
+                <div class="benefits-grid reveal">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">☀️</div>
+                        <h3><span data-en>Comfort</span><span data-de>Komfort</span></h3>
+                        <p><span data-en>Lighting, heating and shading adapt automatically to your daily routine. Scenes for every moment — by voice command or automation.</span><span data-de>Beleuchtung, Heizung und Beschattung passen sich automatisch deinem Alltag an. Szenen für jeden Moment — per Sprachbefehl oder Automatisierung.</span></p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🔒</div>
+                        <h3><span data-en>Security</span><span data-de>Sicherheit</span></h3>
+                        <p><span data-en>Motion sensors, cameras and alarms — intelligently connected. Notifications on your phone, occupancy simulation when you're away.</span><span data-de>Bewegungsmelder, Kameras und Alarme — intelligent vernetzt. Benachrichtigungen aufs Handy, Anwesenheitssimulation bei Abwesenheit.</span></p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🌱</div>
+                        <h3><span data-en>Energy savings</span><span data-de>Energiesparen</span></h3>
+                        <p><span data-en>Intelligent heating control, energy monitoring and automatic shutdown of unused devices. Typical savings of 15–25%.</span><span data-de>Intelligente Heizungssteuerung, Energiemonitoring und automatisches Abschalten ungenutzter Geräte. Typische Einsparung von 15–25 %.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES / CAPABILITIES (from smarthome.html) -->
         <section class="section-dark">
             <div class="container">
                 <div class="section-header reveal">
@@ -56,7 +114,7 @@
             </div>
         </section>
 
-        <!-- Why Home Assistant -->
+        <!-- WHY HOME ASSISTANT (from smarthome.html) -->
         <section>
             <div class="container">
                 <div class="feature-showcase">
@@ -90,7 +148,7 @@
             </div>
         </section>
 
-        <!-- Supported brands -->
+        <!-- SUPPORTED BRANDS (from smarthome.html) -->
         <section class="section-dark">
             <div class="container">
                 <div class="section-header centered reveal">
@@ -123,156 +181,7 @@
             </div>
         </section>
 
-        <!-- Floorplan -->
-        <section>
-            <div class="container">
-                <div class="section-header centered reveal">
-                    <span class="label"><span data-en>Example</span><span data-de>Beispiel</span></span>
-                    <h2 class="display-sm"><span data-en>Interactive Floor Plan</span><span data-de>Interaktiver Grundriss</span></h2>
-                    <p><span data-en>Click on a room to see its smart home features.</span><span data-de>Klicken Sie auf einen Raum, um die Smart-Home-Funktionen zu sehen.</span></p>
-                </div>
-                <div class="floorplan-wrapper reveal-scale">
-                    <svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <filter id="fp-glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-                        </defs>
-
-                        <!-- Outer walls -->
-                        <rect x="30" y="30" width="740" height="500" fill="none" stroke="var(--text)" stroke-width="8" rx="2" opacity="0.9"/>
-
-                        <!-- Room fills (clickable) -->
-                        <g class="fp-room-group" data-modal="modal-room-wohnzimmer">
-                            <rect x="34" y="34" width="336" height="246" class="fp-room-fill"/>
-                        </g>
-                        <g class="fp-room-group" data-modal="modal-room-kueche">
-                            <rect x="374" y="34" width="196" height="246" class="fp-room-fill"/>
-                        </g>
-                        <g class="fp-room-group" data-modal="modal-room-buero">
-                            <rect x="574" y="34" width="192" height="246" class="fp-room-fill"/>
-                        </g>
-                        <g class="fp-room-group" data-modal="modal-room-flur">
-                            <rect x="34" y="284" width="460" height="76" class="fp-room-fill"/>
-                        </g>
-                        <g class="fp-room-group" data-modal="modal-room-bad">
-                            <rect x="498" y="284" width="142" height="242" class="fp-room-fill"/>
-                        </g>
-                        <g class="fp-room-group" data-modal="modal-room-schlafzimmer">
-                            <rect x="644" y="284" width="122" height="242" class="fp-room-fill"/>
-                        </g>
-                        <g class="fp-room-group" data-modal="modal-room-gaeste">
-                            <rect x="34" y="364" width="160" height="162" class="fp-room-fill"/>
-                        </g>
-                        <g class="fp-room-group" data-modal="modal-room-hwr">
-                            <rect x="198" y="364" width="296" height="162" class="fp-room-fill"/>
-                        </g>
-
-                        <!-- Interior walls -->
-                        <line x1="370" y1="34" x2="370" y2="280" stroke="var(--text)" stroke-width="5" opacity="0.85"/>
-                        <line x1="570" y1="34" x2="570" y2="280" stroke="var(--text)" stroke-width="5" opacity="0.85"/>
-                        <line x1="34" y1="280" x2="766" y2="280" stroke="var(--text)" stroke-width="5" opacity="0.85"/>
-                        <line x1="34" y1="360" x2="494" y2="360" stroke="var(--text)" stroke-width="5" opacity="0.85"/>
-                        <line x1="494" y1="280" x2="494" y2="526" stroke="var(--text)" stroke-width="5" opacity="0.85"/>
-                        <line x1="640" y1="280" x2="640" y2="526" stroke="var(--text)" stroke-width="5" opacity="0.85"/>
-                        <line x1="194" y1="360" x2="194" y2="526" stroke="var(--text)" stroke-width="4" opacity="0.8"/>
-
-                        <!-- Doors (arcs showing swing direction) -->
-                        <path d="M 200 280 A 35 35 0 0 1 235 280" fill="none" stroke="var(--accent)" stroke-width="1.8" opacity="0.6"/>
-                        <path d="M 410 280 A 35 35 0 0 0 445 280" fill="none" stroke="var(--accent)" stroke-width="1.8" opacity="0.6"/>
-                        <path d="M 600 280 A 35 35 0 0 0 635 280" fill="none" stroke="var(--accent)" stroke-width="1.8" opacity="0.6"/>
-                        <path d="M 80 360 A 30 30 0 0 1 110 360" fill="none" stroke="var(--accent)" stroke-width="1.8" opacity="0.6"/>
-                        <path d="M 260 360 A 30 30 0 0 0 290 360" fill="none" stroke="var(--accent)" stroke-width="1.8" opacity="0.6"/>
-
-                        <!-- Windows (dashed on outer walls) -->
-                        <line x1="100" y1="30" x2="240" y2="30" stroke="var(--accent-hover)" stroke-width="4" stroke-dasharray="10 5" opacity="0.5"/>
-                        <line x1="400" y1="30" x2="520" y2="30" stroke="var(--accent-hover)" stroke-width="4" stroke-dasharray="10 5" opacity="0.5"/>
-                        <line x1="610" y1="30" x2="720" y2="30" stroke="var(--accent-hover)" stroke-width="4" stroke-dasharray="10 5" opacity="0.5"/>
-                        <line x1="770" y1="320" x2="770" y2="460" stroke="var(--accent-hover)" stroke-width="4" stroke-dasharray="10 5" opacity="0.5"/>
-                        <line x1="30" y1="400" x2="30" y2="490" stroke="var(--accent-hover)" stroke-width="4" stroke-dasharray="10 5" opacity="0.5"/>
-
-                        <!-- Furniture -->
-                        <!-- Living Room: Sofa + Coffee Table + TV -->
-                        <rect x="80" y="170" width="140" height="65" rx="8" class="fp-furniture"/>
-                        <rect x="130" y="140" width="50" height="25" rx="4" class="fp-furniture" style="opacity:0.1"/>
-                        <rect x="60" y="50" width="80" height="10" rx="3" class="fp-furniture"/>
-                        <!-- Kitchen: Counter L-shape + Island -->
-                        <rect x="380" y="40" width="180" height="20" rx="3" class="fp-furniture"/>
-                        <rect x="380" y="40" width="20" height="100" rx="3" class="fp-furniture"/>
-                        <rect x="420" y="180" width="80" height="40" rx="6" class="fp-furniture"/>
-                        <!-- Office: Desk + Chair -->
-                        <rect x="600" y="120" width="140" height="55" rx="5" class="fp-furniture"/>
-                        <circle cx="670" cy="200" r="12" class="fp-furniture" style="opacity:0.1"/>
-                        <!-- Bedroom: Bed -->
-                        <rect x="660" y="370" width="90" height="110" rx="8" class="fp-furniture"/>
-                        <!-- Bathroom: Tub + Sink -->
-                        <rect x="510" y="420" width="55" height="80" rx="16" class="fp-furniture" style="opacity:0.12"/>
-                        <rect x="580" y="300" width="40" height="25" rx="10" class="fp-furniture" style="opacity:0.12"/>
-
-                        <!-- Room labels -->
-                        <text x="200" y="80" class="fp-label" data-en>Living Room</text>
-                        <text x="200" y="80" class="fp-label" data-de>Wohnzimmer</text>
-                        <text x="470" y="80" class="fp-label" data-en>Kitchen</text>
-                        <text x="470" y="80" class="fp-label" data-de>Küche</text>
-                        <text x="670" y="80" class="fp-label" data-en>Office</text>
-                        <text x="670" y="80" class="fp-label" data-de>Büro</text>
-                        <text x="260" y="320" class="fp-label" data-en>Hallway</text>
-                        <text x="260" y="320" class="fp-label" data-de>Flur</text>
-                        <text x="114" y="430" class="fp-label" data-en>Guest WC</text>
-                        <text x="114" y="430" class="fp-label" data-de>Gäste-WC</text>
-                        <text x="346" y="430" class="fp-label" data-en>Utility Room</text>
-                        <text x="346" y="430" class="fp-label" data-de>Hauswirtschaft</text>
-                        <text x="567" y="320" class="fp-label" data-en>Bathroom</text>
-                        <text x="567" y="320" class="fp-label" data-de>Bad</text>
-                        <text x="700" y="320" class="fp-label" data-en>Bedroom</text>
-                        <text x="700" y="320" class="fp-label" data-de>Schlafzimmer</text>
-
-                        <!-- Temperatures -->
-                        <text x="200" y="98" class="fp-temp">22.4°C</text>
-                        <text x="470" y="98" class="fp-temp">21.8°C</text>
-                        <text x="670" y="98" class="fp-temp">23.1°C · 620 ppm</text>
-                        <text x="260" y="338" class="fp-temp">20.5°C</text>
-                        <text x="567" y="338" class="fp-temp">24.2°C · 58%</text>
-                        <text x="700" y="338" class="fp-temp">19.8°C</text>
-                        <text x="346" y="448" class="fp-temp">18.5°C</text>
-
-                        <!-- Lights ON (warm glow) -->
-                        <circle cx="120" cy="130" r="6" class="fp-light fp-light-on" filter="url(#fp-glow)"/>
-                        <circle cx="200" cy="130" r="6" class="fp-light fp-light-on" filter="url(#fp-glow)"/>
-                        <circle cx="280" cy="130" r="6" class="fp-light fp-light-on" filter="url(#fp-glow)"/>
-                        <circle cx="470" cy="130" r="6" class="fp-light fp-light-on" filter="url(#fp-glow)"/>
-                        <circle cx="670" cy="150" r="6" class="fp-light fp-light-on" filter="url(#fp-glow)"/>
-                        <circle cx="150" cy="310" r="5" class="fp-light fp-light-on" filter="url(#fp-glow)" opacity="0.5"/>
-
-                        <!-- Lights OFF -->
-                        <circle cx="530" cy="130" r="5" class="fp-light fp-light-off"/>
-                        <circle cx="730" cy="150" r="5" class="fp-light fp-light-off"/>
-                        <circle cx="350" cy="310" r="4" class="fp-light fp-light-off"/>
-                        <circle cx="700" cy="430" r="5" class="fp-light fp-light-off"/>
-                        <circle cx="567" cy="400" r="5" class="fp-light fp-light-off"/>
-
-                        <!-- Sensors / Status -->
-                        <circle cx="650" cy="200" r="5" class="fp-status-dot online"/>
-                        <text x="662" y="204" class="fp-sensor" data-en>Occupied</text>
-                        <text x="662" y="204" class="fp-sensor" data-de>Besetzt</text>
-
-                        <circle cx="300" cy="470" r="4" class="fp-status-dot online"/>
-                        <text x="312" y="474" class="fp-sensor">HA Online</text>
-                        <text x="312" y="490" class="fp-sensor">⚡ 3.2 kW PV</text>
-
-                        <!-- Blind indicators -->
-                        <rect x="34" y="170" width="5" height="50" fill="var(--accent)" opacity="0.3" rx="2"/>
-                        <text x="48" y="200" class="fp-sensor">↕ 0%</text>
-                        <rect x="761" y="320" width="5" height="60" fill="var(--accent)" opacity="0.7" rx="2"/>
-                        <text x="740" y="355" class="fp-sensor" style="text-anchor:end">100% ↕</text>
-
-                        <!-- Door lock -->
-                        <text x="50" y="290" class="fp-sensor" data-en>🔒 Locked</text>
-                        <text x="50" y="290" class="fp-sensor" data-de>🔒 Verriegelt</text>
-                    </svg>
-                </div>
-            </div>
-        </section>
-
-        <!-- Process -->
+        <!-- PROCESS (6 steps from smarthome.html) -->
         <section class="section-dark">
             <div class="container">
                 <div class="section-header centered reveal">
@@ -297,12 +206,12 @@
                     <h2 class="display-md"><span data-en>Ready to plan your Smart Home?</span><span data-de>Bereit für Ihr Smart Home?</span></h2>
                     <p><span data-en>Whether it's a new build, retrofit, or expansion — let's discuss your options together.</span><span data-de>Ob Neubau, Nachrüstung oder Erweiterung — lassen Sie uns gemeinsam Ihre Möglichkeiten besprechen.</span></p>
                 </div>
-                <a href="contact.html" class="btn btn-primary"><span data-en>Schedule a free consultation</span><span data-de>Kostenlose Beratung vereinbaren</span></a>
+                <a href="../contact/" class="btn btn-primary"><span data-en>Schedule a free consultation</span><span data-de>Kostenlose Beratung vereinbaren</span></a>
             </div>
         </section>
     </main>
 
-    <!-- Room Modals -->
+    <!-- Room Modals (from smarthome.html) -->
     <div class="modal-overlay" id="modal-room-wohnzimmer">
         <div class="modal">
             <button class="modal-close">&times;</button>
@@ -411,6 +320,6 @@
     <footer id="site-footer"></footer>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html>

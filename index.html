@@ -58,23 +58,13 @@
             color: var(--text);
         }
 
-        .intro-panel::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 0.5s ease;
+        .panel-business {
+            background: linear-gradient(rgba(10,10,11,0.75), rgba(10,10,11,0.6)), url('images/splash-business.jpg') center/cover no-repeat;
         }
 
-        .panel-business::before {
-            background: radial-gradient(ellipse at 50% 60%, var(--accent-business-glow), transparent 65%);
+        .panel-home {
+            background: linear-gradient(rgba(10,10,11,0.55), rgba(10,10,11,0.35)), url('images/splash-home.jpg') center/cover no-repeat;
         }
-
-        .panel-home::before {
-            background: radial-gradient(ellipse at 50% 60%, var(--accent-home-glow), transparent 65%);
-        }
-
-        .intro-panel:hover::before { opacity: 1; }
 
         .intro-wrapper:has(.panel-business:hover) .panel-business { flex: 1.5; }
         .intro-wrapper:has(.panel-business:hover) .panel-home { flex: 0.5; }
@@ -267,7 +257,7 @@
     <button class="lang-toggle-splash" onclick="toggleLangSplash()" aria-label="Switch language">DE</button>
 
     <div class="intro-wrapper">
-        <a href="business.html" class="intro-panel panel-business">
+        <a href="business/" class="intro-panel panel-business">
             <div class="intro-content">
                 <div class="intro-label"><span data-en>For Business</span><span data-de>Für Unternehmen</span></div>
                 <h2 class="intro-title"><span data-en>Digitize processes.<br>Deploy AI with purpose.</span><span data-de>Prozesse digitalisieren.<br>KI gezielt einsetzen.</span></h2>
@@ -284,7 +274,7 @@
 
         <div class="intro-divider"></div>
 
-        <a href="home.html" class="intro-panel panel-home">
+        <a href="smarthome/" class="intro-panel panel-home">
             <div class="intro-content">
                 <div class="intro-label"><span data-en>For Your Home</span><span data-de>Für Zuhause</span></div>
                 <h2 class="intro-title"><span data-en>Your smart home.<br>Professionally built.</span><span data-de>Dein Smart Home.<br>Professionell umgesetzt.</span></h2>
