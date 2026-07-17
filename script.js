@@ -333,16 +333,10 @@ function initHouseInteractive() {
     const house = document.getElementById('house-interactive');
     if (!house) return;
     const zones = house.querySelectorAll('.room-zone');
-    let litCount = 0;
 
     zones.forEach(zone => {
         zone.addEventListener('click', () => {
-            zone.classList.toggle('lit');
-            litCount = house.querySelectorAll('.room-zone.lit').length;
-            document.body.classList.remove('house-warm', 'house-warmer', 'house-warmest');
-            if (litCount >= 5) document.body.classList.add('house-warmest');
-            else if (litCount >= 3) document.body.classList.add('house-warmer');
-            else if (litCount >= 1) document.body.classList.add('house-warm');
+            zone.classList.toggle('off');
         });
     });
 }
