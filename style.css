@@ -315,7 +315,12 @@ nav .btn-primary:hover {
 }
 
 .nav-divider {
-    display: none;
+    width: 1px;
+    height: 20px;
+    background: var(--border);
+    margin: 0 4px;
+    opacity: 0.6;
+    flex-shrink: 0;
 }
 
 .nav-cta {
@@ -2127,54 +2132,44 @@ section {
 .target-hero-split {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 50vh;
+    gap: 32px;
 }
 
 .target-hero-card {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    padding: clamp(40px, 6vw, 80px);
+    padding: 48px 40px;
     text-decoration: none;
     color: var(--text);
-    position: relative;
-    transition: background 0.3s;
-}
-
-.target-hero-card:first-child {
     background: var(--surface);
-    border-right: 1px solid var(--border);
-}
-
-.target-hero-card:last-child {
-    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: border-color 0.3s, transform 0.2s;
 }
 
 .target-hero-card:hover {
-    background: rgba(196, 93, 26, 0.03);
+    border-color: var(--accent);
+    transform: translateY(-3px);
 }
 
 .target-hero-content {
-    max-width: 440px;
+    max-width: 100%;
 }
 
 .target-hero-content .display-md {
-    margin-top: 12px;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
 }
 
-.target-hero-content .body-lg {
+.target-hero-content p {
     color: var(--text-secondary);
-    margin-bottom: 20px;
+    font-size: 0.92rem;
+    line-height: 1.7;
 }
 
 @media (max-width: 768px) {
     .target-hero-split {
         grid-template-columns: 1fr;
-    }
-    .target-hero-card:first-child {
-        border-right: none;
-        border-bottom: 1px solid var(--border);
     }
 }
 
